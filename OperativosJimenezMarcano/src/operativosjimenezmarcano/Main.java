@@ -4,6 +4,8 @@
  */
 package operativosjimenezmarcano;
 
+import Interface.Views;
+
 /**
  *
  * @author Miguel
@@ -14,7 +16,7 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Views views = new Views();
     }
     
 }
