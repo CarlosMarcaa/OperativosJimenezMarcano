@@ -1,10 +1,11 @@
 package Interface;
 
+import javax.swing.JTextField;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author Miguel
@@ -53,7 +54,7 @@ public class Views extends javax.swing.JFrame {
         assemblers = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         saveButton = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        validator = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -109,19 +110,7 @@ public class Views extends javax.swing.JFrame {
 
         jLabel3.setText("Duración en segundos de un día en la simulación:");
 
-        simulationDuration.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                simulationDurationActionPerformed(evt);
-            }
-        });
-
         jLabel4.setText("Cantidad de días entre las entregas de los capítulos:");
-
-        deadline.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deadlineActionPerformed(evt);
-            }
-        });
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("Cantidad inicial de trabajadores:");
@@ -138,31 +127,29 @@ public class Views extends javax.swing.JFrame {
 
         jLabel11.setText("Ensambladores:");
 
-        stageDesigner.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                stageDesignerActionPerformed(evt);
-            }
-        });
-
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel12.setText("Simulación");
 
         saveButton.setText("Guardar");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        saveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                saveButtonActionPerformed(evt);
             }
         });
+
+        validator.setForeground(new java.awt.Color(255, 0, 0));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(445, 445, 445)
+                .addComponent(jLabel12)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(324, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -197,14 +184,9 @@ public class Views extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(screenwriters, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(180, 180, 180)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(288, 288, 288))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(445, 445, 445)
-                .addComponent(jLabel12)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(screenwriters, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(validator, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(322, 322, 322))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -221,15 +203,10 @@ public class Views extends javax.swing.JFrame {
                     .addComponent(deadline, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(screenwriters, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(screenwriters, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -252,7 +229,9 @@ public class Views extends javax.swing.JFrame {
                     .addComponent(assemblers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(saveButton)
-                .addGap(62, 62, 62))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(validator, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24))
         );
 
         jTabbedPane1.addTab("Configuración", jPanel3);
@@ -271,21 +250,38 @@ public class Views extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void simulationDurationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simulationDurationActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_simulationDurationActionPerformed
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
+        if (animator.getText().trim().isEmpty() || assemblers.getText().trim().isEmpty() || deadline.getText().trim().isEmpty()
+                || plotTwistScriptwriters.getText().trim().isEmpty() || screenwriters.getText().trim().isEmpty()
+                || simulationDuration.getText().trim().isEmpty() || stageDesigner.getText().trim().isEmpty() || voiceActors.getText().trim().isEmpty()) {
+            validator.setText("No pueden haber campos vacíos");
+        } else if (numValidator(animator) == false
+                || numValidator(assemblers) == false
+                || numValidator(deadline) == false
+                || numValidator(plotTwistScriptwriters) == false
+                || numValidator(screenwriters) == false
+                || numValidator(simulationDuration) == false
+                || numValidator(stageDesigner) == false
+                || numValidator(voiceActors) == false) {
+            validator.setText("Todos los campos deben ser números enteros");
+        } else {
+            validator.setText("");
+        }
 
-    private void deadlineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deadlineActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_deadlineActionPerformed
+    }//GEN-LAST:event_saveButtonActionPerformed
 
-    private void stageDesignerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageDesignerActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_stageDesignerActionPerformed
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    public static boolean numValidator(JTextField strNum) {
+        if (strNum == null) {
+            return false;
+        }
+        try {
+            Integer i = Integer.valueOf(strNum.getText());
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
+    }
 
     /**
      * @param args the command line arguments
@@ -327,7 +323,6 @@ public class Views extends javax.swing.JFrame {
     private javax.swing.JTextField animator;
     private javax.swing.JTextField assemblers;
     private javax.swing.JTextField deadline;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -349,6 +344,7 @@ public class Views extends javax.swing.JFrame {
     private javax.swing.JTextField screenwriters;
     private javax.swing.JTextField simulationDuration;
     private javax.swing.JTextField stageDesigner;
+    private javax.swing.JLabel validator;
     private javax.swing.JTextField voiceActors;
     // End of variables declaration//GEN-END:variables
 }
