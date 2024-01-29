@@ -5,7 +5,7 @@
 package operativosjimenezmarcano;
 
 import Interface.Views;
-
+import DataStructures.thread;
 /**
  *
  * @author Miguel
@@ -17,6 +17,8 @@ public class Main {
      */
     public static void main(String[] args) {
         Views views = new Views();
+        thread uwu = new thread("voiceActor");
+        uwu.run();
     }
     
 }
