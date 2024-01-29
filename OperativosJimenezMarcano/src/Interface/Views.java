@@ -1,15 +1,22 @@
 package Interface;
 
+import DataManagement.CsvManager;
+import Objects.SimulationData;
+import javax.swing.JTextField;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author Miguel
  */
 public class Views extends javax.swing.JFrame {
+
+    public static CsvManager csvManager = new CsvManager();
+
+    public static SimulationData simulationData = (SimulationData) csvManager.ReadText();
 
     /**
      * Creates new form views
@@ -17,6 +24,15 @@ public class Views extends javax.swing.JFrame {
     public Views() {
         initComponents();
         this.setVisible(true);
+        simulationDuration.setText((String) simulationData.getSimulationDuration());
+        deadline.setText((String) simulationData.getDeadline());
+        screenwriters.setText((String) simulationData.getScreenwriters());
+        stageDesigner.setText((String) simulationData.getStageDesigner());
+        animator.setText((String) simulationData.getAnimator());
+        voiceActors.setText((String) simulationData.getVoiceActors());
+        plotTwistScriptwriters.setText((String) simulationData.getPlotTwistScriptwriters());
+        assemblers.setText((String) simulationData.getAssemblers());
+
     }
 
     /**
@@ -33,6 +49,27 @@ public class Views extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        simulationDuration = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        deadline = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        screenwriters = new javax.swing.JTextField();
+        stageDesigner = new javax.swing.JTextField();
+        animator = new javax.swing.JTextField();
+        voiceActors = new javax.swing.JTextField();
+        plotTwistScriptwriters = new javax.swing.JTextField();
+        assemblers = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        saveButton = new javax.swing.JButton();
+        validator = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,33 +109,199 @@ public class Views extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addContainerGap(842, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addContainerGap(472, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel2.getAccessibleContext().setAccessibleName("starLogo");
 
         jTabbedPane1.addTab("Star Channel", jPanel2);
 
+        jLabel3.setText("Duración en segundos de un día en la simulación:");
+
+        jLabel4.setText("Cantidad de días entre las entregas de los capítulos:");
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel5.setText("Cantidad inicial de trabajadores:");
+
+        jLabel6.setText("Guionistas:");
+
+        jLabel7.setText("Diseñador de escenarios:");
+
+        jLabel8.setText("Animador de personajes:");
+
+        jLabel9.setText("Actores de doblaje:");
+
+        jLabel10.setText("Guionistas de PlotTwist:");
+
+        jLabel11.setText("Ensambladores:");
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel12.setText("Simulación");
+
+        saveButton.setText("Guardar");
+        saveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveButtonActionPerformed(evt);
+            }
+        });
+
+        validator.setForeground(new java.awt.Color(255, 0, 0));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(337, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(121, 121, 121)
+                        .addComponent(jLabel12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addComponent(jLabel11)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(assemblers, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addComponent(jLabel10)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(plotTwistScriptwriters, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addComponent(jLabel9)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(voiceActors, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addComponent(jLabel7)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(stageDesigner, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel5)
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addComponent(jLabel4)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(deadline, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addComponent(jLabel3)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(simulationDuration, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(saveButton)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(animator, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addComponent(jLabel6)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(screenwriters, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(validator, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(309, 309, 309))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel12)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(simulationDuration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(deadline, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel5)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(screenwriters, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(stageDesigner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(animator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(voiceActors, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(plotTwistScriptwriters, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(assemblers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(saveButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(validator, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(35, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Configuración", jPanel3);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 998, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 595, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
+        if (animator.getText().trim().isEmpty() || assemblers.getText().trim().isEmpty() || deadline.getText().trim().isEmpty()
+                || plotTwistScriptwriters.getText().trim().isEmpty() || screenwriters.getText().trim().isEmpty()
+                || simulationDuration.getText().trim().isEmpty() || stageDesigner.getText().trim().isEmpty() || voiceActors.getText().trim().isEmpty()) {
+            validator.setText("No pueden haber campos vacíos");
+        } else if (numValidator(animator) == false
+                || numValidator(assemblers) == false
+                || numValidator(deadline) == false
+                || numValidator(plotTwistScriptwriters) == false
+                || numValidator(screenwriters) == false
+                || numValidator(simulationDuration) == false
+                || numValidator(stageDesigner) == false
+                || numValidator(voiceActors) == false) {
+            validator.setText("Todos los campos deben ser números enteros");
+        } else {
+            validator.setText("");
+        }
+        if (validator.getText().equals("")) {
+            SimulationData newData = new SimulationData(animator.getText(), assemblers.getText(), deadline.getText(),
+                    plotTwistScriptwriters.getText(), screenwriters.getText(), simulationDuration.getText(),
+                    stageDesigner.getText(), voiceActors.getText());
+            csvManager.WriteText(newData);
+        }
+    }//GEN-LAST:event_saveButtonActionPerformed
+
+    public static boolean numValidator(JTextField strNum) {
+        if (strNum == null) {
+            return false;
+        }
+        try {
+            Integer i = Integer.valueOf(strNum.getText());
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
+    }
 
     /**
      * @param args the command line arguments
@@ -137,10 +340,31 @@ public class Views extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField animator;
+    private javax.swing.JTextField assemblers;
+    private javax.swing.JTextField deadline;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextField plotTwistScriptwriters;
+    private javax.swing.JButton saveButton;
+    private javax.swing.JTextField screenwriters;
+    private javax.swing.JTextField simulationDuration;
+    private javax.swing.JTextField stageDesigner;
+    private javax.swing.JLabel validator;
+    private javax.swing.JTextField voiceActors;
     // End of variables declaration//GEN-END:variables
 }
