@@ -17,8 +17,8 @@ public class Main {
      */
     public static void main(String[] args) {
         Views views = new Views();
-        thread uwu = new thread("voiceActor");
-        uwu.run();
+//        thread uwu = new thread("voiceActor");
+//        uwu.run();
     }
     
 }

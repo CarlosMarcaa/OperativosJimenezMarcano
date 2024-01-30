@@ -24,6 +24,14 @@ public class Views extends javax.swing.JFrame {
     public Views() {
         initComponents();
         this.setVisible(true);
+
+        enterConfigData();
+
+        StarChannel();
+        CartoonNetwork();
+    }
+
+    private void enterConfigData() {
         simulationDuration.setText((String) simulationData.getSimulationDuration());
         deadline.setText((String) simulationData.getDeadline());
         screenwriters.setText((String) simulationData.getScreenwriters());
@@ -32,7 +40,21 @@ public class Views extends javax.swing.JFrame {
         voiceActors.setText((String) simulationData.getVoiceActors());
         plotTwistScriptwriters.setText((String) simulationData.getPlotTwistScriptwriters());
         assemblers.setText((String) simulationData.getAssemblers());
+    }
 
+    private void StarChannel() {
+        revenue.setText("Prueba");
+        costs.setText("Prueba");
+        netIncome.setText("Prueba");
+    }
+
+    private void CartoonNetwork() {
+    }
+
+    private Integer sum() {
+        Integer sum = Integer.valueOf(animator.getText()) + Integer.valueOf(assemblers.getText()) + Integer.valueOf(plotTwistScriptwriters.getText())
+                + Integer.valueOf(screenwriters.getText()) + Integer.valueOf(stageDesigner.getText()) + Integer.valueOf(voiceActors.getText());
+        return sum;
     }
 
     /**
@@ -49,6 +71,12 @@ public class Views extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        revenue = new javax.swing.JLabel();
+        costs = new javax.swing.JLabel();
+        netIncome = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         simulationDuration = new javax.swing.JTextField();
@@ -102,6 +130,27 @@ public class Views extends javax.swing.JFrame {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/starChannelLogopequeno.png"))); // NOI18N
 
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setText("Ganancias en bruto:");
+
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setText("Costos operativos:");
+
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setText("Utilidades:");
+
+        revenue.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        revenue.setForeground(new java.awt.Color(255, 255, 255));
+
+        costs.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        costs.setForeground(new java.awt.Color(255, 255, 255));
+
+        netIncome.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        netIncome.setForeground(new java.awt.Color(255, 255, 255));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -109,14 +158,43 @@ public class Views extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(74, 74, 74)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel15)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(netIncome))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel13)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(revenue))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel14)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(costs)))
+                .addContainerGap(637, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel13)
+                            .addComponent(revenue))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel14)
+                            .addComponent(costs))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(netIncome))
+                .addContainerGap(379, Short.MAX_VALUE))
         );
 
         jLabel2.getAccessibleContext().setAccessibleName("starLogo");
@@ -159,7 +237,7 @@ public class Views extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(337, Short.MAX_VALUE)
+                .addContainerGap(382, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(121, 121, 121)
@@ -201,7 +279,7 @@ public class Views extends javax.swing.JFrame {
                             .addComponent(jLabel6)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(screenwriters, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(validator, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(validator)))
                 .addGap(309, 309, 309))
         );
         jPanel3Layout.setVerticalGroup(
@@ -282,12 +360,15 @@ public class Views extends javax.swing.JFrame {
             validator.setText("Todos los campos deben ser números enteros");
         } else {
             validator.setText("");
-        }
-        if (validator.getText().equals("")) {
-            SimulationData newData = new SimulationData(animator.getText(), assemblers.getText(), deadline.getText(),
+            if (sum()<=18) {
+                SimulationData newData = new SimulationData(animator.getText(), assemblers.getText(), deadline.getText(),
                     plotTwistScriptwriters.getText(), screenwriters.getText(), simulationDuration.getText(),
                     stageDesigner.getText(), voiceActors.getText());
-            csvManager.WriteText(newData);
+                csvManager.WriteText(newData);
+            }else{
+                validator.setText("La sumatoria de la cantidad de trabajadores debe ser menor o igual a 18");
+            }
+            
         }
     }//GEN-LAST:event_saveButtonActionPerformed
 
@@ -342,11 +423,15 @@ public class Views extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField animator;
     private javax.swing.JTextField assemblers;
+    private javax.swing.JLabel costs;
     private javax.swing.JTextField deadline;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -359,7 +444,9 @@ public class Views extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel netIncome;
     private javax.swing.JTextField plotTwistScriptwriters;
+    private javax.swing.JLabel revenue;
     private javax.swing.JButton saveButton;
     private javax.swing.JTextField screenwriters;
     private javax.swing.JTextField simulationDuration;
