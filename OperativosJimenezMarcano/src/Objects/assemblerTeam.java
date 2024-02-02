@@ -14,7 +14,8 @@ import java.util.logging.Logger;
  * @author cdmar
  */
 public class assemblerTeam extends Thread{
- 
+    
+    private studio studio;
     private Semaphore assemblerSemaphore;
     private Semaphore animatorSemaphore;
     private Semaphore plotTwisterSemaphore;
@@ -41,35 +42,32 @@ public class assemblerTeam extends Thread{
     private int plotEpisodeRatio;    //This int represents the ratio of common episodes per plotTwist episode
     private int plotTwistsAmount;  //This int represent the amount of plotTwists per plotTwist episode
     
-    public assemblerTeam(Semaphore assemblerSemaphore, int employeeCount, int dayDuration, driveAssembler assemblerDrive, Semaphore animatorSemaphore,
-                         drive animatorDrive, Semaphore plotTwisterSemaphore, drive plotTwisterDrive, Semaphore scriptwriterSemaphore,
-                         drive scriptwriterDrive, Semaphore setDesignerSemaphore, drive setDesignerDrive, Semaphore voiceActorSemaphore, drive voiceActorDrive, int plotTwistsAmount, int plotEpisodeRatio,
-                         driveAssembler plotAssemblerDrive, int scriptReq, int sceneryReq, int animationReq, int dubReq ) {
+    public assemblerTeam(studio studio) {
         
-        this.assemblerSemaphore = assemblerSemaphore;
-        this.employeeCount = employeeCount;
-        this.dayDuration = dayDuration;
+        this.assemblerSemaphore = studio.getAssemblerSemaphore();
+        this.employeeCount = studio.getAssemblerEmployeeCount();
+        this.dayDuration = studio.getDayDuration();
         this.dayCicle = 0;
         this.episodeCicle = 0;        
         this.salaryAccount = 0;
-        this.assemblerDrive = assemblerDrive;
-        this.animatorSemaphore = animatorSemaphore;
-        this.animatorDrive = animatorDrive;
-        this.plotTwisterSemaphore = plotTwisterSemaphore;
-        this.plotTwisterDrive = plotTwisterDrive;
-        this.scriptwriterSemaphore = scriptwriterSemaphore;
-        this.scriptwriterDrive = scriptwriterDrive;
-        this.setDesignerSemaphore = setDesignerSemaphore;
-        this.setDesignerDrive = setDesignerDrive;
-        this.voiceActorSemaphore = voiceActorSemaphore;
-        this.voiceActorDrive = voiceActorDrive;
-        this.plotTwistsAmount = plotTwistsAmount;
-        this.plotAssemblerDrive = plotAssemblerDrive;
-        this.plotEpisodeRatio = plotEpisodeRatio;
-        this.scriptReq = scriptReq;
-        this.sceneryReq = sceneryReq;
-        this.animationReq = animationReq;
-        this.dubReq = dubReq;
+        this.assemblerDrive = studio.getAssemblerDrive();
+        this.animatorSemaphore = studio.getAnimatorSemaphore();
+        this.animatorDrive = studio.getAnimatorDrive();
+        this.plotTwisterSemaphore = studio.getPlotTwisterSemaphore();
+        this.plotTwisterDrive = studio.getPlotTwisterDrive();
+        this.scriptwriterSemaphore = studio.getScriptwriterSemaphore();
+        this.scriptwriterDrive = studio.getScriptwriterDrive();
+        this.setDesignerSemaphore = studio.getSetDesignerSemaphore();
+        this.setDesignerDrive = studio.getSetDesignerDrive();
+        this.voiceActorSemaphore = studio.getVoiceActorSemaphore();
+        this.voiceActorDrive = studio.getVoiceActorDrive();
+        this.plotTwistsAmount = studio.getPlotTwistsAmount();
+        this.plotAssemblerDrive = studio.getPlotAssemblerDrive();
+        this.plotEpisodeRatio = studio.getPlotEpisodeRatio();
+        this.scriptReq = studio.getScriptReq();
+        this.sceneryReq = studio.getSceneryReq();
+        this.animationReq = studio.getAnimationReq();
+        this.dubReq = studio.getDubReq();
         
         
     }
