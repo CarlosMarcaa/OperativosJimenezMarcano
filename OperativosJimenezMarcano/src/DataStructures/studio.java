@@ -8,6 +8,17 @@ package DataStructures;
  *
  * @author cdmar
  */
-public class semaphore {
+public class studio {
+    private queue employeeList;
+    
+    public queue getEmployeeList() {
+        return employeeList;
+    }
+
+    public void setEmployeeList(queue employeeList) {
+        this.employeeList = employeeList;
+    }
+    
+    
     
 }
