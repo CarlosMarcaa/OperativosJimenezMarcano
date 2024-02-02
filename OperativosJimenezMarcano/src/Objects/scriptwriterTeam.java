@@ -13,37 +13,24 @@ import java.util.logging.Logger;
  */
 public class scriptwriterTeam extends Thread{
  
-    private Semaphore scriptwriterSemaphore;
-    private int employeeCount;
-    private int dayDuration;
-    private int dayCicle;
-    private int salaryAccount;
-    private drive scriptwriterDrive;
+    studio studio;
     int salary = 20;
+    private int dayCicle;
     
-    public scriptwriterTeam(Semaphore scriptwriterSemaphore, int employeeCount, int dayDuration, drive scriptwriterDrive) {
-        this.scriptwriterSemaphore = scriptwriterSemaphore;
-        this.employeeCount = employeeCount;
-        this.dayDuration = dayDuration;
-        this.dayCicle = 0;
-        this.salaryAccount = 0;
-        this.scriptwriterDrive = scriptwriterDrive;
+    public scriptwriterTeam(studio studio) {
+    this.studio = studio;
     }
 
     public int getEmployeeCount() {
-        return employeeCount;
+        return studio.getScriptwriterEmployeeCount();
     }
 
     public void setEmployeeCount(int employeeCount) {
-        this.employeeCount = employeeCount;
+        studio.setScriptwriterEmployeeCount(employeeCount);
     }
 
     public int getDayDuration() {
-        return dayDuration;
-    }
-
-    public void setDayDuration(int dayDuration) {
-        this.dayDuration = dayDuration;
+        return studio.getDayDuration();
     }
 
     public int getDayCicle() {
@@ -55,22 +42,22 @@ public class scriptwriterTeam extends Thread{
     }
 
     public int getSalaryAccount() {
-        return salaryAccount;
+        return studio.getSalaryAccount();
     }
 
     public void setSalaryAccount(int salaryAccount) {
-        this.salaryAccount = salaryAccount;
+        studio.setSalaryAccount(salaryAccount);
     }
     
     public void addDailySalary(){
         setSalaryAccount(
                 getSalaryAccount() + salary*24*getEmployeeCount()
         );
-                            System.out.println("El equipo de "  + getEmployeeCount() + " guionistas" + " gana: " + salary*24*getEmployeeCount()+"$");
+                            //System.out.println("El equipo de "  + getEmployeeCount() + " guionistas" + " gana: " + salary*24*getEmployeeCount()+"$");
     }
 
     public drive getScriptwriterDrive() {
-        return scriptwriterDrive;
+        return studio.getScriptwriterDrive();
     }
     
 
@@ -100,7 +87,7 @@ public class scriptwriterTeam extends Thread{
                     
                     operate();
                     addDailySalary();
-                    sleep(this.dayDuration);                            
+                    sleep(studio.getDayDuration());                            
                             
                 } catch (InterruptedException ex) {
                     Logger.getLogger(scriptwriterTeam.class.getName()).log(Level.SEVERE, null, ex);
@@ -110,6 +97,6 @@ public class scriptwriterTeam extends Thread{
     }
 
     public Semaphore getScriptwriterSemaphore() {
-        return scriptwriterSemaphore;
+        return studio.getScriptwriterSemaphore();
     }
 }

@@ -109,7 +109,7 @@ public class assemblerTeam extends Thread{
         setSalaryAccount(
                 getSalaryAccount() + salary*24*getEmployeeCount()
         );
-                            System.out.println("El equipo de "  + getEmployeeCount() + " guionistas" + " gana: " + salary*24*getEmployeeCount()+"$");
+                            //System.out.println("El equipo de "  + getEmployeeCount() + " guionistas" + " gana: " + salary*24*getEmployeeCount()+"$");
     }
 
     public driveAssembler getAssemblerDrive() {
@@ -117,8 +117,8 @@ public class assemblerTeam extends Thread{
     }
     
     
- 
-    public void operate() { // HAY UN PROBLEMA CON EL ENSAMBLADOR, SOLO ESTA ENSAMBLANDO CAPITULOS DE PLOTTWIST
+    
+    public void operate() {
         setDayCicle(getDayCicle() + 1);
         if (getDayCicle() >= 2) {
             try {

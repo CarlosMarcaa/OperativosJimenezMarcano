@@ -15,37 +15,24 @@ import java.util.logging.Logger;
  */
 public class voiceActorTeam extends Thread{
  
-    private Semaphore voiceActorSemaphore;
-    private int employeeCount;
-    private int dayDuration;
+    private studio studio;
     private int dayCicle;
-    private int salaryAccount;
-    private drive voiceActorDrive;
+
     int salary = 16;
     
-    public voiceActorTeam(Semaphore voiceActorSemaphore, int employeeCount, int dayDuration, drive voiceActorDrive) {
-        this.voiceActorSemaphore = voiceActorSemaphore;
-        this.employeeCount = employeeCount;
-        this.dayDuration = dayDuration;
+    public voiceActorTeam(studio studio) {
+        this.studio = studio;
         this.dayCicle = 0;
-        this.salaryAccount = 0;
-        this.voiceActorDrive = voiceActorDrive;
+
     }
 
     public int getEmployeeCount() {
-        return employeeCount;
+        return studio.getVoiceActorEmployeeCount();
     }
 
-    public void setEmployeeCount(int employeeCount) {
-        this.employeeCount = employeeCount;
-    }
 
     public int getDayDuration() {
-        return dayDuration;
-    }
-
-    public void setDayDuration(int dayDuration) {
-        this.dayDuration = dayDuration;
+        return studio.getDayDuration();
     }
 
     public int getDayCicle() {
@@ -57,22 +44,22 @@ public class voiceActorTeam extends Thread{
     }
 
     public int getSalaryAccount() {
-        return salaryAccount;
+        return studio.getSalaryAccount();
     }
 
     public void setSalaryAccount(int salaryAccount) {
-        this.salaryAccount = salaryAccount;
+        studio.setSalaryAccount(salaryAccount);
     }
     
     public void addDailySalary(){
         setSalaryAccount(
                 getSalaryAccount() + salary*24*getEmployeeCount()
         );
-                            System.out.println("El equipo de "  + getEmployeeCount() + " actore de doblaje" + " gana: " + salary*24*getEmployeeCount()+"$");
+                            //System.out.println("El equipo de "  + getEmployeeCount() + " actore de doblaje" + " gana: " + salary*24*getEmployeeCount()+"$");
     }
 
     public drive getVoiceActorDrive() {
-        return voiceActorDrive;
+        return studio.getVoiceActorDrive();
     }
     
 
@@ -102,7 +89,7 @@ public class voiceActorTeam extends Thread{
                     
                     operate();
                     addDailySalary();
-                    sleep(this.dayDuration);                            
+                    sleep(studio.getDayDuration());                            
                             
                 } catch (InterruptedException ex) {
                     Logger.getLogger(voiceActorTeam.class.getName()).log(Level.SEVERE, null, ex);
@@ -112,6 +99,6 @@ public class voiceActorTeam extends Thread{
     }
 
     public Semaphore getVoiceActorSemaphore() {
-        return voiceActorSemaphore;
+        return studio.getVoiceActorSemaphore();
     }    
 }

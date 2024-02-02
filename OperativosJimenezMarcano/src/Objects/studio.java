@@ -68,6 +68,7 @@ public class studio extends Thread{ //The studio class contains all the studio i
     private voiceActorTeam voiceActorTeam;
     private plotTwisterTeam plotTwisterTeam;
     private assemblerTeam assemblerTeam;
+    private proyectManager proyectManager;
     
     
 
@@ -113,12 +114,13 @@ public class studio extends Thread{ //The studio class contains all the studio i
         this.plotTwisterEmployeeCount = plotTwisterEmployeeCount;
         this.assemblerEmployeeCount = assemblerEmployeeCount;       
         //Teams
-        this.scriptwriterTeam = new scriptwriterTeam(scriptwriterSemaphore, scriptwriterEmployeeCount, dayDuration, scriptwriterDrive);
-        this.setDesignerTeam = new setDesignerTeam(setDesignerSemaphore, setDesignerEmployeeCount, dayDuration, setDesignerDrive);
-        this.animatorTeam = new animatorTeam(animatorSemaphore, animatorEmployeeCount, dayDuration, animatorDrive);
-        this.voiceActorTeam = new voiceActorTeam(voiceActorSemaphore, voiceActorEmployeeCount, dayDuration, voiceActorDrive);
-        this.plotTwisterTeam = new plotTwisterTeam(plotTwisterSemaphore, plotTwisterEmployeeCount, dayDuration, plotTwisterDrive);
-        this.assemblerTeam = new assemblerTeam(this); //Posible referencia circular
+        this.scriptwriterTeam = new scriptwriterTeam(this);
+        this.setDesignerTeam = new setDesignerTeam(this);
+        this.animatorTeam = new animatorTeam(this);
+        this.voiceActorTeam = new voiceActorTeam(this);
+        this.plotTwisterTeam = new plotTwisterTeam(this);
+        this.assemblerTeam = new assemblerTeam(this);
+        this.proyectManager = new proyectManager(this);
     }
     @Override
     public void run() {                                         
@@ -127,7 +129,8 @@ public class studio extends Thread{ //The studio class contains all the studio i
                     getAnimatorTeam().start();
                     getVoiceActorTeam().start();
                     getPlotTwisterTeam().start();
-                    getAssemblerTeam().start();                                
+                    getAssemblerTeam().start();
+                    getProyectManager().start(); // BRING ME THE MANAGER!!!!!! 
     }
     
     public String getStudioName() {
@@ -340,6 +343,10 @@ public class studio extends Thread{ //The studio class contains all the studio i
 
     public void setAssemblerTeam(assemblerTeam assemblerTeam) {
         this.assemblerTeam = assemblerTeam;
+    }
+
+    public proyectManager getProyectManager() {
+        return proyectManager;
     }
     
     

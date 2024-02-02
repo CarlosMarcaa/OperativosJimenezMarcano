@@ -14,37 +14,22 @@ import java.util.logging.Logger;
  * @author cdmar
  */
 public class setDesignerTeam extends Thread{
-    private Semaphore setDesignerSemaphore;
-    private int employeeCount;
-    private int dayDuration;
+    private studio studio;
     private int dayCicle;
-    private int salaryAccount;
-    private drive setDesignerDrive;
     int salary = 26;
     
-    public setDesignerTeam(Semaphore setDesignerSemaphore, int employeeCount, int dayDuration, drive setDesignerDrive) {
-        this.setDesignerSemaphore = setDesignerSemaphore;
-        this.employeeCount = employeeCount;
-        this.dayDuration = dayDuration;
+    public setDesignerTeam(studio studio) {
+        this.studio = studio;
         this.dayCicle = 0;
-        this.salaryAccount = 0;
-        this.setDesignerDrive = setDesignerDrive;
+        
     }
 
     public int getEmployeeCount() {
-        return employeeCount;
-    }
-
-    public void setEmployeeCount(int employeeCount) {
-        this.employeeCount = employeeCount;
+        return studio.getSetDesignerEmployeeCount();
     }
 
     public int getDayDuration() {
-        return dayDuration;
-    }
-
-    public void setDayDuration(int dayDuration) {
-        this.dayDuration = dayDuration;
+        return studio.getDayDuration();
     }
 
     public int getDayCicle() {
@@ -56,22 +41,22 @@ public class setDesignerTeam extends Thread{
     }
 
     public int getSalaryAccount() {
-        return salaryAccount;
+        return studio.getSalaryAccount();
     }
 
     public void setSalaryAccount(int salaryAccount) {
-        this.salaryAccount = salaryAccount;
+        studio.setSalaryAccount(salaryAccount);
     }
     
     public void addDailySalary(){
         setSalaryAccount(
                 getSalaryAccount() + salary*24*getEmployeeCount()
         );
-                            System.out.println("El equipo de "  + getEmployeeCount() + " diseñadores de escenarios" + " gana: " + salary*24*getEmployeeCount()+"$");
+                            //System.out.println("El equipo de "  + getEmployeeCount() + " diseñadores de escenarios" + " gana: " + salary*24*getEmployeeCount()+"$");
     }
 
     public drive getSetDesignerDrive() {
-        return setDesignerDrive;
+        return studio.getSetDesignerDrive();
     }
     
 
@@ -98,7 +83,7 @@ public class setDesignerTeam extends Thread{
                 try {
                     operate();
                     addDailySalary();
-                    sleep(this.dayDuration);                            
+                    sleep(studio.getDayDuration());                            
                             
                 } catch (InterruptedException ex) {
                     Logger.getLogger(setDesignerTeam.class.getName()).log(Level.SEVERE, null, ex);
@@ -108,6 +93,6 @@ public class setDesignerTeam extends Thread{
     }
 
     public Semaphore getSetDesignerSemaphore() {
-        return setDesignerSemaphore;
+        return studio.getSetDesignerSemaphore();
     }    
 }
