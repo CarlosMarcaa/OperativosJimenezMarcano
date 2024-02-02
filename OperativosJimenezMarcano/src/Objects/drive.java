@@ -19,28 +19,46 @@ public class drive {
     
     public int add(int amount){
         int amountAdded = 0;
-        if (resourse + amount >= maxResourse){
-            amountAdded = maxResourse - resourse;
-            resourse = maxResourse;
+        if (getResourse() + amount >= getMaxResourse()){
+            amountAdded = getMaxResourse() - getResourse();
+            setResourse(getMaxResourse());
             
         }else{
-            resourse = resourse + amount;
+            setResourse(getResourse() + amount);
             amountAdded = amount;
         }
         return amountAdded;
     }
     
     public boolean substract(int amount){
-        if (amount > resourse){
+        if (amount > getResourse()){
             System.out.println("Out of resourses");
             return false;
         }else{
-            resourse = resourse - amount;
+            setResourse(getResourse() - amount);
             return true;
         }
     }
     
     public boolean isFull(){
-        return (resourse == maxResourse);
+        return (getResourse() == getMaxResourse());
     }
+
+    public int getResourse() {
+        return resourse;
+    }
+
+    public void setResourse(int resourse) {
+        this.resourse = resourse;
+    }
+
+    public int getMaxResourse() {
+        return maxResourse;
+    }
+
+    public void setMaxResourse(int maxResourse) {
+        this.maxResourse = maxResourse;
+    }
+    
+    
 }
