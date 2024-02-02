@@ -52,8 +52,9 @@ public class Main {
                                                     plotTwister_semaphore, plotTwister_drive,
                                                     scriptWriter_semaphore, scriptWriter_drive,
                                                     setDesigner_semaphore, setDesigner_drive,
-                                                    voiceActor_semaphore, voiceActor_drive, 1, plotChapterDrive );
+                                                    voiceActor_semaphore, voiceActor_drive, 1, 3, plotChapterDrive, 2, 1, 4, 4);
         assembler.start();
+        
         
     }
     

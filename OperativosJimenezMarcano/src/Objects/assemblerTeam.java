@@ -43,8 +43,8 @@ public class assemblerTeam extends Thread{
     
     public assemblerTeam(Semaphore assemblerSemaphore, int employeeCount, int dayDuration, driveAssembler assemblerDrive, Semaphore animatorSemaphore,
                          drive animatorDrive, Semaphore plotTwisterSemaphore, drive plotTwisterDrive, Semaphore scriptwriterSemaphore,
-                         drive scriptwriterDrive, Semaphore setDesignerSemaphore, drive setDesignerDrive, Semaphore voiceActorSemaphore, drive voiceActorDrive, int plotTwistsAmount,
-                         driveAssembler plotAssemblerDrive) {
+                         drive scriptwriterDrive, Semaphore setDesignerSemaphore, drive setDesignerDrive, Semaphore voiceActorSemaphore, drive voiceActorDrive, int plotTwistsAmount, int plotEpisodeRatio,
+                         driveAssembler plotAssemblerDrive, int scriptReq, int sceneryReq, int animationReq, int dubReq ) {
         
         this.assemblerSemaphore = assemblerSemaphore;
         this.employeeCount = employeeCount;
@@ -65,6 +65,12 @@ public class assemblerTeam extends Thread{
         this.voiceActorDrive = voiceActorDrive;
         this.plotTwistsAmount = plotTwistsAmount;
         this.plotAssemblerDrive = plotAssemblerDrive;
+        this.plotEpisodeRatio = plotEpisodeRatio;
+        this.scriptReq = scriptReq;
+        this.sceneryReq = sceneryReq;
+        this.animationReq = animationReq;
+        this.dubReq = dubReq;
+        
         
     }
 
@@ -119,49 +125,68 @@ public class assemblerTeam extends Thread{
         if (getDayCicle() >= 2) {
             try {
                 for (int i = 0; i < getEmployeeCount(); i++) { // Repeats the process of assembling an episode for each employee in the team
-                    boolean flag = false; // A boolean flag is created to verify if the following episode is a plotTwist episode
-                    if (getEpisodeCicle() == getPlotEpisodeRatio()){
-                        flag = true;
-                    }
-                getScriptwriterSemaphore().acquire(); //wait for every semaphore
-                getAnimatorSemaphore().acquire();
-                if (flag) {getPlotTwisterSemaphore().acquire();}
-                getSetDesignerSemaphore().acquire();
-                getVoiceActorSemaphore().acquire();
-                
-                if (getScriptwriterDrive().substract(getScriptReq()) && //Verifies if all drive requirements are met for assembling the episode
-                    getAnimatorDrive().substract(getAnimationReq()) && 
-                    getSetDesignerDrive().substract(getSceneryReq()) &&   
-                    getVoiceActorDrive().substract(getDubReq())
-                        ) {
-                    boolean flag2 = false;
-                    if (flag) { flag2 = getPlotTwisterDrive().substract(getPlotTwistsAmount()); } // A secondary flag is created to verify if the requirements for a plotEpisode are met
-                    getAssemblerSemaphore().acquire(); 
                     
-                    if (flag2) { // Flag2 was activated, so a plot episode is added to de plot episode drive
-                        int addedAmount = getPlotAssemblerDrive().add(1);
-                        System.out.println("Un ensamblador agrego " + addedAmount + " capitulos DE PLOTTWIST al drive de Plottwist! ");
-                        getAssemblerSemaphore().release(); 
-                        setEpisodeCicle(0);
-                    }else{
-                        int addedAmount = getAssemblerDrive().add(1); //Adds 1 episode to the drive
-                        System.out.println("Un ensamblador agrego " + addedAmount + " capitulos a su drive! ");
-                        getAssemblerSemaphore().release(); 
-                        setEpisodeCicle(getEpisodeCicle() + 1);
+                    if (getEpisodeCicle() == getPlotEpisodeRatio()){ // PlotTwist episode assembly escenario
+                        getScriptwriterSemaphore().acquire();
+                        getAnimatorSemaphore().acquire();
+                        getPlotTwisterSemaphore().acquire();
+                        getSetDesignerSemaphore().acquire();
+                        getVoiceActorSemaphore().acquire();
+                        if (getScriptwriterDrive().substract(getScriptReq()) && //Verifies if all drive requirements are met for assembling the episode
+                                getAnimatorDrive().substract(getAnimationReq()) &&
+                                getSetDesignerDrive().substract(getSceneryReq()) &&
+                                getVoiceActorDrive().substract(getDubReq()) &&
+                                getPlotTwisterDrive().substract(getPlotTwistsAmount())
+                                ) {
+                            // This only happens if all requirements were met
+                            getAssemblerSemaphore().acquire();
+                            int addedAmount = getPlotAssemblerDrive().add(1);
+                            System.out.println("Un ensamblador agrego " + addedAmount + " capitulo DE PLOTTWIST al drive de Plottwist! ");
+                            System.out.println(" /---Hay " + getPlotAssemblerDrive().getResourse() + " capitulos de plotTwist ensamblados---/");
+                            getAssemblerSemaphore().release();
+                            setEpisodeCicle(0); // Resets plotTwist cicle
+                            
+                        }else{ // This happens if all requirements weren't met
+                            System.out.println("Un ensamblador no pudo ensamblar un episodio por falta de requerimientos");
+                        }
+                        getScriptwriterSemaphore().release(); // Releases every semaphore
+                        getAnimatorSemaphore().release();
+                        getSetDesignerSemaphore().release();
+                        getVoiceActorSemaphore().release();
+                        getPlotTwisterSemaphore().release();
+                        
                     }
-                    
-                }else{
-                    System.out.println("Un ensamblador no pudo ensamblar un episodio por falta de requerimientos");
+                    else{  //Common episode assembly escenario
+                        getScriptwriterSemaphore().acquire();
+                        getAnimatorSemaphore().acquire();
+                        getSetDesignerSemaphore().acquire();
+                        getVoiceActorSemaphore().acquire();
+                        
+                        if (getScriptwriterDrive().substract(getScriptReq()) && //Verifies if all drive requirements are met for assembling the episode
+                                getAnimatorDrive().substract(getAnimationReq()) &&
+                                getSetDesignerDrive().substract(getSceneryReq()) &&
+                                getVoiceActorDrive().substract(getDubReq())
+                                ){
+                            // This only happens if all requirements were met
+                            getAssemblerSemaphore().acquire();
+                            int addedAmount = getAssemblerDrive().add(1); //Adds 1 episode to the drive
+                            System.out.println("Un ensamblador agrego " + addedAmount + " capitulos a su drive! ");
+                            System.out.println(" /---Hay " + getAssemblerDrive().getResourse() + " capitulos comunes ensamblados---/");
+                            getAssemblerSemaphore().release();  // Releases every semaphore
+                            setEpisodeCicle(getEpisodeCicle() + 1); // Adds 1 count to the cicle for a plotTwist episode
+                        }
+                        else{ // This happens if all requirements weren't met
+                            System.out.println("Un ensamblador no pudo ensamblar un episodio por falta de requerimientos");
+                        }
+                        getScriptwriterSemaphore().release();  //Releases every semaphore
+                        getAnimatorSemaphore().release();
+                        getSetDesignerSemaphore().release();
+                        getVoiceActorSemaphore().release();
+                    }
                 }
-                getScriptwriterSemaphore().release(); // Releases everi 
-                getAnimatorSemaphore().release();
-                getSetDesignerSemaphore().release();
-                getVoiceActorSemaphore().release();
-                
-                }
-                setDayCicle(0);
-                
-            } catch (InterruptedException ex) {
+                setDayCicle(0); //Resets the day cicle
+            }
+             catch (InterruptedException ex) {
                 Logger.getLogger(assemblerTeam.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
