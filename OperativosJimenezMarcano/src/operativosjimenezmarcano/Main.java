@@ -18,7 +18,7 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        int dayDuration = 3000;
+        int dayDuration = 10000;
         //Cartoon Network Employee amount
         int CNscriptwriter = 5;
         int CNsetDesigner = 4;

@@ -33,6 +33,7 @@ public class proyectManager extends Thread{
     public void operate() {
         int halfHour = studio.getDayDuration()/48;
         int hour = halfHour*2;
+        hourlyCycle = 0;
         while (hourlyCycle < hour*16){ try {
             // For the first 16 hours of the day, he alternates between watching porn and working
             setWatchingAnime(true);
