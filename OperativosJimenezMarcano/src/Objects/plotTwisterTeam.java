@@ -15,37 +15,23 @@ import java.util.logging.Logger;
  */
 public class plotTwisterTeam extends Thread{
  
-    private Semaphore plotTwisterSemaphore;
-    private int employeeCount;
-    private int dayDuration;
+    private studio studio;
     private int dayCicle;
-    private int salaryAccount;
-    private drive plotTwisterDrive;
     int salary = 34;
     
-    public plotTwisterTeam(Semaphore plotTwisterSemaphore, int employeeCount, int dayDuration, drive plotTwisterDrive) {
-        this.plotTwisterSemaphore = plotTwisterSemaphore;
-        this.employeeCount = employeeCount;
-        this.dayDuration = dayDuration;
+    public plotTwisterTeam(studio studio) {
+        this.studio = studio;
         this.dayCicle = 0;
-        this.salaryAccount = 0;
-        this.plotTwisterDrive = plotTwisterDrive;
+
     }
 
     public int getEmployeeCount() {
-        return employeeCount;
+        return studio.getPlotTwisterEmployeeCount();
     }
 
-    public void setEmployeeCount(int employeeCount) {
-        this.employeeCount = employeeCount;
-    }
-
+ 
     public int getDayDuration() {
-        return dayDuration;
-    }
-
-    public void setDayDuration(int dayDuration) {
-        this.dayDuration = dayDuration;
+        return studio.getDayDuration();
     }
 
     public int getDayCicle() {
@@ -57,22 +43,22 @@ public class plotTwisterTeam extends Thread{
     }
 
     public int getSalaryAccount() {
-        return salaryAccount;
+        return studio.getSalaryAccount();
     }
 
     public void setSalaryAccount(int salaryAccount) {
-        this.salaryAccount = salaryAccount;
+        studio.setSalaryAccount(salaryAccount);
     }
     
     public void addDailySalary(){
         setSalaryAccount(
                 getSalaryAccount() + salary*24*getEmployeeCount()
         );
-                            System.out.println("El equipo de "  + getEmployeeCount() + " guionistas de plotTwist" + " gana: " + salary*24*getEmployeeCount()+"$");
+                            //System.out.println("El equipo de "  + getEmployeeCount() + " guionistas de plotTwist" + " gana: " + salary*24*getEmployeeCount()+"$");
     }
 
     public drive getPlotTwisterDrive() {
-        return plotTwisterDrive;
+        return studio.getPlotTwisterDrive();
     }
     
 
@@ -102,7 +88,7 @@ public class plotTwisterTeam extends Thread{
                     
                     operate();
                     addDailySalary();
-                    sleep(this.dayDuration);                            
+                    sleep(studio.getDayDuration());                            
                             
                 } catch (InterruptedException ex) {
                     Logger.getLogger(plotTwisterTeam.class.getName()).log(Level.SEVERE, null, ex);
@@ -112,6 +98,6 @@ public class plotTwisterTeam extends Thread{
     }
 
     public Semaphore getPlotTwisterSemaphore() {
-        return plotTwisterSemaphore;
+        return studio.getPlotTwisterSemaphore();
     }
 }

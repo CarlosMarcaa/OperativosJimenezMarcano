@@ -14,102 +14,77 @@ import java.util.logging.Logger;
  * @author cdmar
  */
 public class proyectManager extends Thread{
- /*
-    private Semaphore scriptwriterSemaphore;
-    private int dayDuration;
-    private int salaryAccount;
     int salary = 40;
-    private boolean isWatchingAnime;
-    private studio = 
-    
-    public proyectManager( int dayDuration ) {
-        this.dayDuration = dayDuration;
-        this.dayCicle = 0;
-        this.salaryAccount = 0;
-        this.scriptwriterDrive = scriptwriterDrive;
-    }
-
-    public int getEmployeeCount() {
-        return employeeCount;
-    }
-
-    public void setEmployeeCount(int employeeCount) {
-        this.employeeCount = employeeCount;
-    }
-
-    public int getDayDuration() {
-        return dayDuration;
-    }
-
-    public void setDayDuration(int dayDuration) {
-        this.dayDuration = dayDuration;
-    }
-
-    public int getDayCicle() {
-        return dayCicle;
-    }
-
-    public void setDayCicle(int dayCicle) {
-        this.dayCicle = dayCicle;
-    }
-
-    public int getSalaryAccount() {
-        return salaryAccount;
-    }
-
-    public void setSalaryAccount(int salaryAccount) {
-        this.salaryAccount = salaryAccount;
+    studio studio;
+    private boolean WatchingAnime;
+    private int hourlyCycle;
+    public proyectManager(studio studio) {
+        this.studio = studio;
+        this.WatchingAnime = false;
+        this.hourlyCycle = 0;
     }
     
     public void addDailySalary(){
-        setSalaryAccount(
-                getSalaryAccount() + salary*24*getEmployeeCount()
+        studio.setSalaryAccount(
+                studio.getSalaryAccount() + salary*24
         );
-                            System.out.println("El equipo de "  + getEmployeeCount() + " guionistas" + " gana: " + salary*24*getEmployeeCount()+"$");
+                            
     }
-
-    public drive getScriptwriterDrive() {
-        return scriptwriterDrive;
-    }
-    
-
- 
     public void operate() {
-        setDayCicle(getDayCicle() + 1);
-        if (getDayCicle() >= 4) {
-            try {
-                getScriptwriterSemaphore().acquire(); //wait
-                int addedAmount = getScriptwriterDrive().add(getEmployeeCount()); //Adds 1 script for each employee in the team the function .add() in drive class returns the added amount to be reported later
-                System.out.println("El equipo de "  + getEmployeeCount() + " guionistas" + " agrego " + addedAmount + " guiones a su drive");
-                getScriptwriterSemaphore().release(); //wait
-                setDayCicle(0);
-                
+        int halfHour = studio.getDayDuration()/48;
+        int hour = halfHour*2;
+        while (hourlyCycle < hour*16){ try {
+            // For the first 16 hours of the day, he alternates between watching porn and working
+            setWatchingAnime(true);
+            System.out.println("El proyect Manager esta viendo anime");
+            sleep(halfHour);
+            setWatchingAnime(false);
+            System.out.println("El proyect Manager dejo de ver anime");
+            sleep(halfHour);
+            setHourlyCycle(getHourlyCycle() + hour);
+            
             } catch (InterruptedException ex) {
-                Logger.getLogger(scriptwriterTeam.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(proyectManager.class.getName()).log(Level.SEVERE, null, ex);
             }
+        } //For the last 8 hours
+        setWatchingAnime(false);
+        int newDaysLeft = 0;
+        if (studio.getDaysLeftRelease() != 0){
+                newDaysLeft = studio.getDaysLeftRelease() - 1;
+                }else{newDaysLeft = 0;}
+        studio.setDaysLeftRelease(newDaysLeft);
+        System.out.println("Days left for release: " + studio.getDaysLeftRelease());
+        try {       
+            sleep(hour*8);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(proyectManager.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        
     }
-   
-    @Override
+    @Override    
     public void run() {
  
             while (true){
-            
-                try {
-                    
-                    operate();
-                    addDailySalary();
-                    sleep(this.dayDuration);                            
-                            
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(scriptwriterTeam.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                operate();
+                addDailySalary();
             }
         
     }
 
-    public Semaphore getScriptwriterSemaphore() {
-        return scriptwriterSemaphore;
-    }  
-*/
+    public boolean isWatchingAnime() {
+        return WatchingAnime;
+    }
+
+    public void setWatchingAnime(boolean WatchingAnime) {
+        this.WatchingAnime = WatchingAnime;
+    }
+
+    public int getHourlyCycle() {
+        return hourlyCycle;
+    }
+
+    public void setHourlyCycle(int hourlyCycle) {
+        this.hourlyCycle = hourlyCycle;
+    }
 }

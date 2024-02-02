@@ -15,38 +15,24 @@ import java.util.logging.Logger;
  */
 public class animatorTeam extends Thread{
  
-    private Semaphore animatorSemaphore;
-    private int employeeCount;
-    private int dayDuration;
+    private studio studio;
     private int dayCicle;
-    private int salaryAccount;
-    private drive animatorDrive;
     int salary = 40;
     
-    public animatorTeam(Semaphore animatorSemaphore, int employeeCount, int dayDuration, drive animatorDrive) {
-        this.animatorSemaphore = animatorSemaphore;
-        this.employeeCount = employeeCount;
-        this.dayDuration = dayDuration;
+    public animatorTeam(studio studio) {
+        this.studio = studio;
         this.dayCicle = 0;
-        this.salaryAccount = 0;
-        this.animatorDrive = animatorDrive;
+ 
     }
 
     public int getEmployeeCount() {
-        return employeeCount;
-    }
-
-    public void setEmployeeCount(int employeeCount) {
-        this.employeeCount = employeeCount;
+        return studio.getAnimatorEmployeeCount();
     }
 
     public int getDayDuration() {
-        return dayDuration;
+        return studio.getDayDuration();
     }
 
-    public void setDayDuration(int dayDuration) {
-        this.dayDuration = dayDuration;
-    }
 
     public int getDayCicle() {
         return dayCicle;
@@ -57,22 +43,22 @@ public class animatorTeam extends Thread{
     }
 
     public int getSalaryAccount() {
-        return salaryAccount;
+        return studio.getSalaryAccount();
     }
 
     public void setSalaryAccount(int salaryAccount) {
-        this.salaryAccount = salaryAccount;
+        studio.setSalaryAccount(salaryAccount);
     }
     
     public void addDailySalary(){
         setSalaryAccount(
                 getSalaryAccount() + salary*24*getEmployeeCount()
         );
-                            System.out.println("El equipo de "  + getEmployeeCount() + " animadores" + " gana: " + salary*24*getEmployeeCount()+"$");
+                            //System.out.println("El equipo de "  + getEmployeeCount() + " animadores" + " gana: " + salary*24*getEmployeeCount()+"$");
     }
 
     public drive getAnimatorDrive() {
-        return animatorDrive;
+        return studio.getAnimatorDrive();
     }
     
 
@@ -102,7 +88,7 @@ public class animatorTeam extends Thread{
                     
                     operate();
                     addDailySalary();
-                    sleep(this.dayDuration);                            
+                    sleep(studio.getDayDuration());                            
                             
                 } catch (InterruptedException ex) {
                     Logger.getLogger(animatorTeam.class.getName()).log(Level.SEVERE, null, ex);
@@ -112,6 +98,6 @@ public class animatorTeam extends Thread{
     }
 
     public Semaphore getAnimatorSemaphore() {
-        return animatorSemaphore;
+        return studio.getAnimatorSemaphore();
     }    
 }
