@@ -11,12 +11,12 @@ import java.util.logging.Logger;
  *
  * @author cdmar
  */
-public class thread {
-    /*
-    The threads are going to be used to represent each employee 
-    They will also work as pointers in the internal queue in each department's drive (semaphors)
+public class employeeTeam extends Thread{
     
-    */
+    /*The threads are going to be used to represent each employee 
+    They will also work as pointers in the internal queue in each department's drive (semaphors)*/
+    
+    
    
 
         private String type; //Employee type, the program will function around the type of employee group
@@ -31,8 +31,10 @@ public class thread {
         private Semaphore directorDrive; 
         private int employeeCount;
         private int dayDuration;
+        private int dayCicle;
+        private int salaryAccount;
         
-        public thread(String employeeType, int employeeCount, int dayDuration) {
+        public employeeTeam(String employeeType, int employeeCount, int dayDuration) {
             this.type = employeeType;
             this.next = null;
             this.scriptwriterDrive = null;
@@ -45,6 +47,8 @@ public class thread {
             this.directorDrive = null;
             this.employeeCount = employeeCount;
             this.dayDuration = dayDuration;
+            this.dayCicle = 0;
+            this.salaryAccount = 0;
         }
         
         
@@ -65,6 +69,7 @@ public class thread {
             return next;
         }
 
+        @Override
         public void run() {
             switch (getType()) {
                 case "scriptwriter":
@@ -107,16 +112,21 @@ public class thread {
         
         public void operate(){
             switch (getType()) {
+                
+                                
                 case "scriptwriter":
+                    int salary = 20;
                     while (true){
             
                         try {
-                            obtainSalary();
-                            sleep(this.dayDuration);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(thread.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+                            run();
+                            System.out.println("El equipo de " get+ getType() + " gana: ");
+                            sleep(this.dayDuration);                            
+                            
+                        } catch (InterruptedException ex) {
+                            Logger.getLogger(thread.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                    }
                     
                     
                 case "setDesigner":
@@ -182,5 +192,21 @@ public class thread {
 
     public void setDirectorDrive(Semaphore directorDrive) {
         this.directorDrive = directorDrive;
+    }
+
+    public int getSalaryAccount() {
+        return salaryAccount;
+    }
+
+    public void setSalaryAccount(int salaryAccount) {
+        this.salaryAccount = salaryAccount;
+    }
+
+    public int getEmployeeCount() {
+        return employeeCount;
+    }
+
+    public void setEmployeeCount(int employeeCount) {
+        this.employeeCount = employeeCount;
     }
 }
