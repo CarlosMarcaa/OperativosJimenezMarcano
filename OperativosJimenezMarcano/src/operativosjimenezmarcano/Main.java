@@ -6,6 +6,8 @@ package operativosjimenezmarcano;
 
 import Interface.Views;
 import DataStructures.*;
+import Objects.*;
+import java.util.concurrent.Semaphore;
 
 /**
  *
@@ -17,8 +19,11 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Views views = new Views();
-
+        //Views views = new Views();
+        Semaphore s_semaphore = new Semaphore(1);
+        drive s_drive = new drive(25);
+        scriptwriterTeam TeamUWU = new scriptwriterTeam(s_semaphore, 5, 3000, s_drive);
+        TeamUWU.operate();
     }
 
 }

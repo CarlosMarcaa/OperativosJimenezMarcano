@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package DataStructures;
+package Objects;
 
 /**
  *
@@ -17,12 +17,17 @@ public class drive {
         this.resourse = 0;
     }
     
-    public void add(int amount){
-        if (resourse + amount > maxResourse){
+    public int add(int amount){
+        int amountAdded = 0;
+        if (resourse + amount >= maxResourse){
+            amountAdded = maxResourse - resourse;
             resourse = maxResourse;
+            
         }else{
             resourse = resourse + amount;
+            amountAdded = amount;
         }
+        return amountAdded;
     }
     
     public boolean substract(int amount){
