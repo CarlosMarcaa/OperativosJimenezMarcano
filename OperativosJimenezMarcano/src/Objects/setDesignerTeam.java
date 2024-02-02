@@ -3,31 +3,32 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Objects;
+
 import static java.lang.Thread.sleep;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 /**
  *
  * @author cdmar
  */
-public class scriptwriterTeam extends Thread{
- 
-    private Semaphore scriptwriterSemaphore;
+public class setDesignerTeam extends Thread{
+    private Semaphore setDesignerSemaphore;
     private int employeeCount;
     private int dayDuration;
     private int dayCicle;
     private int salaryAccount;
-    private drive scriptwriterDrive;
-    int salary = 20;
+    private drive setDesignerDrive;
+    int salary = 26;
     
-    public scriptwriterTeam(Semaphore scriptwriterSemaphore, int employeeCount, int dayDuration, drive scriptwriterDrive) {
-        this.scriptwriterSemaphore = scriptwriterSemaphore;
+    public setDesignerTeam(Semaphore setDesignerSemaphore, int employeeCount, int dayDuration, drive setDesignerDrive) {
+        this.setDesignerSemaphore = setDesignerSemaphore;
         this.employeeCount = employeeCount;
         this.dayDuration = dayDuration;
         this.dayCicle = 0;
         this.salaryAccount = 0;
-        this.scriptwriterDrive = scriptwriterDrive;
+        this.setDesignerDrive = setDesignerDrive;
     }
 
     public int getEmployeeCount() {
@@ -66,50 +67,47 @@ public class scriptwriterTeam extends Thread{
         setSalaryAccount(
                 getSalaryAccount() + salary*24*getEmployeeCount()
         );
-                            System.out.println("El equipo de "  + getEmployeeCount() + " guionistas" + " gana: " + salary*24*getEmployeeCount()+"$");
+                            System.out.println("El equipo de "  + getEmployeeCount() + " diseñadores de escenarios" + " gana: " + salary*24*getEmployeeCount()+"$");
     }
 
-    public drive getScriptwriterDrive() {
-        return scriptwriterDrive;
+    public drive getSetDesignerDrive() {
+        return setDesignerDrive;
     }
     
 
- 
     public void operate() {
         setDayCicle(getDayCicle() + 1);
         if (getDayCicle() >= 4) {
             try {
-                getScriptwriterSemaphore().acquire(); //wait
-                int addedAmount = getScriptwriterDrive().add(getEmployeeCount()); //Adds 1 script for each employee in the team the function .add() in drive class returns the added amount to be reported later
-                System.out.println("El equipo de "  + getEmployeeCount() + " guionistas" + " agrego " + addedAmount + " guiones a su drive");
-                getScriptwriterSemaphore().release(); //wait
+                getSetDesignerSemaphore().acquire(); //wait
+                int addedAmount = getSetDesignerDrive().add(getEmployeeCount()); //Adds 1 script for each employee in the team the function .add() in drive class returns the added amount to be reported later
+                System.out.println("El equipo de "  + getEmployeeCount() + " diseñadores de escenarios" + " agrego " + addedAmount + " escenarios a su drive");
+                getSetDesignerSemaphore().release(); //wait
                 setDayCicle(0);
                 
             } catch (InterruptedException ex) {
-                Logger.getLogger(scriptwriterTeam.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(setDesignerTeam.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
-   
+    
     @Override
     public void run() {
- 
             while (true){
-            
+                
                 try {
-                    
                     operate();
                     addDailySalary();
                     sleep(this.dayDuration);                            
                             
                 } catch (InterruptedException ex) {
-                    Logger.getLogger(scriptwriterTeam.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(setDesignerTeam.class.getName()).log(Level.SEVERE, null, ex);
                     }
             }
         
     }
 
-    public Semaphore getScriptwriterSemaphore() {
-        return scriptwriterSemaphore;
-    }
+    public Semaphore getSetDesignerSemaphore() {
+        return setDesignerSemaphore;
+    }    
 }
