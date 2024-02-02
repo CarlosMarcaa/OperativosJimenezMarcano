@@ -3,31 +3,33 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Objects;
+
 import static java.lang.Thread.sleep;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 /**
  *
  * @author cdmar
  */
-public class scriptwriterTeam extends Thread{
+public class animatorTeam extends Thread{
  
-    private Semaphore scriptwriterSemaphore;
+    private Semaphore animatorSemaphore;
     private int employeeCount;
     private int dayDuration;
     private int dayCicle;
     private int salaryAccount;
-    private drive scriptwriterDrive;
-    int salary = 20;
+    private drive animatorDrive;
+    int salary = 40;
     
-    public scriptwriterTeam(Semaphore scriptwriterSemaphore, int employeeCount, int dayDuration, drive scriptwriterDrive) {
-        this.scriptwriterSemaphore = scriptwriterSemaphore;
+    public animatorTeam(Semaphore animatorSemaphore, int employeeCount, int dayDuration, drive animatorDrive) {
+        this.animatorSemaphore = animatorSemaphore;
         this.employeeCount = employeeCount;
         this.dayDuration = dayDuration;
         this.dayCicle = 0;
         this.salaryAccount = 0;
-        this.scriptwriterDrive = scriptwriterDrive;
+        this.animatorDrive = animatorDrive;
     }
 
     public int getEmployeeCount() {
@@ -66,27 +68,27 @@ public class scriptwriterTeam extends Thread{
         setSalaryAccount(
                 getSalaryAccount() + salary*24*getEmployeeCount()
         );
-                            System.out.println("El equipo de "  + getEmployeeCount() + " guionistas" + " gana: " + salary*24*getEmployeeCount()+"$");
+                            System.out.println("El equipo de "  + getEmployeeCount() + " animadores" + " gana: " + salary*24*getEmployeeCount()+"$");
     }
 
-    public drive getScriptwriterDrive() {
-        return scriptwriterDrive;
+    public drive getAnimatorDrive() {
+        return animatorDrive;
     }
     
 
  
     public void operate() {
         setDayCicle(getDayCicle() + 1);
-        if (getDayCicle() >= 4) {
+        if (getDayCicle() >= 1) {
             try {
-                getScriptwriterSemaphore().acquire(); //wait
-                int addedAmount = getScriptwriterDrive().add(getEmployeeCount()); //Adds 1 script for each employee in the team the function .add() in drive class returns the added amount to be reported later
-                System.out.println("El equipo de "  + getEmployeeCount() + " guionistas" + " agrego " + addedAmount + " guiones a su drive");
-                getScriptwriterSemaphore().release(); //wait
+                getAnimatorSemaphore().acquire(); //wait
+                int addedAmount = getAnimatorDrive().add(getEmployeeCount()); //Adds 1 script for each employee in the team the function .add() in drive class returns the added amount to be reported later
+                System.out.println("El equipo de "  + getEmployeeCount() + " animadores" + " agrego " + addedAmount + " animaciones a su drive");
+                getAnimatorSemaphore().release(); //wait
                 setDayCicle(0);
                 
             } catch (InterruptedException ex) {
-                Logger.getLogger(scriptwriterTeam.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(animatorTeam.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
@@ -103,13 +105,13 @@ public class scriptwriterTeam extends Thread{
                     sleep(this.dayDuration);                            
                             
                 } catch (InterruptedException ex) {
-                    Logger.getLogger(scriptwriterTeam.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(animatorTeam.class.getName()).log(Level.SEVERE, null, ex);
                     }
             }
         
     }
 
-    public Semaphore getScriptwriterSemaphore() {
-        return scriptwriterSemaphore;
-    }
+    public Semaphore getAnimatorSemaphore() {
+        return animatorSemaphore;
+    }    
 }
