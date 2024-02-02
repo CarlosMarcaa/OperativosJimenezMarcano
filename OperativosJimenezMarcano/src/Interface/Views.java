@@ -65,7 +65,7 @@ public class Views extends javax.swing.JFrame {
         projectManagerDeductionStar.setText("0");
         directorStatusStar.setText("Administrando");
     }
-    
+
 //sets the dynamic values of the interface for Cartoon Network
     private void CartoonNetwork() {
 //        Finance
@@ -142,6 +142,8 @@ public class Views extends javax.swing.JFrame {
         jLabel39 = new javax.swing.JLabel();
         deadlineCounter = new javax.swing.JLabel();
         jLabel49 = new javax.swing.JLabel();
+        jLabel51 = new javax.swing.JLabel();
+        jLabel52 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -178,6 +180,9 @@ public class Views extends javax.swing.JFrame {
         jLabel48 = new javax.swing.JLabel();
         deadlineCounterStar = new javax.swing.JLabel();
         jLabel50 = new javax.swing.JLabel();
+        jLabel53 = new javax.swing.JLabel();
+        jLabel54 = new javax.swing.JLabel();
+        jLabel55 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         simulationDuration = new javax.swing.JTextField();
@@ -372,6 +377,12 @@ public class Views extends javax.swing.JFrame {
         jLabel49.setText("Datos Financieros");
         jPanel1.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, -1, -1));
 
+        jLabel51.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cartoonCharacters.png"))); // NOI18N
+        jPanel1.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 430, -1, -1));
+
+        jLabel52.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/grandpa.png"))); // NOI18N
+        jPanel1.add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 310, -1, -1));
+
         jTabbedPane1.addTab("Cartoon Network", jPanel1);
 
         jPanel2.setBackground(new java.awt.Color(28, 32, 65));
@@ -544,6 +555,14 @@ public class Views extends javax.swing.JFrame {
         jLabel50.setForeground(new java.awt.Color(255, 255, 255));
         jLabel50.setText("Datos Financieros");
         jPanel2.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, -1, -1));
+        jPanel2.add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 210, -1, -1));
+
+        jLabel54.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bobsburgers.png"))); // NOI18N
+        jLabel54.setToolTipText("");
+        jPanel2.add(jLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 450, -1, -1));
+
+        jLabel55.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Simpsons_FamilyPicture.png"))); // NOI18N
+        jPanel2.add(jLabel55, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 350, -1, -1));
 
         jTabbedPane1.addTab("Star Channel", jPanel2);
 
@@ -551,11 +570,11 @@ public class Views extends javax.swing.JFrame {
 
         jLabel3.setText("Duración en segundos de un día en la simulación:");
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 50, -1, -1));
-        jPanel3.add(simulationDuration, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 40, 71, -1));
+        jPanel3.add(simulationDuration, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 50, 71, -1));
 
         jLabel4.setText("Cantidad de días entre las entregas de los capítulos:");
         jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 90, -1, -1));
-        jPanel3.add(deadline, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 80, 71, -1));
+        jPanel3.add(deadline, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 90, 71, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("Cantidad inicial de trabajadores:");
@@ -578,12 +597,12 @@ public class Views extends javax.swing.JFrame {
 
         jLabel11.setText("Ensambladores:");
         jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, -1, -1));
-        jPanel3.add(screenwriters, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 160, 71, -1));
-        jPanel3.add(stageDesigner, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 200, 71, -1));
-        jPanel3.add(animator, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 240, 71, -1));
-        jPanel3.add(voiceActors, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 280, 71, -1));
-        jPanel3.add(plotTwistScriptwriters, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 320, 71, -1));
-        jPanel3.add(assemblers, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 360, 71, -1));
+        jPanel3.add(screenwriters, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 160, 71, -1));
+        jPanel3.add(stageDesigner, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 200, 71, -1));
+        jPanel3.add(animator, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 240, 71, -1));
+        jPanel3.add(voiceActors, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 280, 71, -1));
+        jPanel3.add(plotTwistScriptwriters, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 320, 71, -1));
+        jPanel3.add(assemblers, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 360, 71, -1));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel12.setText("Simulación");
@@ -606,15 +625,11 @@ public class Views extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1060, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jTabbedPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 604, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 17, Short.MAX_VALUE))
+            .addComponent(jTabbedPane1)
         );
 
         pack();
@@ -756,6 +771,11 @@ public class Views extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
+    private javax.swing.JLabel jLabel51;
+    private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel53;
+    private javax.swing.JLabel jLabel54;
+    private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
