@@ -28,6 +28,21 @@ public class Main {
         drive s2_drive = new drive(20);
         setDesignerTeam TeamSetDesigner = new setDesignerTeam(s2_semaphore, 2, 3000, s2_drive);
         TeamSetDesigner.start();
+        
+        Semaphore s3_semaphore = new Semaphore(1);
+        drive s3_drive = new drive(55);
+        animatorTeam TeamAnimator = new animatorTeam(s3_semaphore, 3, 3000, s3_drive);
+        TeamAnimator.start();
+        
+        Semaphore s4_semaphore = new Semaphore(1);
+        drive s4_drive = new drive(35);
+        voiceActorTeam TeamVoiceActor = new voiceActorTeam(s4_semaphore, 1, 3000, s4_drive);
+        TeamVoiceActor.start();
+        
+        Semaphore s5_semaphore = new Semaphore(1);
+        drive s5_drive = new drive(10);
+        plotTwisterTeam TeamPlotTwister = new plotTwisterTeam(s5_semaphore, 1, 3000, s5_drive);
+        TeamPlotTwister.start();
     }
     
 }
