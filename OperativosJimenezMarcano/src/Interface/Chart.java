@@ -64,7 +64,6 @@ public class Chart {
         JFrame screen = new JFrame("Utilidad VS Tiempo");
         screen.setVisible(true);
         screen.setSize(800, 600);
-        screen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         screen.add(panel);
     }
