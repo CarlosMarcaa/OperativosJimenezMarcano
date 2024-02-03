@@ -21,11 +21,16 @@ public class studio extends Thread{ //The studio class contains all the studio i
     private int deadlineRatio;
     private int daysLeftRelease;
     private int dayDuration;
+
     //Economy section
     private int profits;
     private int pmFaults;
     private int pmDiscountedAmount;
     private int salaryAccount;
+    private int episodesReleased;
+    private int plotEpisodesReleased;
+    private int commonEpisodeProfit;
+    private int plotEpisodeProfit;
     
     //Semaphore section
     private Semaphore scriptwriterSemaphore;
@@ -72,14 +77,18 @@ public class studio extends Thread{ //The studio class contains all the studio i
     
     
 
-    public studio(String studioName, int deadlineRatio, int dayDuration, int scriptReq, int sceneryReq, int animationReq, int dubReq, int plotEpisodeRatio, int plotTwistsAmount, int scriptwriterEmployeeCount, int setDesignerEmployeeCount, int animatorEmployeeCount, int voiceActorEmployeeCount, int plotTwisterEmployeeCount, int assemblerEmployeeCount) {
+    public studio(String studioName,int commonEpisodeProfit,int plotEpisodeProfit, int deadlineRatio, int dayDuration, int scriptReq, int sceneryReq, int animationReq, int dubReq, int plotEpisodeRatio, int plotTwistsAmount, int scriptwriterEmployeeCount, int setDesignerEmployeeCount, int animatorEmployeeCount, int voiceActorEmployeeCount, int plotTwisterEmployeeCount, int assemblerEmployeeCount) {
         //Id
         this.studioName = studioName;
         //Economics
+        this.commonEpisodeProfit = commonEpisodeProfit;
+        this.plotEpisodeProfit = plotEpisodeProfit;
         this.profits = 0;
         this.pmFaults = 0;
         this.pmDiscountedAmount = 0;
         this.salaryAccount = 0;
+        this.episodesReleased = 0;
+        this.plotEpisodesReleased = 0;
         //Time management
         this.deadlineRatio = deadlineRatio;
         this.daysLeftRelease = deadlineRatio;
@@ -347,6 +356,30 @@ public class studio extends Thread{ //The studio class contains all the studio i
 
     public proyectManager getProyectManager() {
         return proyectManager;
+    }
+
+    public int getEpisodesReleased() {
+        return episodesReleased;
+    }
+
+    public void setEpisodesReleased(int episodesReleased) {
+        this.episodesReleased = episodesReleased;
+    }
+
+    public int getPlotEpisodesReleased() {
+        return plotEpisodesReleased;
+    }
+
+    public void setPlotEpisodesReleased(int plotEpisodesReleased) {
+        this.plotEpisodesReleased = plotEpisodesReleased;
+    }
+
+    public int getCommonEpisodeProfit() {
+        return commonEpisodeProfit;
+    }
+
+    public int getPlotEpisodeProfit() {
+        return plotEpisodeProfit;
     }
     
     
