@@ -43,7 +43,7 @@ public class assemblerTeam extends Thread{
     private int plotTwistsAmount;  //This int represent the amount of plotTwists per plotTwist episode
     
     public assemblerTeam(studio studio) {
-        
+        this.studio = studio;
         this.assemblerSemaphore = studio.getAssemblerSemaphore();
         this.employeeCount = studio.getAssemblerEmployeeCount();
         this.dayDuration = studio.getDayDuration();
@@ -130,12 +130,18 @@ public class assemblerTeam extends Thread{
                         getPlotTwisterSemaphore().acquire();
                         getSetDesignerSemaphore().acquire();
                         getVoiceActorSemaphore().acquire();
-                        if (getScriptwriterDrive().substract(getScriptReq()) && //Verifies if all drive requirements are met for assembling the episode
-                                getAnimatorDrive().substract(getAnimationReq()) &&
-                                getSetDesignerDrive().substract(getSceneryReq()) &&
-                                getVoiceActorDrive().substract(getDubReq()) &&
-                                getPlotTwisterDrive().substract(getPlotTwistsAmount())
+                        if (getScriptwriterDrive().getResourse() >= studio.getScriptReq() && //Verifies if all drive requirements are met for assembling the episode
+                                getAnimatorDrive().getResourse() >= studio.getAnimationReq() &&
+                                getSetDesignerDrive().getResourse() >= studio.getSceneryReq() &&
+                                getVoiceActorDrive().getResourse() >= studio.getDubReq() &&
+                                getPlotTwisterDrive().getResourse() >= studio.getPlotTwistsAmount()
                                 ) {
+                                getScriptwriterDrive().substract(getScriptReq());   //If all requirements are met, substracts
+                                getAnimatorDrive().substract(getAnimationReq()); 
+                                getSetDesignerDrive().substract(getSceneryReq()); 
+                                getVoiceActorDrive().substract(getDubReq()); 
+                                getPlotTwisterDrive().substract(getPlotTwistsAmount());
+                                
                             // This only happens if all requirements were met
                             getAssemblerSemaphore().acquire();
                             int addedAmount = getPlotAssemblerDrive().add(1);
@@ -145,7 +151,8 @@ public class assemblerTeam extends Thread{
                             setEpisodeCicle(0); // Resets plotTwist cicle
                             
                         }else{ // This happens if all requirements weren't met
-                            System.out.println("Un ensamblador no pudo ensamblar un episodio por falta de requerimientos");
+                            System.out.println("Un ensamblador no pudo ensamblar un episodio de plotTwist por falta de requerimientos");
+                            
                         }
                         getScriptwriterSemaphore().release(); // Releases every semaphore
                         getAnimatorSemaphore().release();
@@ -160,11 +167,16 @@ public class assemblerTeam extends Thread{
                         getSetDesignerSemaphore().acquire();
                         getVoiceActorSemaphore().acquire();
                         
-                        if (getScriptwriterDrive().substract(getScriptReq()) && //Verifies if all drive requirements are met for assembling the episode
-                                getAnimatorDrive().substract(getAnimationReq()) &&
-                                getSetDesignerDrive().substract(getSceneryReq()) &&
-                                getVoiceActorDrive().substract(getDubReq())
+                        if (getScriptwriterDrive().getResourse() >= studio.getScriptReq() && //Verifies if all drive requirements are met for assembling the episode
+                                getAnimatorDrive().getResourse() >= studio.getAnimationReq() &&
+                                getSetDesignerDrive().getResourse() >= studio.getSceneryReq() &&
+                                getVoiceActorDrive().getResourse() >= studio.getDubReq()                               
                                 ){
+                                getScriptwriterDrive().substract(getScriptReq());   //If all requirements are met, substracts
+                                getAnimatorDrive().substract(getAnimationReq()); 
+                                getSetDesignerDrive().substract(getSceneryReq()); 
+                                getVoiceActorDrive().substract(getDubReq()); 
+                                
                             // This only happens if all requirements were met
                             getAssemblerSemaphore().acquire();
                             int addedAmount = getAssemblerDrive().add(1); //Adds 1 episode to the drive

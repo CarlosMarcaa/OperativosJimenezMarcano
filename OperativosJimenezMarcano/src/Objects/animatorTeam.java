@@ -69,7 +69,7 @@ public class animatorTeam extends Thread{
             try {
                 getAnimatorSemaphore().acquire(); //wait
                 int addedAmount = getAnimatorDrive().add(getEmployeeCount()); //Adds 1 script for each employee in the team the function .add() in drive class returns the added amount to be reported later
-                System.out.println("El equipo de "  + getEmployeeCount() + " animadores" + " agrego " + addedAmount + " animaciones a su drive");
+                System.out.println("El drive de animaciones tiene " + getAnimatorDrive().getResourse() + " animaciones" );
                 getAnimatorSemaphore().release(); //wait
                 setDayCicle(0);
                 

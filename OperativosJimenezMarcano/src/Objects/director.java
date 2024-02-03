@@ -31,10 +31,8 @@ public class director extends Thread{
                             
     }
     public void operate() {
-        
         if (studio.getDaysLeftRelease() == 0){  // If there are 0 days left for release, the director focuses on releasing all episodes
             try {  //Procedure for releasing episodes      
-            
             sleep(studio.getDayDuration()); // The director last 24 hours to release the episodes
             
             studio.getAssemblerSemaphore().acquire(); //Holds de assembler Semaphore
@@ -48,13 +46,17 @@ public class director extends Thread{
                 System.out.println("El director ha liberado " + releasedCommonEpisodes + " capitulos comunes y " + releasedPlotTwistEpisodes + " capitulos de plotTwist");
                 System.out.println("Las ganancias totales de este ciclo, han sido " + profitsToSum + "$");
             studio.setProfits(studio.getProfits()+profitsToSum);
+            studio.getDaysLeftSemaphore().acquire();
+            studio.setDaysLeftRelease(studio.getDeadlineRatio());
+            studio.getDaysLeftSemaphore().release();
+            studio.getAssemblerSemaphore().release(); //releases de assembler Semaphore
             } catch (InterruptedException ex) {
                 Logger.getLogger(director.class.getName()).log(Level.SEVERE, null, ex);
             } 
             
         }else{ //If there are more than 0 days left for release, the director will check on the project manajer for 35 minutes
-           double minutes35 = studio.getDayDuration()*(35/1440);  // This variable represents 35 minutes that will adapt based on the variable dayDuration
-           double minutes25 = studio.getDayDuration()*(25/1440);  // This variable represents 25 minutes that will adapt based on the variable dayDuration
+            
+            int halfHour = studio.getDayDuration()/48;
            int hour = studio.getDayDuration()/24; // This variable represents 1 hour that will adapt based on the variable dayDuration
            Random random = new Random();
            int randomHour = random.nextInt(24); // Generate a random hour (between 0 and 23)
@@ -70,8 +72,8 @@ public class director extends Thread{
             }if (hourlyCycle == randomHour){ // The director will oberve the project manager for 35 minutes, and he will keep working for the remaining of the day
                 setCheckingPM(true);
                try {
-                   sleep((long) minutes35); // Checks the project manajer for 35 minutes
-                   System.out.println("El director esta observando al project manager");
+                   sleep(halfHour); // Checks the project manajer for 35 minutes
+
                } catch (InterruptedException ex) {
                    Logger.getLogger(director.class.getName()).log(Level.SEVERE, null, ex);
                }
@@ -79,15 +81,15 @@ public class director extends Thread{
                     studio.setPmFaults(studio.getPmFaults()+1); // Adds 1 unit to the project manager faults counter in studio
                     studio.setPmDiscountedAmount(studio.getPmDiscountedAmount() + 100);  // Adds 100$ to the project manager discounted total in studio
                     studio.setSalaryAccount(studio.getSalaryAccount() - 100); //Substracts 100$ to the salary account
-                    System.out.println("El director atrapo al PM");
+                    System.out.println("El director atrapo al PM viendo anime");
                 }
                try {
                    setCheckingPM(false);
-                   sleep((long) minutes25);
+                   sleep(halfHour);
                } catch (InterruptedException ex) {
                    Logger.getLogger(director.class.getName()).log(Level.SEVERE, null, ex);
                }
-               hourlyCycle++; // By the time the event is over, 1 hour has happened
+               hourlyCycle++; // By the time the event is over, 1 hour has gone by
                while(hourlyCycle < 24){
                     try {
                         sleep(hour);

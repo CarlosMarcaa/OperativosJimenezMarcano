@@ -66,7 +66,7 @@ public class setDesignerTeam extends Thread{
             try {
                 getSetDesignerSemaphore().acquire(); //wait
                 int addedAmount = getSetDesignerDrive().add(getEmployeeCount()); //Adds 1 script for each employee in the team the function .add() in drive class returns the added amount to be reported later
-                System.out.println("El equipo de "  + getEmployeeCount() + " diseñadores de escenarios" + " agrego " + addedAmount + " escenarios a su drive");
+                System.out.println("El drive de escenarios tiene " + getSetDesignerDrive().getResourse() + " escenarios" );
                 getSetDesignerSemaphore().release(); //wait
                 setDayCicle(0);
                 

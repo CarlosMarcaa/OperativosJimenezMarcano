@@ -69,7 +69,7 @@ public class plotTwisterTeam extends Thread{
             try {
                 getPlotTwisterSemaphore().acquire(); //wait
                 int addedAmount = getPlotTwisterDrive().add(getEmployeeCount()); //Adds 1 script for each employee in the team the function .add() in drive class returns the added amount to be reported later
-                System.out.println("El equipo de "  + getEmployeeCount() + " guionistas de plotTwist" + " agrego " + addedAmount + " guiones de plotTwist a su drive");
+                System.out.println("El drive de plotTwist tiene " + getPlotTwisterDrive().getResourse() + " plotTwists" );
                 getPlotTwisterSemaphore().release(); //wait
                 setDayCicle(0);
                 
