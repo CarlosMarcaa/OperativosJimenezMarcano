@@ -31,36 +31,45 @@ public class proyectManager extends Thread{
                             
     }
     public void operate() {
+
         int halfHour = studio.getDayDuration()/48;
         int hour = halfHour*2;
         hourlyCycle = 0;
-        while (hourlyCycle < hour*16){ try {
+        while (hourlyCycle < 16){ try {
             // For the first 16 hours of the day, he alternates between watching porn and working
             setWatchingAnime(true);
-            System.out.println("El proyect Manager esta viendo anime");
+            //System.out.println("El proyect Manager esta viendo anime");
             sleep(halfHour);
             setWatchingAnime(false);
-            System.out.println("El proyect Manager dejo de ver anime");
+            //System.out.println("El proyect Manager dejo de ver anime");
             sleep(halfHour);
-            setHourlyCycle(getHourlyCycle() + hour);
-            
+            setHourlyCycle(getHourlyCycle() + 1);
             } catch (InterruptedException ex) {
                 Logger.getLogger(proyectManager.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } //For the last 8 hours
+        } //For the last 8 hours, the project manager works to change the days left for release
         setWatchingAnime(false);
-        int newDaysLeft = 0;
-        if (studio.getDaysLeftRelease() != 0){
-                newDaysLeft = studio.getDaysLeftRelease() - 1;
-                }else{newDaysLeft = 0;}
-        studio.setDaysLeftRelease(newDaysLeft);
-        System.out.println("Days left for release: " + studio.getDaysLeftRelease());
-        try {       
-            sleep(hour*8);
+        while(hourlyCycle < 24){
+            try {
+                sleep(hour);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(proyectManager.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            setHourlyCycle(getHourlyCycle() + 1);
+            
+        }//At the right moment, the project Manager decreases the daysLeftRelease counter
+        try {
+            studio.getDaysLeftSemaphore().acquire(); //Hold the semaphore to change the daysLeftRelease counter
+            studio.setDaysLeftRelease(studio.getDaysLeftRelease() - 1);
+            if (studio.getDaysLeftRelease() < 1) {
+                studio.setDaysLeftRelease(0);
+            }
+            studio.getDaysLeftSemaphore().release(); //Releases the semaphore to change the daysLeftRelease counter
+            System.out.println("Days left for release: " + studio.getDaysLeftRelease());
+            //padre nuestro porfavor funciona
         } catch (InterruptedException ex) {
             Logger.getLogger(proyectManager.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
         
     }
     @Override    

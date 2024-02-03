@@ -70,7 +70,7 @@ public class voiceActorTeam extends Thread{
             try {
                 getVoiceActorSemaphore().acquire(); //wait
                 int addedAmount = getVoiceActorDrive().add(getEmployeeCount()*5); //Adds 5 voice translations for each employee in the team the function .add() in drive class returns the added amount to be reported later
-                System.out.println("El equipo de "  + getEmployeeCount() + " actore de doblaje" + " agrego " + addedAmount + " doblajes a su drive");
+                System.out.println("El drive de doblajes tiene " + getVoiceActorDrive().getResourse() + " doblajes" );
                 getVoiceActorSemaphore().release(); //wait
                 setDayCicle(0);
                 

@@ -38,7 +38,8 @@ public class studio extends Thread{ //The studio class contains all the studio i
     private Semaphore animatorSemaphore;
     private Semaphore voiceActorSemaphore;
     private Semaphore plotTwisterSemaphore;
-    private Semaphore assemblerSemaphore;       
+    private Semaphore assemblerSemaphore; 
+    private Semaphore daysLeftSemaphore;
 
     //Drive section
     private drive scriptwriterDrive;
@@ -74,6 +75,7 @@ public class studio extends Thread{ //The studio class contains all the studio i
     private plotTwisterTeam plotTwisterTeam;
     private assemblerTeam assemblerTeam;
     private proyectManager proyectManager;
+    private director director;
     
     
 
@@ -100,6 +102,8 @@ public class studio extends Thread{ //The studio class contains all the studio i
         this.voiceActorSemaphore = new Semaphore(1);
         this.plotTwisterSemaphore = new Semaphore(1);
         this.assemblerSemaphore = new Semaphore(1);
+        this.daysLeftSemaphore = new Semaphore(1); //This semaphore is going to be used to try to avoid concurrencies between the project manager and director changing days left
+        
         //Drives
         this.scriptwriterDrive = new drive(25);
         this.setDesignerDrive = new drive(20);
@@ -130,6 +134,7 @@ public class studio extends Thread{ //The studio class contains all the studio i
         this.plotTwisterTeam = new plotTwisterTeam(this);
         this.assemblerTeam = new assemblerTeam(this);
         this.proyectManager = new proyectManager(this);
+        this.director = new director(this);
     }
     @Override
     public void run() {                                         
@@ -140,6 +145,7 @@ public class studio extends Thread{ //The studio class contains all the studio i
                     getPlotTwisterTeam().start();
                     getAssemblerTeam().start();
                     getProyectManager().start(); // BRING ME THE MANAGER!!!!!! 
+                    getDirector().start();
     }
     
     public String getStudioName() {
@@ -380,6 +386,14 @@ public class studio extends Thread{ //The studio class contains all the studio i
 
     public int getPlotEpisodeProfit() {
         return plotEpisodeProfit;
+    }
+
+    public director getDirector() {
+        return director;
+    }
+
+    public Semaphore getDaysLeftSemaphore() {
+        return daysLeftSemaphore;
     }
     
     
