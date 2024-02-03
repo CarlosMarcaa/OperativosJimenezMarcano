@@ -66,7 +66,6 @@ public class proyectManager extends Thread{
             }
             studio.getDaysLeftSemaphore().release(); //Releases the semaphore to change the daysLeftRelease counter
             System.out.println("Days left for release: " + studio.getDaysLeftRelease());
-            //padre nuestro porfavor funciona
         } catch (InterruptedException ex) {
             Logger.getLogger(proyectManager.class.getName()).log(Level.SEVERE, null, ex);
         }
