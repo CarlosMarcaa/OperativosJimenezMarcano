@@ -24,6 +24,7 @@ public class Views extends javax.swing.JFrame {
         this.setVisible(true);
 
         enterConfigData();
+        enterConfigData1();
     }
 
     // loads initial configuration data brought from a csv document
@@ -38,11 +39,30 @@ public class Views extends javax.swing.JFrame {
         assemblers.setText((String) Main.simulationData.getAssemblers());
     }
 
+    private void enterConfigData1() {
+        simulationDuration1.setText((String) Main.simulationData1.getSimulationDuration());
+        deadline1.setText((String) Main.simulationData1.getDeadline());
+        screenwriters1.setText((String) Main.simulationData1.getScreenwriters());
+        stageDesigner1.setText((String) Main.simulationData1.getStageDesigner());
+        animator1.setText((String) Main.simulationData1.getAnimator());
+        voiceActors1.setText((String) Main.simulationData1.getVoiceActors());
+        plotTwistScriptwriters1.setText((String) Main.simulationData1.getPlotTwistScriptwriters());
+        assemblers1.setText((String) Main.simulationData1.getAssemblers());
+    }
+
     private Integer sum() {
         Integer sum = Integer.valueOf(animator.getText()) + Integer.valueOf(assemblers.getText())
                 + Integer.parseInt(plotTwistScriptwriters.getText())
                 + Integer.parseInt(screenwriters.getText()) + Integer.parseInt(stageDesigner.getText())
                 + Integer.parseInt(voiceActors.getText());
+        return sum;
+    }
+
+    private Integer sum1() {
+        Integer sum = Integer.valueOf(animator1.getText()) + Integer.valueOf(assemblers1.getText())
+                + Integer.parseInt(plotTwistScriptwriters1.getText())
+                + Integer.parseInt(screenwriters1.getText()) + Integer.parseInt(stageDesigner1.getText())
+                + Integer.parseInt(voiceActors1.getText());
         return sum;
     }
 
@@ -53,7 +73,7 @@ public class Views extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
@@ -95,6 +115,17 @@ public class Views extends javax.swing.JFrame {
         jLabel49 = new javax.swing.JLabel();
         jLabel51 = new javax.swing.JLabel();
         jLabel52 = new javax.swing.JLabel();
+        scriptLabel1 = new javax.swing.JLabel();
+        stageLabel1 = new javax.swing.JLabel();
+        animationLabel1 = new javax.swing.JLabel();
+        dubbingLabel1 = new javax.swing.JLabel();
+        driveTitle1 = new javax.swing.JLabel();
+        plotTwistDriveLabel1 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -134,6 +165,17 @@ public class Views extends javax.swing.JFrame {
         jLabel53 = new javax.swing.JLabel();
         jLabel54 = new javax.swing.JLabel();
         jLabel55 = new javax.swing.JLabel();
+        scriptLabel2 = new javax.swing.JLabel();
+        stageLabel2 = new javax.swing.JLabel();
+        animationLabel2 = new javax.swing.JLabel();
+        dubbingLabel2 = new javax.swing.JLabel();
+        driveTitle2 = new javax.swing.JLabel();
+        plotTwistDriveLabel2 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         simulationDuration = new javax.swing.JTextField();
@@ -153,8 +195,27 @@ public class Views extends javax.swing.JFrame {
         plotTwistScriptwriters = new javax.swing.JTextField();
         assemblers = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        saveButton = new javax.swing.JButton();
         validator = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        simulationDuration1 = new javax.swing.JTextField();
+        jLabel32 = new javax.swing.JLabel();
+        deadline1 = new javax.swing.JTextField();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        jLabel56 = new javax.swing.JLabel();
+        jLabel57 = new javax.swing.JLabel();
+        jLabel58 = new javax.swing.JLabel();
+        jLabel59 = new javax.swing.JLabel();
+        jLabel60 = new javax.swing.JLabel();
+        screenwriters1 = new javax.swing.JTextField();
+        stageDesigner1 = new javax.swing.JTextField();
+        animator1 = new javax.swing.JTextField();
+        voiceActors1 = new javax.swing.JTextField();
+        plotTwistScriptwriters1 = new javax.swing.JTextField();
+        assemblers1 = new javax.swing.JTextField();
+        saveButton1 = new javax.swing.JButton();
+        jLabel61 = new javax.swing.JLabel();
+        jLabel62 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -162,8 +223,7 @@ public class Views extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(12, 191, 185));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        cartoonLogo
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CARTOON_NETWORK_logopequeno.png"))); // NOI18N
+        cartoonLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CARTOON_NETWORK_logopequeno.png"))); // NOI18N
         jPanel1.add(cartoonLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
         cartoonLogo.getAccessibleContext().setAccessibleName("cartoonLogo");
 
@@ -338,6 +398,61 @@ public class Views extends javax.swing.JFrame {
 
         jLabel52.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/grandpa.png"))); // NOI18N
         jPanel1.add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 310, -1, -1));
+
+        scriptLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        scriptLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        scriptLabel1.setText("Guiones:");
+        jPanel1.add(scriptLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 190, -1, -1));
+
+        stageLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        stageLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        stageLabel1.setText("Escenarios:");
+        jPanel1.add(stageLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 220, -1, -1));
+
+        animationLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        animationLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        animationLabel1.setText("Animaciones:");
+        jPanel1.add(animationLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 250, -1, -1));
+
+        dubbingLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        dubbingLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        dubbingLabel1.setText("Doblajes:");
+        jPanel1.add(dubbingLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 190, -1, -1));
+
+        driveTitle1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        driveTitle1.setForeground(new java.awt.Color(255, 255, 255));
+        driveTitle1.setText("Almacenamiento Máximo Drive");
+        jPanel1.add(driveTitle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 150, -1, -1));
+
+        plotTwistDriveLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        plotTwistDriveLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        plotTwistDriveLabel1.setText("PlotTwist:");
+        jPanel1.add(plotTwistDriveLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 230, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("10");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 230, -1, -1));
+
+        jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel22.setText("25");
+        jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 190, -1, -1));
+
+        jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel23.setText("20");
+        jPanel1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 220, -1, -1));
+
+        jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel24.setText("55");
+        jPanel1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 250, -1, -1));
+
+        jLabel25.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel25.setText("35");
+        jPanel1.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 190, -1, -1));
 
         jTabbedPane1.addTab("Cartoon Network", jPanel1);
 
@@ -522,60 +637,160 @@ public class Views extends javax.swing.JFrame {
         jLabel55.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Simpsons_FamilyPicture.png"))); // NOI18N
         jPanel2.add(jLabel55, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 350, -1, -1));
 
+        scriptLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        scriptLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        scriptLabel2.setText("Guiones:");
+        jPanel2.add(scriptLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 190, -1, -1));
+
+        stageLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        stageLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        stageLabel2.setText("Escenarios:");
+        jPanel2.add(stageLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 220, -1, -1));
+
+        animationLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        animationLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        animationLabel2.setText("Animaciones:");
+        jPanel2.add(animationLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 250, -1, -1));
+
+        dubbingLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        dubbingLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        dubbingLabel2.setText("Doblajes:");
+        jPanel2.add(dubbingLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 190, -1, -1));
+
+        driveTitle2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        driveTitle2.setForeground(new java.awt.Color(255, 255, 255));
+        driveTitle2.setText("Almacenamiento Máximo Drive");
+        jPanel2.add(driveTitle2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 150, -1, -1));
+
+        plotTwistDriveLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        plotTwistDriveLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        plotTwistDriveLabel2.setText("PlotTwist:");
+        jPanel2.add(plotTwistDriveLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 230, -1, -1));
+
+        jLabel26.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel26.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel26.setText("10");
+        jPanel2.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 230, -1, -1));
+
+        jLabel27.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel27.setText("25");
+        jPanel2.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 190, -1, -1));
+
+        jLabel28.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel28.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel28.setText("20");
+        jPanel2.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 220, -1, -1));
+
+        jLabel29.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel29.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel29.setText("55");
+        jPanel2.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 250, -1, -1));
+
+        jLabel30.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel30.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel30.setText("35");
+        jPanel2.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 190, -1, -1));
+
         jTabbedPane1.addTab("Star Channel", jPanel2);
 
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setText("Duración en segundos de un día en la simulación:");
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 50, -1, -1));
-        jPanel3.add(simulationDuration, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 50, 71, -1));
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, -1, -1));
+        jPanel3.add(simulationDuration, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 140, 71, -1));
 
         jLabel4.setText("Cantidad de días entre las entregas de los capítulos:");
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 90, -1, -1));
-        jPanel3.add(deadline, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 90, 71, -1));
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, -1, -1));
+        jPanel3.add(deadline, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 180, 71, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("Cantidad inicial de trabajadores:");
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, -1, -1));
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, -1, -1));
 
         jLabel6.setText("Guionistas:");
-        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 160, -1, -1));
+        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 250, -1, -1));
 
         jLabel7.setText("Diseñador de escenarios:");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 200, -1, -1));
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 290, -1, -1));
 
         jLabel8.setText("Animador de personajes:");
-        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 240, -1, -1));
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 330, -1, -1));
 
         jLabel9.setText("Actores de doblaje:");
-        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 280, -1, -1));
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 370, -1, -1));
 
         jLabel10.setText("Guionistas de PlotTwist:");
-        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 320, -1, -1));
+        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 410, -1, -1));
 
         jLabel11.setText("Ensambladores:");
-        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, -1, -1));
-        jPanel3.add(screenwriters, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 160, 71, -1));
-        jPanel3.add(stageDesigner, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 200, 71, -1));
-        jPanel3.add(animator, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 240, 71, -1));
-        jPanel3.add(voiceActors, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 280, 71, -1));
-        jPanel3.add(plotTwistScriptwriters, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 320, 71, -1));
-        jPanel3.add(assemblers, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 360, 71, -1));
+        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 450, -1, -1));
+        jPanel3.add(screenwriters, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 250, 71, -1));
+        jPanel3.add(stageDesigner, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 290, 71, -1));
+        jPanel3.add(animator, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 330, 71, -1));
+        jPanel3.add(voiceActors, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 370, 71, -1));
+        jPanel3.add(plotTwistScriptwriters, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 410, 71, -1));
+        jPanel3.add(assemblers, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 450, 71, -1));
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel12.setText("Simulación");
-        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 0, -1, -1));
-
-        saveButton.setText("Guardar");
-        saveButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                saveButtonActionPerformed(evt);
-            }
-        });
-        jPanel3.add(saveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 400, -1, -1));
+        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 0, -1, -1));
 
         validator.setForeground(new java.awt.Color(255, 0, 0));
-        jPanel3.add(validator, new org.netbeans.lib.awtextra.AbsoluteConstraints(449, 435, -1, 32));
+        validator.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel3.add(validator, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 550, 1000, 32));
+
+        jLabel31.setText("Duración en segundos de un día en la simulación:");
+        jPanel3.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 140, -1, -1));
+        jPanel3.add(simulationDuration1, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 140, 71, -1));
+
+        jLabel32.setText("Cantidad de días entre las entregas de los capítulos:");
+        jPanel3.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 180, -1, -1));
+        jPanel3.add(deadline1, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 180, 71, -1));
+
+        jLabel33.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel33.setText("Cantidad inicial de trabajadores:");
+        jPanel3.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 210, -1, -1));
+
+        jLabel39.setText("Guionistas:");
+        jPanel3.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 250, -1, -1));
+
+        jLabel56.setText("Diseñador de escenarios:");
+        jPanel3.add(jLabel56, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 290, -1, -1));
+
+        jLabel57.setText("Animador de personajes:");
+        jPanel3.add(jLabel57, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 330, -1, -1));
+
+        jLabel58.setText("Actores de doblaje:");
+        jPanel3.add(jLabel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 370, -1, -1));
+
+        jLabel59.setText("Guionistas de PlotTwist:");
+        jPanel3.add(jLabel59, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 410, -1, -1));
+
+        jLabel60.setText("Ensambladores:");
+        jPanel3.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 450, -1, -1));
+        jPanel3.add(screenwriters1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 250, 71, -1));
+        jPanel3.add(stageDesigner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 290, 71, -1));
+        jPanel3.add(animator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 330, 71, -1));
+        jPanel3.add(voiceActors1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 370, 71, -1));
+        jPanel3.add(plotTwistScriptwriters1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 410, 71, -1));
+        jPanel3.add(assemblers1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 450, 71, -1));
+
+        saveButton1.setText("Guardar");
+        saveButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveButton1ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(saveButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 490, -1, -1));
+
+        jLabel61.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel61.setText("Star Channel");
+        jPanel3.add(jLabel61, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 80, -1, -1));
+
+        jLabel62.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel62.setText("Cartoon Network");
+        jPanel3.add(jLabel62, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, -1, -1));
 
         jTabbedPane1.addTab("Configuración", jPanel3);
 
@@ -591,54 +806,86 @@ public class Views extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTabbedPane1));
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jTabbedPane1)
+        );
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTabbedPane1));
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jTabbedPane1)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_saveButtonActionPerformed
+    private void saveButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButton1ActionPerformed
         if (animator.getText().trim().isEmpty() || assemblers.getText().trim().isEmpty()
-                || deadline.getText().trim().isEmpty()
-                || plotTwistScriptwriters.getText().trim().isEmpty() || screenwriters.getText().trim().isEmpty()
-                || simulationDuration.getText().trim().isEmpty() || stageDesigner.getText().trim().isEmpty()
-                || voiceActors.getText().trim().isEmpty()) {
+            || deadline1.getText().trim().isEmpty()
+            || plotTwistScriptwriters1.getText().trim().isEmpty() || screenwriters.getText().trim().isEmpty()
+            || simulationDuration1.getText().trim().isEmpty() || stageDesigner.getText().trim().isEmpty()
+            || voiceActors1.getText().trim().isEmpty()) {
+            validator.setText("No pueden haber campos vacíos");
+        } else if (numValidator(animator1) == false
+            || numValidator(assemblers1) == false
+            || numValidator(deadline1) == false
+            || numValidator(plotTwistScriptwriters1) == false
+            || numValidator(screenwriters1) == false
+            || numValidator(simulationDuration1) == false
+            || numValidator(stageDesigner1) == false
+            || numValidator(voiceActors1) == false) {
+            validator.setText("Todos los campos deben ser números enteros");
+        } else if ((numValidator(animator1) == true && Integer.parseInt(animator1.getText()) < 1)
+            || (numValidator(assemblers1) == true && Integer.parseInt(assemblers1.getText()) < 1)
+            || (numValidator(deadline1) == true && Integer.parseInt(deadline1.getText()) < 1)
+            || (numValidator(plotTwistScriptwriters1) == true && Integer.parseInt(plotTwistScriptwriters1.getText()) < 1)
+            || (numValidator(screenwriters1) == true && Integer.parseInt(screenwriters1.getText()) < 1)
+            || (numValidator(simulationDuration1) == true && Integer.parseInt(simulationDuration1.getText()) < 1)
+            || (numValidator(stageDesigner1) == true && Integer.parseInt(stageDesigner1.getText()) < 1)
+            || (numValidator(voiceActors1) == true && Integer.parseInt(voiceActors1.getText()) < 1)) {
+            validator.setText("Todos los campos deben ser números enteros mayores a 0");
+        } else if (animator.getText().trim().isEmpty() || assemblers.getText().trim().isEmpty()
+            || deadline.getText().trim().isEmpty()
+            || plotTwistScriptwriters.getText().trim().isEmpty() || screenwriters.getText().trim().isEmpty()
+            || simulationDuration.getText().trim().isEmpty() || stageDesigner.getText().trim().isEmpty()
+            || voiceActors.getText().trim().isEmpty()) {
             validator.setText("No pueden haber campos vacíos");
         } else if (numValidator(animator) == false
-                || numValidator(assemblers) == false
-                || numValidator(deadline) == false
-                || numValidator(plotTwistScriptwriters) == false
-                || numValidator(screenwriters) == false
-                || numValidator(simulationDuration) == false
-                || numValidator(stageDesigner) == false
-                || numValidator(voiceActors) == false) {
+            || numValidator(assemblers) == false
+            || numValidator(deadline) == false
+            || numValidator(plotTwistScriptwriters) == false
+            || numValidator(screenwriters) == false
+            || numValidator(simulationDuration) == false
+            || numValidator(stageDesigner) == false
+            || numValidator(voiceActors) == false) {
             validator.setText("Todos los campos deben ser números enteros");
         } else if ((numValidator(animator) == true && Integer.parseInt(animator.getText()) < 1)
-                || (numValidator(assemblers) == true && Integer.parseInt(assemblers.getText()) < 1)
-                || (numValidator(deadline) == true && Integer.parseInt(deadline.getText()) < 1)
-                || (numValidator(plotTwistScriptwriters) == true && Integer.parseInt(plotTwistScriptwriters.getText()) < 1)
-                || (numValidator(screenwriters) == true && Integer.parseInt(screenwriters.getText()) < 1)
-                || (numValidator(simulationDuration) == true && Integer.parseInt(simulationDuration.getText()) < 1)
-                || (numValidator(stageDesigner) == true && Integer.parseInt(stageDesigner.getText()) < 1)
-                || (numValidator(voiceActors) == true && Integer.parseInt(voiceActors.getText()) < 1)) {
+            || (numValidator(assemblers) == true && Integer.parseInt(assemblers.getText()) < 1)
+            || (numValidator(deadline) == true && Integer.parseInt(deadline.getText()) < 1)
+            || (numValidator(plotTwistScriptwriters) == true && Integer.parseInt(plotTwistScriptwriters.getText()) < 1)
+            || (numValidator(screenwriters) == true && Integer.parseInt(screenwriters.getText()) < 1)
+            || (numValidator(simulationDuration) == true && Integer.parseInt(simulationDuration.getText()) < 1)
+            || (numValidator(stageDesigner) == true && Integer.parseInt(stageDesigner.getText()) < 1)
+            || (numValidator(voiceActors) == true && Integer.parseInt(voiceActors.getText()) < 1)) {
             validator.setText("Todos los campos deben ser números enteros mayores a 0");
         } else {
             validator.setText("");
-            if (sum() <= 18) {
+            if (sum1() <= 18 && sum() <= 18) {
                 SimulationData newData = new SimulationData(animator.getText(), assemblers.getText(),
-                        deadline.getText(),
-                        plotTwistScriptwriters.getText(), screenwriters.getText(), simulationDuration.getText(),
-                        stageDesigner.getText(), voiceActors.getText());
-                csvManager.WriteText(newData);
+                    deadline.getText(),
+                    plotTwistScriptwriters.getText(), screenwriters.getText(), simulationDuration.getText(),
+                    stageDesigner.getText(), voiceActors.getText());
+                SimulationData newData1 = new SimulationData(animator1.getText(), assemblers1.getText(),
+                    deadline1.getText(),
+                    plotTwistScriptwriters1.getText(), screenwriters1.getText(), simulationDuration1.getText(),
+                    stageDesigner1.getText(), voiceActors1.getText());
+                csvManager.WriteText(newData, newData1);
+
             } else {
-                validator.setText("La sumatoria de la cantidad de trabajadores debe ser menor o igual a 18");
+                validator.setText("La sumatoria de la cantidad de trabajadores debe ser menor o igual a 18 individualmente en cada estudio");
             }
 
         }
-    }// GEN-LAST:event_saveButtonActionPerformed
+    }//GEN-LAST:event_saveButton1ActionPerformed
+
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton1ActionPerformed
         Chart chart = new Chart();
@@ -700,24 +947,34 @@ public class Views extends javax.swing.JFrame {
     private javax.swing.JLabel animationAvailability;
     private javax.swing.JLabel animationAvailabilityC;
     private javax.swing.JLabel animationLabel;
+    private javax.swing.JLabel animationLabel1;
+    private javax.swing.JLabel animationLabel2;
     private javax.swing.JTextField animator;
+    private javax.swing.JTextField animator1;
     private javax.swing.JTextField assemblers;
+    private javax.swing.JTextField assemblers1;
     private javax.swing.JLabel cartoonLogo;
     private javax.swing.JLabel chaptersLabel;
     private javax.swing.JLabel costs;
     private javax.swing.JLabel costsC;
     private javax.swing.JLabel costsLabel;
     private javax.swing.JTextField deadline;
+    private javax.swing.JTextField deadline1;
     private javax.swing.JLabel deadlineCounter;
     private javax.swing.JLabel deadlineCounterStar;
     private javax.swing.JLabel deadlineLabel;
     private javax.swing.JLabel directorStatus;
     private javax.swing.JLabel directorStatusStar;
     private javax.swing.JLabel driveTitle;
+    private javax.swing.JLabel driveTitle1;
+    private javax.swing.JLabel driveTitle2;
     private javax.swing.JLabel dubbingAvailability;
     private javax.swing.JLabel dubbingAvailabilityC;
     private javax.swing.JLabel dubbingLabel;
+    private javax.swing.JLabel dubbingLabel1;
+    private javax.swing.JLabel dubbingLabel2;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -731,12 +988,25 @@ public class Views extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
@@ -755,7 +1025,14 @@ public class Views extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel55;
+    private javax.swing.JLabel jLabel56;
+    private javax.swing.JLabel jLabel57;
+    private javax.swing.JLabel jLabel58;
+    private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel60;
+    private javax.swing.JLabel jLabel61;
+    private javax.swing.JLabel jLabel62;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -770,7 +1047,10 @@ public class Views extends javax.swing.JFrame {
     private javax.swing.JLabel plotTwistAvailabilityC;
     private javax.swing.JLabel plotTwistChapterLabel;
     private javax.swing.JLabel plotTwistDriveLabel;
+    private javax.swing.JLabel plotTwistDriveLabel1;
+    private javax.swing.JLabel plotTwistDriveLabel2;
     private javax.swing.JTextField plotTwistScriptwriters;
+    private javax.swing.JTextField plotTwistScriptwriters1;
     private javax.swing.JLabel projectManagerDeduction;
     private javax.swing.JLabel projectManagerDeductionStar;
     private javax.swing.JLabel projectManagerFaults;
@@ -784,19 +1064,27 @@ public class Views extends javax.swing.JFrame {
     private javax.swing.JLabel revenue;
     private javax.swing.JLabel revenueC;
     private javax.swing.JLabel revenueLabel;
-    private javax.swing.JButton saveButton;
+    private javax.swing.JButton saveButton1;
     private javax.swing.JTextField screenwriters;
+    private javax.swing.JTextField screenwriters1;
     private javax.swing.JLabel scriptAvailability;
     private javax.swing.JLabel scriptAvailabilityC;
     private javax.swing.JLabel scriptLabel;
+    private javax.swing.JLabel scriptLabel1;
+    private javax.swing.JLabel scriptLabel2;
     private javax.swing.JTextField simulationDuration;
+    private javax.swing.JTextField simulationDuration1;
     private javax.swing.JLabel stageAvailability;
     private javax.swing.JLabel stageAvailabilityC;
     private javax.swing.JTextField stageDesigner;
+    private javax.swing.JTextField stageDesigner1;
     private javax.swing.JLabel stageLabel;
+    private javax.swing.JLabel stageLabel1;
+    private javax.swing.JLabel stageLabel2;
     private javax.swing.JLabel standardChapterLabel;
     private javax.swing.JLabel validator;
     private javax.swing.JTextField voiceActors;
+    private javax.swing.JTextField voiceActors1;
     // End of variables declaration//GEN-END:variables
 
     public JLabel getAnimationAvailability() {

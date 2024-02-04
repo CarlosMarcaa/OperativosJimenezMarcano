@@ -4,6 +4,7 @@
  */
 package DataManagement;
 
+import Objects.ListaDoble;
 import Objects.SimulationData;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -19,7 +20,9 @@ import java.io.PrintWriter;
  */
 public class CsvManager {
 
-    public Object ReadText() {
+    public ListaDoble ReadText() {
+        
+        ListaDoble list = new ListaDoble();
 
         File cvsFile = new File("test/simulationData.csv");
         BufferedReader lector;
@@ -40,7 +43,7 @@ public class CsvManager {
                     String[] data = data_split[i].split("(,|, )");
                     if (!data_split[i].equals("secondsDuration, daysDeadline, screenwriters, stageDesigners, animators, voiceActors, plotTwistScriptwriters, assemblers")) {
                         SimulationData simulationData = new SimulationData(data[4], data[7], data[1], data[6], data[2], data[0], data[3], data[5]);
-                        return simulationData;
+                        list.insertFinal(simulationData);
                     }
                 }
             }
@@ -49,10 +52,10 @@ public class CsvManager {
         } catch (Exception e) {
 
         }
-        return null;
+        return list;
     }
 
-    public void WriteText(SimulationData newData) {
+    public void WriteText(SimulationData newData, SimulationData newData1) {
         try {
             FileWriter w = new FileWriter("test/simulationData.csv");
             BufferedWriter bw = new BufferedWriter(w);
@@ -63,6 +66,11 @@ public class CsvManager {
                     + String.valueOf(newData.getScreenwriters()) + "," + String.valueOf(newData.getStageDesigner()) + ","
                     + String.valueOf(newData.getAnimator()) + "," + String.valueOf(newData.getVoiceActors()) + ","
                     + String.valueOf(newData.getPlotTwistScriptwriters()) + "," + String.valueOf(newData.getAssemblers()) + "\n");
+            
+            wr.append(String.valueOf(newData1.getSimulationDuration()) + "," + String.valueOf(newData1.getDeadline()) + ","
+                    + String.valueOf(newData1.getScreenwriters()) + "," + String.valueOf(newData1.getStageDesigner()) + ","
+                    + String.valueOf(newData1.getAnimator()) + "," + String.valueOf(newData1.getVoiceActors()) + ","
+                    + String.valueOf(newData1.getPlotTwistScriptwriters()) + "," + String.valueOf(newData1.getAssemblers()) + "\n");
 
             wr.close();
             bw.close();

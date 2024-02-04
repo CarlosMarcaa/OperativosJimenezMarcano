@@ -15,10 +15,15 @@ import Objects.*;
 public class Main {
 
     public static CsvManager csvManager = new CsvManager();
-    public static SimulationData simulationData = (SimulationData) csvManager.ReadText();
+    public static SimulationData simulationData = (SimulationData) csvManager.ReadText().getHead().getElement();
+    public static SimulationData simulationData1 = (SimulationData) csvManager.ReadText().getTail().getElement();
 
     static int dayDuration = Integer.parseInt((String) simulationData.getSimulationDuration()) * 1000;
     static int deadline = Integer.parseInt((String) simulationData.getDeadline());
+    
+    static int dayDuration1 = Integer.parseInt((String) simulationData1.getSimulationDuration()) * 1000;
+    static int deadline1 = Integer.parseInt((String) simulationData1.getDeadline());
+
 
     // Employee amount
     static int scriptwriter = Integer.parseInt((String) simulationData.getScreenwriters());
@@ -27,16 +32,17 @@ public class Main {
     static int voiceActor = Integer.parseInt((String) simulationData.getVoiceActors());
     static int plotTwister = Integer.parseInt((String) simulationData.getPlotTwistScriptwriters());
     static int assembler = Integer.parseInt((String) simulationData.getAssemblers());
-    public static studio CartoonNetwork = new studio("Cartoon Network", 300000, 650000, deadline, dayDuration, 1, 2,
-            6,
-            5, 3, 1, scriptwriter, setDesigner, animator, voiceActor, plotTwister, assembler);
-    public static studio StarChannel = new studio("Star Channel", 350000, 800000, deadline, dayDuration, 2, 3, 4, 6,
-            3,
-            1, scriptwriter, setDesigner, animator, voiceActor, plotTwister, assembler);
+
+    static int scriptwriter1 = Integer.parseInt((String) simulationData1.getScreenwriters());
+    static int setDesigner1 = Integer.parseInt((String) simulationData1.getStageDesigner());
+    static int animator1 = Integer.parseInt((String) simulationData1.getAnimator());
+    static int voiceActor1 = Integer.parseInt((String) simulationData1.getVoiceActors());
+    static int plotTwister1 = Integer.parseInt((String) simulationData1.getPlotTwistScriptwriters());
+    static int assembler1 = Integer.parseInt((String) simulationData1.getAssemblers());
+    public static studio CartoonNetwork = new studio("Cartoon Network", 300000, 650000, deadline, dayDuration, 1, 2, 6, 5, 3, 1, scriptwriter, setDesigner, animator, voiceActor, plotTwister, assembler);
+    public static studio StarChannel = new studio("Star Channel", 350000, 800000, deadline1, dayDuration1, 2, 3, 4, 6, 3, 1, scriptwriter1, setDesigner1, animator1, voiceActor1, plotTwister1, assembler1);
     public static Views gui = new Views();
 //    List fot the chart
-    public static Lista list = new Lista();
-    public static Lista listStar = new Lista();
 
     /**
      * @param args the command line arguments
@@ -121,17 +127,6 @@ public class Main {
             gui.getDeadlineCounter().setText(String.valueOf(CartoonNetwork.getDaysLeftRelease()));
             // STAR CHANNEL
             gui.getDeadlineCounterStar().setText(String.valueOf(StarChannel.getDaysLeftRelease()));
-
-            if (CartoonNetwork.getDaysGoneBy() == counter) {
-                list.insertFinal(CartoonNetwork.getProfits() - CartoonNetwork.getSalaryAccount());
-                counter++;
-                list.printList();
-            }
-            if (StarChannel.getDaysGoneBy() == counter) {
-                list.insertFinal(StarChannel.getProfits() - StarChannel.getSalaryAccount());
-                counter++;
-                list.printList();
-            }    
 
         }
     }
