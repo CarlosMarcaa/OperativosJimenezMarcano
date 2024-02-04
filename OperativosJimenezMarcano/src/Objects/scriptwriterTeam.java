@@ -92,6 +92,7 @@ public class scriptwriterTeam extends Thread {
                 operate();
                 sleep(studio.getDayDuration());
                 addDailySalary();
+                studio.setDaysGoneBy(studio.getDaysGoneBy() + 1);
 
             } catch (InterruptedException ex) {
                 Logger.getLogger(scriptwriterTeam.class.getName()).log(Level.SEVERE, null, ex);

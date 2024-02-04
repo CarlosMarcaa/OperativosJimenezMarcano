@@ -21,6 +21,7 @@ public class studio extends Thread{ //The studio class contains all the studio i
     private int deadlineRatio;
     private int daysLeftRelease;
     private int dayDuration;
+    private int daysGoneBy;
 
     //Economy section
     private int profits;
@@ -407,6 +408,14 @@ public class studio extends Thread{ //The studio class contains all the studio i
 
     public Semaphore getSalaryAccountSemaphore() {
         return salaryAccountSemaphore;
+    }
+
+    public int getDaysGoneBy() {
+        return daysGoneBy;
+    }
+
+    public void setDaysGoneBy(int daysGoneBy) {
+        this.daysGoneBy = daysGoneBy;
     }
     
     
