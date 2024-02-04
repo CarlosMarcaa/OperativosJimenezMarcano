@@ -55,7 +55,7 @@ public class voiceActorTeam extends Thread {
         setSalaryAccount(
                 getSalaryAccount() + salary * 24 * getEmployeeCount()
         );
-        //System.out.println("El equipo de "  + getEmployeeCount() + " actore de doblaje" + " gana: " + salary*24*getEmployeeCount()+"$");
+//        System.out.println("El equipo de "  + getEmployeeCount() + " actore de doblaje" + " gana: " + salary*24*getEmployeeCount()+"$");
     }
 
     public drive getVoiceActorDrive() {
@@ -71,11 +71,7 @@ public class voiceActorTeam extends Thread {
                 System.out.println("El drive de doblajes tiene " + getVoiceActorDrive().getResourse() + " doblajes");
                 getVoiceActorSemaphore().release(); //wait
                 setDayCicle(0);
-                if (studio == Main.StarChannel) {
-                    Main.gui.getDubbingAvailability().setText(String.valueOf(Main.StarChannel.getVoiceActorDrive().getMaxResourse() - Main.StarChannel.getVoiceActorDrive().getResourse()));
-                } else {
-                    Main.gui.getDubbingAvailabilityC().setText(String.valueOf(Main.CartoonNetwork.getVoiceActorDrive().getMaxResourse() - Main.CartoonNetwork.getVoiceActorDrive().getResourse()));
-                }
+                
 
             } catch (InterruptedException ex) {
                 Logger.getLogger(voiceActorTeam.class.getName()).log(Level.SEVERE, null, ex);
@@ -92,17 +88,6 @@ public class voiceActorTeam extends Thread {
 
                 operate();
                 addDailySalary();
-                if (studio == Main.StarChannel) {
-                    Main.gui.getCosts().setText(String.valueOf(Main.StarChannel.getSalaryAccount()));
-                    Main.gui.getRevenue().setText(String.valueOf(Main.StarChannel.getProfits()));
-                    Main.gui.getNetIncome().setText(String.valueOf(Main.StarChannel.getProfits() - Main.StarChannel.getSalaryAccount()));
-
-                } else {
-                    Main.gui.getCostsC().setText(String.valueOf(Main.CartoonNetwork.getSalaryAccount()));
-                    Main.gui.getRevenueC().setText(String.valueOf(Main.CartoonNetwork.getProfits()));
-                    Main.gui.getNetIncomeC().setText(String.valueOf(Main.CartoonNetwork.getProfits() - Main.CartoonNetwork.getSalaryAccount()));
-                    
-                }
                 sleep(studio.getDayDuration());
 
             } catch (InterruptedException ex) {

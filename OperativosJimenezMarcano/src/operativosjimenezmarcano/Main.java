@@ -39,6 +39,55 @@ public class Main {
     public static void main(String[] args) {
         CartoonNetwork.start();
         StarChannel.start();
+        while (true) {
+//            FINANCE
+//                    CARTOON NETWORK
+            gui.getCostsC().setText(String.valueOf(CartoonNetwork.getSalaryAccount()));
+            gui.getRevenueC().setText(String.valueOf(Main.CartoonNetwork.getProfits()));
+            gui.getNetIncomeC().setText(String.valueOf(Main.CartoonNetwork.getProfits() - CartoonNetwork.getSalaryAccount()));
+//                    STAR CHANNEL
+            gui.getCosts().setText(String.valueOf(Main.StarChannel.getSalaryAccount()));
+            gui.getRevenue().setText(String.valueOf(StarChannel.getProfits()));
+            gui.getNetIncome().setText(String.valueOf(StarChannel.getProfits() - StarChannel.getSalaryAccount()));
+
+//            FAULTS & DEDUCTIONS
+//                    CARTOON NETWORK
+            gui.getProjectManagerFaults().setText(String.valueOf(CartoonNetwork.getPmFaults()));
+            gui.getProjectManagerDeduction().setText(String.valueOf(CartoonNetwork.getPmDiscountedAmount()));
+//                    STAR CHANNEL            
+            gui.getProjectManagerFaultsStar().setText(String.valueOf(StarChannel.getPmFaults()));
+            gui.getProjectManagerDeductionStar().setText(String.valueOf(StarChannel.getPmDiscountedAmount()));
+
+//            DRIVE AVAILABILITY 
+//                    CARTOON NETWORK
+            gui.getScriptAvailability().setText(String.valueOf(StarChannel.getScriptwriterDrive().getMaxResourse() - StarChannel.getScriptwriterDrive().getResourse()));
+            gui.getDubbingAvailability().setText(String.valueOf(StarChannel.getVoiceActorDrive().getMaxResourse() - StarChannel.getVoiceActorDrive().getResourse()));
+            gui.getStageAvailability().setText(String.valueOf(StarChannel.getSetDesignerDrive().getMaxResourse() - StarChannel.getSetDesignerDrive().getResourse()));
+            gui.getAnimationAvailability().setText(String.valueOf(StarChannel.getAnimatorDrive().getMaxResourse() - StarChannel.getAnimatorDrive().getResourse()));
+            gui.getPlotTwistAvailability().setText(String.valueOf(StarChannel.getPlotTwisterDrive().getMaxResourse() - StarChannel.getPlotTwisterDrive().getResourse()));
+//                    STAR CHANNEL
+            gui.getScriptAvailabilityC().setText(String.valueOf(CartoonNetwork.getScriptwriterDrive().getMaxResourse() - CartoonNetwork.getScriptwriterDrive().getResourse()));
+            gui.getDubbingAvailabilityC().setText(String.valueOf(CartoonNetwork.getVoiceActorDrive().getMaxResourse() - CartoonNetwork.getVoiceActorDrive().getResourse()));
+            gui.getAnimationAvailabilityC().setText(String.valueOf(CartoonNetwork.getAnimatorDrive().getMaxResourse() - CartoonNetwork.getAnimatorDrive().getResourse()));
+            gui.getPlotTwistAvailabilityC().setText(String.valueOf(CartoonNetwork.getPlotTwisterDrive().getMaxResourse() - CartoonNetwork.getPlotTwisterDrive().getResourse()));
+            gui.getStageAvailabilityC().setText(String.valueOf(CartoonNetwork.getSetDesignerDrive().getMaxResourse() - CartoonNetwork.getSetDesignerDrive().getResourse()));
+
+//              READY
+//                    CARTOON NETWORK
+            gui.getReadyPlotTwist().setText(String.valueOf(CartoonNetwork.getPlotAssemblerDrive().getResourse()));
+            gui.getReadyStandard().setText(String.valueOf(CartoonNetwork.getAssemblerDrive().getResourse()));
+//                    STAR CHANNEL            
+            gui.getReadyPlotTwistStar().setText(String.valueOf(StarChannel.getPlotAssemblerDrive().getResourse()));           
+            gui.getReadyStandardStar().setText(String.valueOf(StarChannel.getAssemblerDrive().getResourse()));
+            
+//            DEADLINE COUNTER
+//                    CARTOON NETWORK
+            gui.getDeadlineCounter().setText(String.valueOf(CartoonNetwork.getDaysLeftRelease()));
+//                    STAR CHANNEL          
+            gui.getDeadlineCounterStar().setText(String.valueOf(StarChannel.getDaysLeftRelease()));
+
+            System.out.println(StarChannel.getSalaryAccount() + "IMPORTANTEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
+        }
     }
 
 }

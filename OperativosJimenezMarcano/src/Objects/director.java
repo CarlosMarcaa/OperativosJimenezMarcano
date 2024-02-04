@@ -4,7 +4,6 @@
  */
 package Objects;
 
-import Interface.Views;
 import static java.lang.Thread.sleep;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,6 +31,7 @@ public class director extends Thread {
         studio.setSalaryAccount(
                 studio.getSalaryAccount() + salary * 24
         );
+//                System.out.println("El equipo de "  + 1 + " director" + " gana: " + salary*24*1+"$");
 
     }
 
@@ -55,21 +55,7 @@ public class director extends Thread {
                 studio.setDaysLeftRelease(studio.getDeadlineRatio());
                 studio.getDaysLeftSemaphore().release();
                 studio.getAssemblerSemaphore().release(); //releases de assembler Semaphore
-                if (studio == Main.StarChannel) {
-                    Main.gui.getScriptAvailability().setText(String.valueOf(Main.StarChannel.getScriptwriterDrive().getMaxResourse() - Main.StarChannel.getScriptwriterDrive().getResourse()));
-                    Main.gui.getDubbingAvailability().setText(String.valueOf(Main.StarChannel.getVoiceActorDrive().getMaxResourse() - Main.StarChannel.getVoiceActorDrive().getResourse()));
-                    Main.gui.getStageAvailability().setText(String.valueOf(Main.StarChannel.getSetDesignerDrive().getMaxResourse() - Main.StarChannel.getSetDesignerDrive().getResourse()));
-                    Main.gui.getAnimationAvailability().setText(String.valueOf(Main.StarChannel.getAnimatorDrive().getMaxResourse() - Main.StarChannel.getAnimatorDrive().getResourse()));
-                    Main.gui.getPlotTwistAvailability().setText(String.valueOf(Main.StarChannel.getPlotTwisterDrive().getMaxResourse() - Main.StarChannel.getPlotTwisterDrive().getResourse()));
 
-                } else {
-                    Main.gui.getScriptAvailabilityC().setText(String.valueOf(Main.CartoonNetwork.getScriptwriterDrive().getMaxResourse() - Main.CartoonNetwork.getScriptwriterDrive().getResourse()));
-                    Main.gui.getDubbingAvailabilityC().setText(String.valueOf(Main.CartoonNetwork.getVoiceActorDrive().getMaxResourse() - Main.CartoonNetwork.getVoiceActorDrive().getResourse()));
-                    Main.gui.getStageAvailability().setText(String.valueOf(Main.StarChannel.getSetDesignerDrive().getMaxResourse() - Main.StarChannel.getSetDesignerDrive().getResourse()));
-                    Main.gui.getAnimationAvailabilityC().setText(String.valueOf(Main.CartoonNetwork.getAnimatorDrive().getMaxResourse() - Main.CartoonNetwork.getAnimatorDrive().getResourse()));
-                    Main.gui.getPlotTwistAvailabilityC().setText(String.valueOf(Main.CartoonNetwork.getPlotTwisterDrive().getMaxResourse() - Main.CartoonNetwork.getPlotTwisterDrive().getResourse()));
-
-                }
             } catch (InterruptedException ex) {
                 Logger.getLogger(director.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -119,14 +105,6 @@ public class director extends Thread {
 
                     studio.setPmDiscountedAmount(studio.getPmDiscountedAmount() + 100);  // Adds 100$ to the project manager discounted total in studio
 
-//                    PRUEBA
-                    if (studio == Main.CartoonNetwork) {
-                        Main.gui.getProjectManagerFaults().setText(String.valueOf(studio.getPmFaults()));
-                        Main.gui.getProjectManagerDeduction().setText(String.valueOf(Main.CartoonNetwork.getPmDiscountedAmount()));
-                    } else {
-                        Main.gui.getProjectManagerFaultsStar().setText(String.valueOf(studio.getPmFaults()));
-                        Main.gui.getProjectManagerDeductionStar().setText(String.valueOf(Main.StarChannel.getPmDiscountedAmount()));
-                    }
                     studio.setSalaryAccount(studio.getSalaryAccount() - 100); //Substracts 100$ to the salary account
                     System.out.println("El director atrapo al PM viendo anime");
                 }
@@ -167,17 +145,6 @@ public class director extends Thread {
         while (true) {
             operate();
             addDailySalary();
-            if (studio == Main.StarChannel) {
-                Main.gui.getCosts().setText(String.valueOf(Main.StarChannel.getSalaryAccount()));
-                Main.gui.getRevenue().setText(String.valueOf(Main.StarChannel.getProfits()));
-                Main.gui.getNetIncome().setText(String.valueOf(Main.StarChannel.getProfits() - Main.StarChannel.getSalaryAccount()));
-
-            } else {
-                Main.gui.getCostsC().setText(String.valueOf(Main.CartoonNetwork.getSalaryAccount()));
-                Main.gui.getRevenueC().setText(String.valueOf(Main.CartoonNetwork.getProfits()));
-                Main.gui.getNetIncomeC().setText(String.valueOf(Main.CartoonNetwork.getProfits() - Main.CartoonNetwork.getSalaryAccount()));
-
-            }
         }
 
     }

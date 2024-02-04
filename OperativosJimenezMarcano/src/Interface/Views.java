@@ -48,7 +48,7 @@ public class Views extends javax.swing.JFrame {
 //        Finance
         revenue.setText(String.valueOf(StarChannel.getProfits()));
         costs.setText(String.valueOf(StarChannel.getSalaryAccount()));
-        netIncome.setText(String.valueOf(StarChannel.getProfits() - StarChannel.getSalaryAccount()));
+//        netIncome.setText(String.valueOf(StarChannel.getProfits() - StarChannel.getSalaryAccount()));
 //        Drive Management
         scriptAvailability.setText(String.valueOf(StarChannel.getScriptwriterDrive().getMaxResourse() - StarChannel.getScriptwriterDrive().getResourse()));
         stageAvailability.setText(String.valueOf(StarChannel.getSetDesignerDrive().getMaxResourse() - StarChannel.getSetDesignerDrive().getResourse()));
@@ -363,7 +363,7 @@ public class Views extends javax.swing.JFrame {
         projectManagerDeduction.setForeground(new java.awt.Color(255, 255, 255));
         projectManagerDeduction.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         projectManagerDeduction.setText("0");
-        jPanel1.add(projectManagerDeduction, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 400, 50, -1));
+        jPanel1.add(projectManagerDeduction, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 400, 210, -1));
 
         deadlineLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         deadlineLabel.setForeground(new java.awt.Color(255, 255, 255));
@@ -531,8 +531,9 @@ public class Views extends javax.swing.JFrame {
 
         projectManagerFaultsStar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         projectManagerFaultsStar.setForeground(new java.awt.Color(255, 255, 255));
+        projectManagerFaultsStar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         projectManagerFaultsStar.setText("0");
-        jPanel2.add(projectManagerFaultsStar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 400, 10, -1));
+        jPanel2.add(projectManagerFaultsStar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 400, 70, -1));
 
         jLabel47.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel47.setForeground(new java.awt.Color(255, 255, 255));
@@ -543,7 +544,7 @@ public class Views extends javax.swing.JFrame {
         projectManagerDeductionStar.setForeground(new java.awt.Color(255, 255, 255));
         projectManagerDeductionStar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         projectManagerDeductionStar.setText("0");
-        jPanel2.add(projectManagerDeductionStar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 400, 70, -1));
+        jPanel2.add(projectManagerDeductionStar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 400, 210, -1));
 
         jLabel48.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel48.setForeground(new java.awt.Color(255, 255, 255));

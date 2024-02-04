@@ -4,12 +4,10 @@
  */
 package Objects;
 
-import Interface.Views;
 import static java.lang.Thread.sleep;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import operativosjimenezmarcano.Main;
 
 /**
  *
@@ -109,7 +107,7 @@ public class assemblerTeam extends Thread {
         setSalaryAccount(
                 getSalaryAccount() + salary * 24 * getEmployeeCount()
         );
-        //System.out.println("El equipo de "  + getEmployeeCount() + " guionistas" + " gana: " + salary*24*getEmployeeCount()+"$");
+//        System.out.println("El equipo de "  + getEmployeeCount() + " assembler" + " gana: " + salary*24*getEmployeeCount()+"$");
     }
 
     public driveAssembler getAssemblerDrive() {
@@ -178,19 +176,13 @@ public class assemblerTeam extends Thread {
                             getAssemblerSemaphore().acquire();
                             int addedAmount = getAssemblerDrive().add(1); //Adds 1 episode to the drive
 
-//                            PRUEBAAAA
-                            Main.gui.getReadyStandard().setText(String.valueOf(Main.CartoonNetwork.getAssemblerDrive().getResourse()));
-                            Main.gui.getReadyStandardStar().setText(String.valueOf(Main.StarChannel.getAssemblerDrive().getResourse()));
 
                             System.out.println("Un ensamblador agrego " + addedAmount + " capitulos a su drive! ");
                             System.out.println(" /---Hay " + getAssemblerDrive().getResourse() + " capitulos comunes ensamblados---/");
                             getAssemblerSemaphore().release();  // Releases every semaphore
                             setEpisodeCicle(getEpisodeCicle() + 1); // Adds 1 count to the cicle for a plotTwist episode
 
-                            //                            PRUEBAAAA
-                            Main.gui.getReadyPlotTwist().setText(String.valueOf(Main.CartoonNetwork.getPlotAssemblerDrive().getResourse()));
-                            Main.gui.getReadyPlotTwistStar().setText(String.valueOf(Main.StarChannel.getPlotAssemblerDrive().getResourse()));
-
+                      
                         } else { // This happens if all requirements weren't met
                             System.out.println("Un ensamblador no pudo ensamblar un episodio por falta de requerimientos");
                         }
@@ -207,26 +199,19 @@ public class assemblerTeam extends Thread {
         }
     }
 
+    Lista list = new Lista();
+
     @Override
     public void run() {
 
         while (true) {
 
             try {
-
                 operate();
+                
                 addDailySalary();
-                if (studio == Main.StarChannel) {
-                    Main.gui.getCosts().setText(String.valueOf(Main.StarChannel.getSalaryAccount()));
-                    Main.gui.getRevenue().setText(String.valueOf(Main.StarChannel.getProfits()));
-                    Main.gui.getNetIncome().setText(String.valueOf(Main.StarChannel.getProfits() - Main.StarChannel.getSalaryAccount()));
-
-                } else {
-                    Main.gui.getCostsC().setText(String.valueOf(Main.CartoonNetwork.getSalaryAccount()));
-                    Main.gui.getRevenueC().setText(String.valueOf(Main.CartoonNetwork.getProfits()));
-                    Main.gui.getNetIncomeC().setText(String.valueOf(Main.CartoonNetwork.getProfits() - Main.CartoonNetwork.getSalaryAccount()));
-                    
-                }
+               
+                
                 
                 sleep(this.dayDuration);
 

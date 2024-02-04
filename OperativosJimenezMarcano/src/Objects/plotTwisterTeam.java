@@ -54,7 +54,7 @@ public class plotTwisterTeam extends Thread {
         setSalaryAccount(
                 getSalaryAccount() + salary * 24 * getEmployeeCount()
         );
-        //System.out.println("El equipo de "  + getEmployeeCount() + " guionistas de plotTwist" + " gana: " + salary*24*getEmployeeCount()+"$");
+//        System.out.println("El equipo de "  + getEmployeeCount() + " guionistas de plotTwist" + " gana: " + salary*24*getEmployeeCount()+"$");
     }
 
     public drive getPlotTwisterDrive() {
@@ -71,12 +71,6 @@ public class plotTwisterTeam extends Thread {
                 getPlotTwisterSemaphore().release(); //wait
                 setDayCicle(0);
 
-                if (studio == Main.StarChannel) {
-                    Main.gui.getPlotTwistAvailability().setText(String.valueOf(Main.StarChannel.getPlotTwisterDrive().getMaxResourse() - Main.StarChannel.getPlotTwisterDrive().getResourse()));
-                } else {
-                    Main.gui.getPlotTwistAvailabilityC().setText(String.valueOf(Main.CartoonNetwork.getPlotTwisterDrive().getMaxResourse() - Main.CartoonNetwork.getPlotTwisterDrive().getResourse()));
-                }
-
             } catch (InterruptedException ex) {
                 Logger.getLogger(plotTwisterTeam.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -92,17 +86,6 @@ public class plotTwisterTeam extends Thread {
 
                 operate();
                 addDailySalary();
-                if (studio == Main.StarChannel) {
-                    Main.gui.getCosts().setText(String.valueOf(Main.StarChannel.getSalaryAccount()));
-                    Main.gui.getRevenue().setText(String.valueOf(Main.StarChannel.getProfits()));
-                    Main.gui.getNetIncome().setText(String.valueOf(Main.StarChannel.getProfits() - Main.StarChannel.getSalaryAccount()));
-
-                } else {
-                    Main.gui.getCostsC().setText(String.valueOf(Main.CartoonNetwork.getSalaryAccount()));
-                    Main.gui.getRevenueC().setText(String.valueOf(Main.CartoonNetwork.getProfits()));
-                    Main.gui.getNetIncomeC().setText(String.valueOf(Main.CartoonNetwork.getProfits() - Main.CartoonNetwork.getSalaryAccount()));
-                    
-                }
                 sleep(studio.getDayDuration());
 
             } catch (InterruptedException ex) {

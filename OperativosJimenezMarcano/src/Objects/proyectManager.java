@@ -32,6 +32,7 @@ public class proyectManager extends Thread {
         studio.setSalaryAccount(
                 studio.getSalaryAccount() + salary * 24
         );
+        System.out.println("El equipo de "  + 1 + " project manager" + " gana: " + salary*24*1+"$");
 
     }
 
@@ -88,9 +89,7 @@ public class proyectManager extends Thread {
             studio.getDaysLeftSemaphore().release(); //Releases the semaphore to change the daysLeftRelease counter
             System.out.println("Days left for release: " + studio.getDaysLeftRelease());
 
-//            PRUEBA
-            Main.gui.getDeadlineCounter().setText(String.valueOf(studio.getDaysLeftRelease()));
-            Main.gui.getDeadlineCounterStar().setText(String.valueOf(studio.getDaysLeftRelease()));
+           
 
         } catch (InterruptedException ex) {
             Logger.getLogger(proyectManager.class.getName()).log(Level.SEVERE, null, ex);
@@ -104,17 +103,6 @@ public class proyectManager extends Thread {
         while (true) {
             operate();
             addDailySalary();
-            if (studio == Main.StarChannel) {
-                Main.gui.getCosts().setText(String.valueOf(Main.StarChannel.getSalaryAccount()));
-                Main.gui.getRevenue().setText(String.valueOf(Main.StarChannel.getProfits()));
-                Main.gui.getNetIncome().setText(String.valueOf(Main.StarChannel.getProfits() - Main.StarChannel.getSalaryAccount()));
-
-            } else {
-                Main.gui.getCostsC().setText(String.valueOf(Main.CartoonNetwork.getSalaryAccount()));
-                Main.gui.getRevenueC().setText(String.valueOf(Main.CartoonNetwork.getProfits()));
-                Main.gui.getNetIncomeC().setText(String.valueOf(Main.CartoonNetwork.getProfits() - Main.CartoonNetwork.getSalaryAccount()));
-
-            }
         }
 
     }
