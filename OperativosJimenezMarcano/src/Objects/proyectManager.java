@@ -29,12 +29,12 @@ public class proyectManager extends Thread {
     }
 
     public void addDailySalary() {
+        System.out.println("La cuenta antes de pagarle al PM: " + studio.getSalaryAccount() );
         studio.setSalaryAccount(
-                studio.getSalaryAccount() + salary * 24
-
-        );
-        System.out.println("El Proyect Manager gana " + salary * 24 + "$");
-
+                studio.getSalaryAccount() + salary * 24);
+        // System.out.println("El equipo de " + getEmployeeCount() + " assembler" + "
+        // gana: " + salary*24*getEmployeeCount()+"$");
+        System.out.println("La cuenta luego de pagarle al PM: " + studio.getSalaryAccount() );
     }
 
     public void operate() {
