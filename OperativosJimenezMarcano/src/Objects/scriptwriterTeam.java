@@ -53,9 +53,9 @@ public class scriptwriterTeam extends Thread {
 
     public void addDailySalary() {
         setSalaryAccount(
-                getSalaryAccount() + salary * 24 * getEmployeeCount()
-        );
-//        System.out.println("El equipo de "  + getEmployeeCount() + " guionistas" + " gana: " + salary*24*getEmployeeCount()+"$");
+                getSalaryAccount() + salary * 24 * getEmployeeCount());
+        // System.out.println("El equipo de " + getEmployeeCount() + " guionistas" + "
+        // gana: " + salary*24*getEmployeeCount()+"$");
     }
 
     public drive getScriptwriterDrive() {
@@ -67,11 +67,13 @@ public class scriptwriterTeam extends Thread {
         if (getDayCicle() >= 4) {
             try {
 
-                getScriptwriterSemaphore().acquire(); //wait
-                int addedAmount = getScriptwriterDrive().add(getEmployeeCount()); //Adds 1 script for each employee in the team the function .add() in drive class returns the added amount to be reported later
+                getScriptwriterSemaphore().acquire(); // wait
+                int addedAmount = getScriptwriterDrive().add(getEmployeeCount()); // Adds 1 script for each employee in
+                                                                                  // the team the function .add() in
+                                                                                  // drive class returns the added
+                                                                                  // amount to be reported later
                 System.out.println("El drive de guionistas tiene " + getScriptwriterDrive().getResourse() + " guiones");
-
-                getScriptwriterSemaphore().release(); //wait
+                getScriptwriterSemaphore().release(); // wait
                 setDayCicle(0);
 
             } catch (InterruptedException ex) {
@@ -88,7 +90,7 @@ public class scriptwriterTeam extends Thread {
             try {
 
                 operate();
-                addDailySalary();                
+                addDailySalary();
                 sleep(studio.getDayDuration());
 
             } catch (InterruptedException ex) {

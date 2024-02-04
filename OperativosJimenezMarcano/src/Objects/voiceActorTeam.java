@@ -53,9 +53,9 @@ public class voiceActorTeam extends Thread {
 
     public void addDailySalary() {
         setSalaryAccount(
-                getSalaryAccount() + salary * 24 * getEmployeeCount()
-        );
-//        System.out.println("El equipo de "  + getEmployeeCount() + " actore de doblaje" + " gana: " + salary*24*getEmployeeCount()+"$");
+                getSalaryAccount() + salary * 24 * getEmployeeCount());
+        // System.out.println("El equipo de " + getEmployeeCount() + " actore de
+        // doblaje" + " gana: " + salary*24*getEmployeeCount()+"$");
     }
 
     public drive getVoiceActorDrive() {
@@ -66,12 +66,15 @@ public class voiceActorTeam extends Thread {
         setDayCicle(getDayCicle() + 1);
         if (getDayCicle() >= 1) {
             try {
-                getVoiceActorSemaphore().acquire(); //wait
-                int addedAmount = getVoiceActorDrive().add(getEmployeeCount() * 5); //Adds 5 voice translations for each employee in the team the function .add() in drive class returns the added amount to be reported later
+                getVoiceActorSemaphore().acquire(); // wait
+                int addedAmount = getVoiceActorDrive().add(getEmployeeCount() * 5); // Adds 5 voice translations for
+                                                                                    // each employee in the team the
+                                                                                    // function .add() in drive class
+                                                                                    // returns the added amount to be
+                                                                                    // reported later
                 System.out.println("El drive de doblajes tiene " + getVoiceActorDrive().getResourse() + " doblajes");
-                getVoiceActorSemaphore().release(); //wait
+                getVoiceActorSemaphore().release(); // wait
                 setDayCicle(0);
-                
 
             } catch (InterruptedException ex) {
                 Logger.getLogger(voiceActorTeam.class.getName()).log(Level.SEVERE, null, ex);

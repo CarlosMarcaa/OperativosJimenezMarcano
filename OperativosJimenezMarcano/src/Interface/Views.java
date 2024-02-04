@@ -31,7 +31,7 @@ public class Views extends javax.swing.JFrame {
         CartoonNetwork();
     }
 
-//loads initial configuration data brought from a csv document
+    // loads initial configuration data brought from a csv document
     private void enterConfigData() {
         simulationDuration.setText((String) Main.simulationData.getSimulationDuration());
         deadline.setText((String) Main.simulationData.getDeadline());
@@ -43,46 +43,56 @@ public class Views extends javax.swing.JFrame {
         assemblers.setText((String) Main.simulationData.getAssemblers());
     }
 
-//sets the dynamic values of the interface for the Star Channel
+    // sets the dynamic values of the interface for the Star Channel
     private void StarChannel() {
-//        Finance
+        // Finance
         revenue.setText(String.valueOf(StarChannel.getProfits()));
         costs.setText(String.valueOf(StarChannel.getSalaryAccount()));
-//        netIncome.setText(String.valueOf(StarChannel.getProfits() - StarChannel.getSalaryAccount()));
-//        Drive Management
-        scriptAvailability.setText(String.valueOf(StarChannel.getScriptwriterDrive().getMaxResourse() - StarChannel.getScriptwriterDrive().getResourse()));
-        stageAvailability.setText(String.valueOf(StarChannel.getSetDesignerDrive().getMaxResourse() - StarChannel.getSetDesignerDrive().getResourse()));
-        animationAvailability.setText(String.valueOf(StarChannel.getAnimatorDrive().getMaxResourse() - StarChannel.getAnimatorDrive().getResourse()));
-        dubbingAvailability.setText(String.valueOf(StarChannel.getVoiceActorDrive().getMaxResourse() - StarChannel.getVoiceActorDrive().getResourse()));
-        plotTwistAvailability.setText(String.valueOf(StarChannel.getPlotTwisterDrive().getMaxResourse() - StarChannel.getPlotTwisterDrive().getResourse()));
-//        chapter control
+        netIncome.setText(String.valueOf(StarChannel.getProfits() - StarChannel.getSalaryAccount()));
+        // Drive Management
+        scriptAvailability.setText(String.valueOf(StarChannel.getScriptwriterDrive().getMaxResourse()
+                - StarChannel.getScriptwriterDrive().getResourse()));
+        stageAvailability.setText(String.valueOf(
+                StarChannel.getSetDesignerDrive().getMaxResourse() - StarChannel.getSetDesignerDrive().getResourse()));
+        animationAvailability.setText(String.valueOf(
+                StarChannel.getAnimatorDrive().getMaxResourse() - StarChannel.getAnimatorDrive().getResourse()));
+        dubbingAvailability.setText(String.valueOf(
+                StarChannel.getVoiceActorDrive().getMaxResourse() - StarChannel.getVoiceActorDrive().getResourse()));
+        plotTwistAvailability.setText(String.valueOf(
+                StarChannel.getPlotTwisterDrive().getMaxResourse() - StarChannel.getPlotTwisterDrive().getResourse()));
+        // chapter control
         readyStandardStar.setText(String.valueOf(StarChannel.getAssemblerDrive().getResourse()));
         readyPlotTwistStar.setText(String.valueOf(StarChannel.getPlotAssemblerDrive().getResourse()));
         deadlineCounterStar.setText(String.valueOf(StarChannel.getDeadlineRatio()));
-//        employee management
+        // employee management
         projectManagerStatusStar.setText(StarChannel.getProyectManager().isWatchingAnime() ? "Anime" : "Trabajando");
         projectManagerFaultsStar.setText(String.valueOf(StarChannel.getPmFaults()));
         projectManagerDeductionStar.setText(String.valueOf(StarChannel.getPmDiscountedAmount()));
         directorStatusStar.setText(String.valueOf(StarChannel.getDirector().isCheckingPM()));
     }
 
-//sets the dynamic values of the interface for Cartoon Network
+    // sets the dynamic values of the interface for Cartoon Network
     private void CartoonNetwork() {
-//        Finance
+        // Finance
         revenueC.setText(String.valueOf(CartoonNetwork.getProfits()));
         costsC.setText(String.valueOf(CartoonNetwork.getSalaryAccount()));
         netIncomeC.setText(String.valueOf(CartoonNetwork.getProfits() - CartoonNetwork.getSalaryAccount()));
-//        Drive Management
-        scriptAvailabilityC.setText(String.valueOf(CartoonNetwork.getScriptwriterDrive().getMaxResourse() - CartoonNetwork.getScriptwriterDrive().getResourse()));
-        stageAvailabilityC.setText(String.valueOf(CartoonNetwork.getSetDesignerDrive().getMaxResourse() - CartoonNetwork.getSetDesignerDrive().getResourse()));
-        animationAvailabilityC.setText(String.valueOf(CartoonNetwork.getAnimatorDrive().getMaxResourse() - CartoonNetwork.getAnimatorDrive().getResourse()));
-        dubbingAvailabilityC.setText(String.valueOf(CartoonNetwork.getVoiceActorDrive().getMaxResourse() - CartoonNetwork.getVoiceActorDrive().getResourse()));
-        plotTwistAvailabilityC.setText(String.valueOf(CartoonNetwork.getPlotTwisterDrive().getMaxResourse() - CartoonNetwork.getPlotTwisterDrive().getResourse()));
-//        chapter control
+        // Drive Management
+        scriptAvailabilityC.setText(String.valueOf(CartoonNetwork.getScriptwriterDrive().getMaxResourse()
+                - CartoonNetwork.getScriptwriterDrive().getResourse()));
+        stageAvailabilityC.setText(String.valueOf(CartoonNetwork.getSetDesignerDrive().getMaxResourse()
+                - CartoonNetwork.getSetDesignerDrive().getResourse()));
+        animationAvailabilityC.setText(String.valueOf(
+                CartoonNetwork.getAnimatorDrive().getMaxResourse() - CartoonNetwork.getAnimatorDrive().getResourse()));
+        dubbingAvailabilityC.setText(String.valueOf(CartoonNetwork.getVoiceActorDrive().getMaxResourse()
+                - CartoonNetwork.getVoiceActorDrive().getResourse()));
+        plotTwistAvailabilityC.setText(String.valueOf(CartoonNetwork.getPlotTwisterDrive().getMaxResourse()
+                - CartoonNetwork.getPlotTwisterDrive().getResourse()));
+        // chapter control
         readyStandard.setText(String.valueOf(CartoonNetwork.getAssemblerDrive().getResourse()));
         readyPlotTwist.setText(String.valueOf(CartoonNetwork.getPlotAssemblerDrive().getResourse()));
         deadlineCounter.setText(String.valueOf(CartoonNetwork.getDeadlineRatio()));
-//        employee management
+        // employee management
         projectManagerStatus.setText(CartoonNetwork.getProyectManager().isWatchingAnime() ? "Anime" : "Trabajando");
         projectManagerFaults.setText(String.valueOf(CartoonNetwork.getPmFaults()));
         projectManagerDeduction.setText(String.valueOf(CartoonNetwork.getPmDiscountedAmount()));
@@ -90,8 +100,10 @@ public class Views extends javax.swing.JFrame {
     }
 
     private Integer sum() {
-        Integer sum = Integer.valueOf(animator.getText()) + Integer.valueOf(assemblers.getText()) + Integer.parseInt(plotTwistScriptwriters.getText())
-                + Integer.parseInt(screenwriters.getText()) + Integer.parseInt(stageDesigner.getText()) + Integer.parseInt(voiceActors.getText());
+        Integer sum = Integer.valueOf(animator.getText()) + Integer.valueOf(assemblers.getText())
+                + Integer.parseInt(plotTwistScriptwriters.getText())
+                + Integer.parseInt(screenwriters.getText()) + Integer.parseInt(stageDesigner.getText())
+                + Integer.parseInt(voiceActors.getText());
         return sum;
     }
 
@@ -101,7 +113,8 @@ public class Views extends javax.swing.JFrame {
      * regenerated by the Form Editor.
      */
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
@@ -210,7 +223,8 @@ public class Views extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(12, 191, 185));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        cartoonLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CARTOON_NETWORK_logopequeno.png"))); // NOI18N
+        cartoonLogo
+                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CARTOON_NETWORK_logopequeno.png"))); // NOI18N
         jPanel1.add(cartoonLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
         cartoonLogo.getAccessibleContext().setAccessibleName("cartoonLogo");
 
@@ -638,21 +652,21 @@ public class Views extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTabbedPane1));
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTabbedPane1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-        if (animator.getText().trim().isEmpty() || assemblers.getText().trim().isEmpty() || deadline.getText().trim().isEmpty()
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_saveButtonActionPerformed
+        if (animator.getText().trim().isEmpty() || assemblers.getText().trim().isEmpty()
+                || deadline.getText().trim().isEmpty()
                 || plotTwistScriptwriters.getText().trim().isEmpty() || screenwriters.getText().trim().isEmpty()
-                || simulationDuration.getText().trim().isEmpty() || stageDesigner.getText().trim().isEmpty() || voiceActors.getText().trim().isEmpty()) {
+                || simulationDuration.getText().trim().isEmpty() || stageDesigner.getText().trim().isEmpty()
+                || voiceActors.getText().trim().isEmpty()) {
             validator.setText("No pueden haber campos vacíos");
         } else if (numValidator(animator) == false
                 || numValidator(assemblers) == false
@@ -666,7 +680,8 @@ public class Views extends javax.swing.JFrame {
         } else {
             validator.setText("");
             if (sum() <= 18) {
-                SimulationData newData = new SimulationData(animator.getText(), assemblers.getText(), deadline.getText(),
+                SimulationData newData = new SimulationData(animator.getText(), assemblers.getText(),
+                        deadline.getText(),
                         plotTwistScriptwriters.getText(), screenwriters.getText(), simulationDuration.getText(),
                         stageDesigner.getText(), voiceActors.getText());
                 csvManager.WriteText(newData);
@@ -675,11 +690,11 @@ public class Views extends javax.swing.JFrame {
             }
 
         }
-    }//GEN-LAST:event_saveButtonActionPerformed
+    }// GEN-LAST:event_saveButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton1ActionPerformed
         Chart chart = new Chart();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }// GEN-LAST:event_jButton1ActionPerformed
 
     public static boolean numValidator(JTextField strNum) {
         if (strNum == null) {
@@ -698,9 +713,13 @@ public class Views extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+        // <editor-fold defaultstate="collapsed" desc=" Look and feel setting code
+        // (optional) ">
+        /*
+         * If Nimbus (introduced in Java SE 6) is not available, stay with the default
+         * look and feel.
+         * For details see
+         * http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -718,8 +737,8 @@ public class Views extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Views.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
+        // </editor-fold>
+        // </editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
