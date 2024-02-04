@@ -30,9 +30,10 @@ public class director extends Thread {
 
     public void addDailySalary() {
         studio.setSalaryAccount(
+                
                 studio.getSalaryAccount() + salary * 24
         );
-
+        System.out.println("El director gana " + salary * 24 + "$");
     }
 
     public void operate() {

@@ -56,7 +56,7 @@ public class scriptwriterTeam extends Thread {
         setSalaryAccount(
                 getSalaryAccount() + salary * 24 * getEmployeeCount()
         );
-        //System.out.println("El equipo de "  + getEmployeeCount() + " guionistas" + " gana: " + salary*24*getEmployeeCount()+"$");
+        System.out.println("El equipo de "  + getEmployeeCount() + " guionistas" + " gana: " + salary*24*getEmployeeCount()+"$");
     }
 
     public drive getScriptwriterDrive() {

@@ -31,7 +31,9 @@ public class proyectManager extends Thread {
     public void addDailySalary() {
         studio.setSalaryAccount(
                 studio.getSalaryAccount() + salary * 24
+                
         );
+        System.out.println("El Proyect Manager gana " + salary * 24 + "$");
 
     }
 

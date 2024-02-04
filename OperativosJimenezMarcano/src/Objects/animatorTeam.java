@@ -54,7 +54,7 @@ public class animatorTeam extends Thread {
         setSalaryAccount(
                 getSalaryAccount() + salary * 24 * getEmployeeCount()
         );
-        //System.out.println("El equipo de "  + getEmployeeCount() + " animadores" + " gana: " + salary*24*getEmployeeCount()+"$");
+        System.out.println("El equipo de "  + getEmployeeCount() + " animadores" + " gana: " + salary*24*getEmployeeCount()+"$");
     }
 
     public drive getAnimatorDrive() {

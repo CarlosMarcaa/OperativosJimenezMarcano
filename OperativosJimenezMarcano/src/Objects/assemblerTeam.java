@@ -109,7 +109,7 @@ public class assemblerTeam extends Thread {
         setSalaryAccount(
                 getSalaryAccount() + salary * 24 * getEmployeeCount()
         );
-        //System.out.println("El equipo de "  + getEmployeeCount() + " guionistas" + " gana: " + salary*24*getEmployeeCount()+"$");
+        System.out.println("El equipo de "  + getEmployeeCount() + " ensambladores" + " gana: " + salary*24*getEmployeeCount()+"$");
     }
 
     public driveAssembler getAssemblerDrive() {
