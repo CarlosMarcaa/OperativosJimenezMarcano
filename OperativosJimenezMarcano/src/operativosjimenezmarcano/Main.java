@@ -31,14 +31,14 @@ public class Main {
             5, 3, 1, scriptwriter, setDesigner, animator, voiceActor, plotTwister, assembler);
     public static studio StarChannel = new studio("Star Channel", 350000, 800000, deadline, dayDuration, 2, 3, 4, 6, 3,
             1, scriptwriter, setDesigner, animator, voiceActor, plotTwister, assembler);
+    public static Views gui = new Views();
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Views gui = new Views();
         CartoonNetwork.start();
-
+        StarChannel.start();
     }
 
 }

@@ -1,6 +1,7 @@
 package Interface;
 
 import Objects.SimulationData;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 import operativosjimenezmarcano.Main;
 import static operativosjimenezmarcano.Main.csvManager;
@@ -62,7 +63,7 @@ public class Views extends javax.swing.JFrame {
         projectManagerStatusStar.setText(StarChannel.getProyectManager().isWatchingAnime() ? "Anime" : "Trabajando");
         projectManagerFaultsStar.setText(String.valueOf(StarChannel.getPmFaults()));
         projectManagerDeductionStar.setText(String.valueOf(StarChannel.getPmDiscountedAmount()));
-        directorStatusStar.setText("Administrando");
+        directorStatusStar.setText(String.valueOf(StarChannel.getDirector().isCheckingPM()));
     }
 
 //sets the dynamic values of the interface for Cartoon Network
@@ -348,8 +349,10 @@ public class Views extends javax.swing.JFrame {
 
         projectManagerFaults.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         projectManagerFaults.setForeground(new java.awt.Color(255, 255, 255));
+        projectManagerFaults.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         projectManagerFaults.setText("0");
-        jPanel1.add(projectManagerFaults, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 400, 10, -1));
+        projectManagerFaults.setToolTipText("");
+        jPanel1.add(projectManagerFaults, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 400, 90, -1));
 
         jLabel38.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel38.setForeground(new java.awt.Color(255, 255, 255));
@@ -358,8 +361,9 @@ public class Views extends javax.swing.JFrame {
 
         projectManagerDeduction.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         projectManagerDeduction.setForeground(new java.awt.Color(255, 255, 255));
+        projectManagerDeduction.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         projectManagerDeduction.setText("0");
-        jPanel1.add(projectManagerDeduction, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 400, -1, -1));
+        jPanel1.add(projectManagerDeduction, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 400, 50, -1));
 
         deadlineLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         deadlineLabel.setForeground(new java.awt.Color(255, 255, 255));
@@ -537,8 +541,9 @@ public class Views extends javax.swing.JFrame {
 
         projectManagerDeductionStar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         projectManagerDeductionStar.setForeground(new java.awt.Color(255, 255, 255));
+        projectManagerDeductionStar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         projectManagerDeductionStar.setText("0");
-        jPanel2.add(projectManagerDeductionStar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 400, -1, -1));
+        jPanel2.add(projectManagerDeductionStar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 400, 70, -1));
 
         jLabel48.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel48.setForeground(new java.awt.Color(255, 255, 255));
@@ -825,5 +830,309 @@ public class Views extends javax.swing.JFrame {
     private javax.swing.JLabel validator;
     private javax.swing.JTextField voiceActors;
     // End of variables declaration//GEN-END:variables
+
+    public JLabel getAnimationAvailability() {
+        return animationAvailability;
+    }
+
+    public void setAnimationAvailability(JLabel animationAvailability) {
+        this.animationAvailability = animationAvailability;
+    }
+
+    public JLabel getAnimationAvailabilityC() {
+        return animationAvailabilityC;
+    }
+
+    public void setAnimationAvailabilityC(JLabel animationAvailabilityC) {
+        this.animationAvailabilityC = animationAvailabilityC;
+    }
+
+    public JTextField getAnimator() {
+        return animator;
+    }
+
+    public void setAnimator(JTextField animator) {
+        this.animator = animator;
+    }
+
+    public JTextField getAssemblers() {
+        return assemblers;
+    }
+
+    public void setAssemblers(JTextField assemblers) {
+        this.assemblers = assemblers;
+    }
+
+    public JLabel getCosts() {
+        return costs;
+    }
+
+    public void setCosts(JLabel costs) {
+        this.costs = costs;
+    }
+
+    public JLabel getCostsC() {
+        return costsC;
+    }
+
+    public void setCostsC(JLabel costsC) {
+        this.costsC = costsC;
+    }
+
+    public JTextField getDeadline() {
+        return deadline;
+    }
+
+    public void setDeadline(JTextField deadline) {
+        this.deadline = deadline;
+    }
+
+    public JLabel getDeadlineCounter() {
+        return deadlineCounter;
+    }
+
+    public void setDeadlineCounter(JLabel deadlineCounter) {
+        this.deadlineCounter = deadlineCounter;
+    }
+
+    public JLabel getDeadlineCounterStar() {
+        return deadlineCounterStar;
+    }
+
+    public void setDeadlineCounterStar(JLabel deadlineCounterStar) {
+        this.deadlineCounterStar = deadlineCounterStar;
+    }
+
+    public JLabel getDirectorStatus() {
+        return directorStatus;
+    }
+
+    public void setDirectorStatus(JLabel directorStatus) {
+        this.directorStatus = directorStatus;
+    }
+
+    public JLabel getDirectorStatusStar() {
+        return directorStatusStar;
+    }
+
+    public void setDirectorStatusStar(JLabel directorStatusStar) {
+        this.directorStatusStar = directorStatusStar;
+    }
+
+    public JLabel getDubbingAvailability() {
+        return dubbingAvailability;
+    }
+
+    public void setDubbingAvailability(JLabel dubbingAvailability) {
+        this.dubbingAvailability = dubbingAvailability;
+    }
+
+    public JLabel getDubbingAvailabilityC() {
+        return dubbingAvailabilityC;
+    }
+
+    public void setDubbingAvailabilityC(JLabel dubbingAvailabilityC) {
+        this.dubbingAvailabilityC = dubbingAvailabilityC;
+    }
+
+    public JLabel getNetIncome() {
+        return netIncome;
+    }
+
+    public void setNetIncome(JLabel netIncome) {
+        this.netIncome = netIncome;
+    }
+
+    public JLabel getNetIncomeC() {
+        return netIncomeC;
+    }
+
+    public void setNetIncomeC(JLabel netIncomeC) {
+        this.netIncomeC = netIncomeC;
+    }
+
+    public JLabel getPlotTwistAvailability() {
+        return plotTwistAvailability;
+    }
+
+    public void setPlotTwistAvailability(JLabel plotTwistAvailability) {
+        this.plotTwistAvailability = plotTwistAvailability;
+    }
+
+    public JLabel getPlotTwistAvailabilityC() {
+        return plotTwistAvailabilityC;
+    }
+
+    public void setPlotTwistAvailabilityC(JLabel plotTwistAvailabilityC) {
+        this.plotTwistAvailabilityC = plotTwistAvailabilityC;
+    }
+
+    public JTextField getPlotTwistScriptwriters() {
+        return plotTwistScriptwriters;
+    }
+
+    public void setPlotTwistScriptwriters(JTextField plotTwistScriptwriters) {
+        this.plotTwistScriptwriters = plotTwistScriptwriters;
+    }
+
+    public JLabel getProjectManagerDeduction() {
+        return projectManagerDeduction;
+    }
+
+    public void setProjectManagerDeduction(JLabel projectManagerDeduction) {
+        this.projectManagerDeduction = projectManagerDeduction;
+    }
+
+    public JLabel getProjectManagerDeductionStar() {
+        return projectManagerDeductionStar;
+    }
+
+    public void setProjectManagerDeductionStar(JLabel projectManagerDeductionStar) {
+        this.projectManagerDeductionStar = projectManagerDeductionStar;
+    }
+
+    public JLabel getProjectManagerFaults() {
+        return projectManagerFaults;
+    }
+
+    public void setProjectManagerFaults(JLabel projectManagerFaults) {
+        this.projectManagerFaults = projectManagerFaults;
+    }
+
+    public JLabel getProjectManagerFaultsStar() {
+        return projectManagerFaultsStar;
+    }
+
+    public void setProjectManagerFaultsStar(JLabel projectManagerFaultsStar) {
+        this.projectManagerFaultsStar = projectManagerFaultsStar;
+    }
+
+    public JLabel getProjectManagerStatus() {
+        return projectManagerStatus;
+    }
+
+    public void setProjectManagerStatus(JLabel projectManagerStatus) {
+        this.projectManagerStatus = projectManagerStatus;
+    }
+
+    public JLabel getProjectManagerStatusStar() {
+        return projectManagerStatusStar;
+    }
+
+    public void setProjectManagerStatusStar(JLabel projectManagerStatusStar) {
+        this.projectManagerStatusStar = projectManagerStatusStar;
+    }
+
+    public JLabel getReadyPlotTwist() {
+        return readyPlotTwist;
+    }
+
+    public void setReadyPlotTwist(JLabel readyPlotTwist) {
+        this.readyPlotTwist = readyPlotTwist;
+    }
+
+    public JLabel getReadyPlotTwistStar() {
+        return readyPlotTwistStar;
+    }
+
+    public void setReadyPlotTwistStar(JLabel readyPlotTwistStar) {
+        this.readyPlotTwistStar = readyPlotTwistStar;
+    }
+
+    public JLabel getReadyStandard() {
+        return readyStandard;
+    }
+
+    public void setReadyStandard(JLabel readyStandard) {
+        this.readyStandard = readyStandard;
+    }
+
+    public JLabel getReadyStandardStar() {
+        return readyStandardStar;
+    }
+
+    public void setReadyStandardStar(JLabel readyStandardStar) {
+        this.readyStandardStar = readyStandardStar;
+    }
+
+    public JLabel getRevenue() {
+        return revenue;
+    }
+
+    public void setRevenue(JLabel revenue) {
+        this.revenue = revenue;
+    }
+
+    public JLabel getRevenueC() {
+        return revenueC;
+    }
+
+    public void setRevenueC(JLabel revenueC) {
+        this.revenueC = revenueC;
+    }
+
+    public JTextField getScreenwriters() {
+        return screenwriters;
+    }
+
+    public void setScreenwriters(JTextField screenwriters) {
+        this.screenwriters = screenwriters;
+    }
+
+    public JLabel getScriptAvailability() {
+        return scriptAvailability;
+    }
+
+    public void setScriptAvailability(JLabel scriptAvailability) {
+        this.scriptAvailability = scriptAvailability;
+    }
+
+    public JLabel getScriptAvailabilityC() {
+        return scriptAvailabilityC;
+    }
+
+    public void setScriptAvailabilityC(JLabel scriptAvailabilityC) {
+        this.scriptAvailabilityC = scriptAvailabilityC;
+    }
+
+    public JTextField getSimulationDuration() {
+        return simulationDuration;
+    }
+
+    public void setSimulationDuration(JTextField simulationDuration) {
+        this.simulationDuration = simulationDuration;
+    }
+
+    public JLabel getStageAvailability() {
+        return stageAvailability;
+    }
+
+    public void setStageAvailability(JLabel stageAvailability) {
+        this.stageAvailability = stageAvailability;
+    }
+
+    public JLabel getStageAvailabilityC() {
+        return stageAvailabilityC;
+    }
+
+    public void setStageAvailabilityC(JLabel stageAvailabilityC) {
+        this.stageAvailabilityC = stageAvailabilityC;
+    }
+
+    public JTextField getStageDesigner() {
+        return stageDesigner;
+    }
+
+    public void setStageDesigner(JTextField stageDesigner) {
+        this.stageDesigner = stageDesigner;
+    }
+
+    public JTextField getVoiceActors() {
+        return voiceActors;
+    }
+
+    public void setVoiceActors(JTextField voiceActors) {
+        this.voiceActors = voiceActors;
+    }
 
 }
