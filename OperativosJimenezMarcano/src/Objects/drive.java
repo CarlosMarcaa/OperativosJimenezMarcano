@@ -37,7 +37,7 @@ public class drive {
         }else{
             int oldResourse = getResourse();
             setResourse(getResourse() - amount);
-            System.out.println("Drive substracted from " + oldResourse + " to " + getResourse());
+            //System.out.println("Drive substracted from " + oldResourse + " to " + getResourse());
             return true;
             
         }

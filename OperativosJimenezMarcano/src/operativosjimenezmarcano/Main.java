@@ -116,8 +116,6 @@ public class Main {
                         // STAR CHANNEL
                         gui.getDeadlineCounterStar().setText(String.valueOf(StarChannel.getDaysLeftRelease()));
 
-                        System.out.println(StarChannel.getSalaryAccount()
-                                        + "IMPORTANTEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
                 }
         }
 

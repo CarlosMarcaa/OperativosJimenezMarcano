@@ -40,6 +40,7 @@ public class studio extends Thread{ //The studio class contains all the studio i
     private Semaphore plotTwisterSemaphore;
     private Semaphore assemblerSemaphore; 
     private Semaphore daysLeftSemaphore;
+    private Semaphore salaryAccountSemaphore;
 
     //Drive section
     private drive scriptwriterDrive;
@@ -103,6 +104,7 @@ public class studio extends Thread{ //The studio class contains all the studio i
         this.plotTwisterSemaphore = new Semaphore(1);
         this.assemblerSemaphore = new Semaphore(1);
         this.daysLeftSemaphore = new Semaphore(1); //This semaphore is going to be used to try to avoid concurrencies between the project manager and director changing days left
+        this.salaryAccountSemaphore = new Semaphore(1);
         
         //Drives
         this.scriptwriterDrive = new drive(25);
@@ -197,7 +199,14 @@ public class studio extends Thread{ //The studio class contains all the studio i
     }
 
     public void setSalaryAccount(int salaryAccount) {
-        this.salaryAccount = salaryAccount;
+        try {
+            getSalaryAccountSemaphore().acquire();
+            this.salaryAccount = salaryAccount;
+            getSalaryAccountSemaphore().release();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(studio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
 
     public Semaphore getScriptwriterSemaphore() {
@@ -394,6 +403,10 @@ public class studio extends Thread{ //The studio class contains all the studio i
 
     public Semaphore getDaysLeftSemaphore() {
         return daysLeftSemaphore;
+    }
+
+    public Semaphore getSalaryAccountSemaphore() {
+        return salaryAccountSemaphore;
     }
     
     
