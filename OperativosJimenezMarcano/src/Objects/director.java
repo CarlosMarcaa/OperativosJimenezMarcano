@@ -32,8 +32,7 @@ public class director extends Thread {
         System.out.println("La cuenta antes de pagarle al Director: " + studio.getSalaryAccount() );
         studio.setSalaryAccount(
                 studio.getSalaryAccount() + salary * 24);
-        // System.out.println("El equipo de " + getEmployeeCount() + " assembler" + "
-        // gana: " + salary*24*getEmployeeCount()+"$");
+        System.out.println("El director gana " + salary*24+"$");
         System.out.println("La cuenta luego de pagarle al Director: " + studio.getSalaryAccount() );
     }
 
