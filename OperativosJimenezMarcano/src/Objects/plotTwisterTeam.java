@@ -8,17 +8,18 @@ import static java.lang.Thread.sleep;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import operativosjimenezmarcano.Main;
 
 /**
  *
  * @author cdmar
  */
-public class plotTwisterTeam extends Thread{
- 
+public class plotTwisterTeam extends Thread {
+
     private studio studio;
     private int dayCicle;
     int salary = 34;
-    
+
     public plotTwisterTeam(studio studio) {
         this.studio = studio;
         this.dayCicle = 0;
@@ -29,7 +30,6 @@ public class plotTwisterTeam extends Thread{
         return studio.getPlotTwisterEmployeeCount();
     }
 
- 
     public int getDayDuration() {
         return studio.getDayDuration();
     }
@@ -49,52 +49,67 @@ public class plotTwisterTeam extends Thread{
     public void setSalaryAccount(int salaryAccount) {
         studio.setSalaryAccount(salaryAccount);
     }
-    
-    public void addDailySalary(){
+
+    public void addDailySalary() {
         setSalaryAccount(
-                getSalaryAccount() + salary*24*getEmployeeCount()
+                getSalaryAccount() + salary * 24 * getEmployeeCount()
         );
-                            //System.out.println("El equipo de "  + getEmployeeCount() + " guionistas de plotTwist" + " gana: " + salary*24*getEmployeeCount()+"$");
+        //System.out.println("El equipo de "  + getEmployeeCount() + " guionistas de plotTwist" + " gana: " + salary*24*getEmployeeCount()+"$");
     }
 
     public drive getPlotTwisterDrive() {
         return studio.getPlotTwisterDrive();
     }
-    
 
- 
     public void operate() {
         setDayCicle(getDayCicle() + 1);
         if (getDayCicle() >= 2) {
             try {
                 getPlotTwisterSemaphore().acquire(); //wait
                 int addedAmount = getPlotTwisterDrive().add(getEmployeeCount()); //Adds 1 script for each employee in the team the function .add() in drive class returns the added amount to be reported later
-                System.out.println("El drive de plotTwist tiene " + getPlotTwisterDrive().getResourse() + " plotTwists" );
+                System.out.println("El drive de plotTwist tiene " + getPlotTwisterDrive().getResourse() + " plotTwists");
                 getPlotTwisterSemaphore().release(); //wait
                 setDayCicle(0);
-                
+
+                if (studio == Main.StarChannel) {
+                    Main.gui.getPlotTwistAvailability().setText(String.valueOf(Main.StarChannel.getPlotTwisterDrive().getMaxResourse() - Main.StarChannel.getPlotTwisterDrive().getResourse()));
+                } else {
+                    Main.gui.getPlotTwistAvailabilityC().setText(String.valueOf(Main.CartoonNetwork.getPlotTwisterDrive().getMaxResourse() - Main.CartoonNetwork.getPlotTwisterDrive().getResourse()));
+                }
+
             } catch (InterruptedException ex) {
                 Logger.getLogger(plotTwisterTeam.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
-   
+
     @Override
     public void run() {
- 
-            while (true){
-            
-                try {
+
+        while (true) {
+
+            try {
+
+                operate();
+                addDailySalary();
+                if (studio == Main.StarChannel) {
+                    Main.gui.getCosts().setText(String.valueOf(Main.StarChannel.getSalaryAccount()));
+                    Main.gui.getRevenue().setText(String.valueOf(Main.StarChannel.getProfits()));
+                    Main.gui.getNetIncome().setText(String.valueOf(Main.StarChannel.getProfits() - Main.StarChannel.getSalaryAccount()));
+
+                } else {
+                    Main.gui.getCostsC().setText(String.valueOf(Main.CartoonNetwork.getSalaryAccount()));
+                    Main.gui.getRevenueC().setText(String.valueOf(Main.CartoonNetwork.getProfits()));
+                    Main.gui.getNetIncomeC().setText(String.valueOf(Main.CartoonNetwork.getProfits() - Main.CartoonNetwork.getSalaryAccount()));
                     
-                    operate();
-                    addDailySalary();
-                    sleep(studio.getDayDuration());                            
-                            
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(plotTwisterTeam.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                }
+                sleep(studio.getDayDuration());
+
+            } catch (InterruptedException ex) {
+                Logger.getLogger(plotTwisterTeam.class.getName()).log(Level.SEVERE, null, ex);
             }
-        
+        }
+
     }
 
     public Semaphore getPlotTwisterSemaphore() {

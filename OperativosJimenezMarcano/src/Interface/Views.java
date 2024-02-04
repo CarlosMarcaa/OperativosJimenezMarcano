@@ -1,8 +1,12 @@
 package Interface;
 
-import DataManagement.CsvManager;
 import Objects.SimulationData;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
+import operativosjimenezmarcano.Main;
+import static operativosjimenezmarcano.Main.csvManager;
+import static operativosjimenezmarcano.Main.CartoonNetwork;
+import static operativosjimenezmarcano.Main.StarChannel;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -13,10 +17,6 @@ import javax.swing.JTextField;
  * @author Miguel
  */
 public class Views extends javax.swing.JFrame {
-
-    public static CsvManager csvManager = new CsvManager();
-
-    public static SimulationData simulationData = (SimulationData) csvManager.ReadText();
 
     /**
      * Creates new form views
@@ -33,61 +33,60 @@ public class Views extends javax.swing.JFrame {
 
 //loads initial configuration data brought from a csv document
     private void enterConfigData() {
-        simulationDuration.setText((String) simulationData.getSimulationDuration());
-        deadline.setText((String) simulationData.getDeadline());
-        screenwriters.setText((String) simulationData.getScreenwriters());
-        stageDesigner.setText((String) simulationData.getStageDesigner());
-        animator.setText((String) simulationData.getAnimator());
-        voiceActors.setText((String) simulationData.getVoiceActors());
-        plotTwistScriptwriters.setText((String) simulationData.getPlotTwistScriptwriters());
-        assemblers.setText((String) simulationData.getAssemblers());
+        simulationDuration.setText((String) Main.simulationData.getSimulationDuration());
+        deadline.setText((String) Main.simulationData.getDeadline());
+        screenwriters.setText((String) Main.simulationData.getScreenwriters());
+        stageDesigner.setText((String) Main.simulationData.getStageDesigner());
+        animator.setText((String) Main.simulationData.getAnimator());
+        voiceActors.setText((String) Main.simulationData.getVoiceActors());
+        plotTwistScriptwriters.setText((String) Main.simulationData.getPlotTwistScriptwriters());
+        assemblers.setText((String) Main.simulationData.getAssemblers());
     }
 
 //sets the dynamic values of the interface for the Star Channel
     private void StarChannel() {
 //        Finance
-        revenue.setText("Prueba");
-        costs.setText("Prueba");
-        netIncome.setText("Prueba");
+        revenue.setText(String.valueOf(StarChannel.getProfits()));
+        costs.setText(String.valueOf(StarChannel.getSalaryAccount()));
+        netIncome.setText(String.valueOf(StarChannel.getProfits() - StarChannel.getSalaryAccount()));
 //        Drive Management
-        scriptAvailability.setText("25");
-        stageAvailability.setText("20");
-        animationAvailability.setText("55");
-        dubbingAvailability.setText("35");
-        plotTwistAvailability.setText("10");
+        scriptAvailability.setText(String.valueOf(StarChannel.getScriptwriterDrive().getMaxResourse() - StarChannel.getScriptwriterDrive().getResourse()));
+        stageAvailability.setText(String.valueOf(StarChannel.getSetDesignerDrive().getMaxResourse() - StarChannel.getSetDesignerDrive().getResourse()));
+        animationAvailability.setText(String.valueOf(StarChannel.getAnimatorDrive().getMaxResourse() - StarChannel.getAnimatorDrive().getResourse()));
+        dubbingAvailability.setText(String.valueOf(StarChannel.getVoiceActorDrive().getMaxResourse() - StarChannel.getVoiceActorDrive().getResourse()));
+        plotTwistAvailability.setText(String.valueOf(StarChannel.getPlotTwisterDrive().getMaxResourse() - StarChannel.getPlotTwisterDrive().getResourse()));
 //        chapter control
-        readyStandardStar.setText("0");
-        readyPlotTwistStar.setText("0");
-        deadlineCounterStar.setText("0");
+        readyStandardStar.setText(String.valueOf(StarChannel.getAssemblerDrive().getResourse()));
+        readyPlotTwistStar.setText(String.valueOf(StarChannel.getPlotAssemblerDrive().getResourse()));
+        deadlineCounterStar.setText(String.valueOf(StarChannel.getDeadlineRatio()));
 //        employee management
-        projectManagerStatusStar.setText("Anime");
-        projectManagerFaultsStar.setText("0");
-        projectManagerDeductionStar.setText("0");
-        directorStatusStar.setText("Administrando");
+        projectManagerStatusStar.setText(StarChannel.getProyectManager().isWatchingAnime() ? "Anime" : "Trabajando");
+        projectManagerFaultsStar.setText(String.valueOf(StarChannel.getPmFaults()));
+        projectManagerDeductionStar.setText(String.valueOf(StarChannel.getPmDiscountedAmount()));
+        directorStatusStar.setText(String.valueOf(StarChannel.getDirector().isCheckingPM()));
     }
 
 //sets the dynamic values of the interface for Cartoon Network
     private void CartoonNetwork() {
 //        Finance
-        revenueC.setText("Prueba");
-        costsC.setText("Prueba");
-        netIncomeC.setText("Prueba");
+        revenueC.setText(String.valueOf(CartoonNetwork.getProfits()));
+        costsC.setText(String.valueOf(CartoonNetwork.getSalaryAccount()));
+        netIncomeC.setText(String.valueOf(CartoonNetwork.getProfits() - CartoonNetwork.getSalaryAccount()));
 //        Drive Management
-        scriptAvailabilityC.setText("25");
-        stageAvailabilityC.setText("20");
-        animationAvailabilityC.setText("55");
-        dubbingAvailabilityC.setText("35");
-        plotTwistAvailabilityC.setText("10");
+        scriptAvailabilityC.setText(String.valueOf(CartoonNetwork.getScriptwriterDrive().getMaxResourse() - CartoonNetwork.getScriptwriterDrive().getResourse()));
+        stageAvailabilityC.setText(String.valueOf(CartoonNetwork.getSetDesignerDrive().getMaxResourse() - CartoonNetwork.getSetDesignerDrive().getResourse()));
+        animationAvailabilityC.setText(String.valueOf(CartoonNetwork.getAnimatorDrive().getMaxResourse() - CartoonNetwork.getAnimatorDrive().getResourse()));
+        dubbingAvailabilityC.setText(String.valueOf(CartoonNetwork.getVoiceActorDrive().getMaxResourse() - CartoonNetwork.getVoiceActorDrive().getResourse()));
+        plotTwistAvailabilityC.setText(String.valueOf(CartoonNetwork.getPlotTwisterDrive().getMaxResourse() - CartoonNetwork.getPlotTwisterDrive().getResourse()));
 //        chapter control
-        readyStandard.setText("0");
-        readyPlotTwist.setText("0");
-        deadlineCounter.setText("0");
+        readyStandard.setText(String.valueOf(CartoonNetwork.getAssemblerDrive().getResourse()));
+        readyPlotTwist.setText(String.valueOf(CartoonNetwork.getPlotAssemblerDrive().getResourse()));
+        deadlineCounter.setText(String.valueOf(CartoonNetwork.getDeadlineRatio()));
 //        employee management
-        projectManagerStatus.setText("Anime");
-        projectManagerFaults.setText("0");
-        projectManagerDeduction.setText("0");
+        projectManagerStatus.setText(CartoonNetwork.getProyectManager().isWatchingAnime() ? "Anime" : "Trabajando");
+        projectManagerFaults.setText(String.valueOf(CartoonNetwork.getPmFaults()));
+        projectManagerDeduction.setText(String.valueOf(CartoonNetwork.getPmDiscountedAmount()));
         directorStatus.setText("Administrando");
-
     }
 
     private Integer sum() {
@@ -107,16 +106,16 @@ public class Views extends javax.swing.JFrame {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
-        jLabel25 = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
-        jLabel28 = new javax.swing.JLabel();
-        jLabel29 = new javax.swing.JLabel();
-        jLabel30 = new javax.swing.JLabel();
+        cartoonLogo = new javax.swing.JLabel();
+        scriptLabel = new javax.swing.JLabel();
+        stageLabel = new javax.swing.JLabel();
+        animationLabel = new javax.swing.JLabel();
+        dubbingLabel = new javax.swing.JLabel();
+        driveTitle = new javax.swing.JLabel();
+        plotTwistDriveLabel = new javax.swing.JLabel();
+        revenueLabel = new javax.swing.JLabel();
+        costsLabel = new javax.swing.JLabel();
+        netIncomeLabel = new javax.swing.JLabel();
         revenueC = new javax.swing.JLabel();
         costsC = new javax.swing.JLabel();
         netIncomeC = new javax.swing.JLabel();
@@ -125,9 +124,9 @@ public class Views extends javax.swing.JFrame {
         animationAvailabilityC = new javax.swing.JLabel();
         dubbingAvailabilityC = new javax.swing.JLabel();
         plotTwistAvailabilityC = new javax.swing.JLabel();
-        jLabel31 = new javax.swing.JLabel();
-        jLabel32 = new javax.swing.JLabel();
-        jLabel33 = new javax.swing.JLabel();
+        chaptersLabel = new javax.swing.JLabel();
+        standardChapterLabel = new javax.swing.JLabel();
+        plotTwistChapterLabel = new javax.swing.JLabel();
         readyStandard = new javax.swing.JLabel();
         readyPlotTwist = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
@@ -139,7 +138,7 @@ public class Views extends javax.swing.JFrame {
         projectManagerFaults = new javax.swing.JLabel();
         jLabel38 = new javax.swing.JLabel();
         projectManagerDeduction = new javax.swing.JLabel();
-        jLabel39 = new javax.swing.JLabel();
+        deadlineLabel = new javax.swing.JLabel();
         deadlineCounter = new javax.swing.JLabel();
         jLabel49 = new javax.swing.JLabel();
         jLabel51 = new javax.swing.JLabel();
@@ -204,60 +203,61 @@ public class Views extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         saveButton = new javax.swing.JButton();
         validator = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(12, 191, 185));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CARTOON_NETWORK_logopequeno.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
-        jLabel1.getAccessibleContext().setAccessibleName("cartoonLogo");
+        cartoonLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CARTOON_NETWORK_logopequeno.png"))); // NOI18N
+        jPanel1.add(cartoonLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
+        cartoonLogo.getAccessibleContext().setAccessibleName("cartoonLogo");
 
-        jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel22.setText("Guiones:");
-        jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 40, -1, -1));
+        scriptLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        scriptLabel.setForeground(new java.awt.Color(255, 255, 255));
+        scriptLabel.setText("Guiones:");
+        jPanel1.add(scriptLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 40, -1, -1));
 
-        jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel23.setText("Escenarios:");
-        jPanel1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 70, -1, -1));
+        stageLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        stageLabel.setForeground(new java.awt.Color(255, 255, 255));
+        stageLabel.setText("Escenarios:");
+        jPanel1.add(stageLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 70, -1, -1));
 
-        jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel24.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel24.setText("Animaciones:");
-        jPanel1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 100, -1, -1));
+        animationLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        animationLabel.setForeground(new java.awt.Color(255, 255, 255));
+        animationLabel.setText("Animaciones:");
+        jPanel1.add(animationLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 100, -1, -1));
 
-        jLabel25.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel25.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel25.setText("Doblajes:");
-        jPanel1.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 40, -1, -1));
+        dubbingLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        dubbingLabel.setForeground(new java.awt.Color(255, 255, 255));
+        dubbingLabel.setText("Doblajes:");
+        jPanel1.add(dubbingLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 40, -1, -1));
 
-        jLabel26.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel26.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel26.setText("Disponibilidad Drive");
-        jPanel1.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 0, -1, -1));
+        driveTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        driveTitle.setForeground(new java.awt.Color(255, 255, 255));
+        driveTitle.setText("Disponibilidad Drive");
+        jPanel1.add(driveTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 0, -1, -1));
 
-        jLabel27.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel27.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel27.setText("PlotTwist:");
-        jPanel1.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 80, -1, -1));
+        plotTwistDriveLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        plotTwistDriveLabel.setForeground(new java.awt.Color(255, 255, 255));
+        plotTwistDriveLabel.setText("PlotTwist:");
+        jPanel1.add(plotTwistDriveLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 80, -1, -1));
 
-        jLabel28.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel28.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel28.setText("Ganancias en bruto:");
-        jPanel1.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 40, -1, -1));
+        revenueLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        revenueLabel.setForeground(new java.awt.Color(255, 255, 255));
+        revenueLabel.setText("Ganancias en bruto:");
+        jPanel1.add(revenueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 40, -1, -1));
 
-        jLabel29.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel29.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel29.setText("Costos operativos:");
-        jPanel1.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, -1, -1));
+        costsLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        costsLabel.setForeground(new java.awt.Color(255, 255, 255));
+        costsLabel.setText("Costos operativos:");
+        jPanel1.add(costsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, -1, -1));
 
-        jLabel30.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel30.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel30.setText("Utilidades:");
-        jPanel1.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 98, -1, -1));
+        netIncomeLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        netIncomeLabel.setForeground(new java.awt.Color(255, 255, 255));
+        netIncomeLabel.setText("Utilidades:");
+        jPanel1.add(netIncomeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 98, -1, -1));
 
         revenueC.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         revenueC.setForeground(new java.awt.Color(255, 255, 255));
@@ -291,20 +291,20 @@ public class Views extends javax.swing.JFrame {
         plotTwistAvailabilityC.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.add(plotTwistAvailabilityC, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 80, -1, -1));
 
-        jLabel31.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel31.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel31.setText("Episodios Listos");
-        jPanel1.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
+        chaptersLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        chaptersLabel.setForeground(new java.awt.Color(255, 255, 255));
+        chaptersLabel.setText("Episodios Listos");
+        jPanel1.add(chaptersLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
 
-        jLabel32.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel32.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel32.setText("Estándar:");
-        jPanel1.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
+        standardChapterLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        standardChapterLabel.setForeground(new java.awt.Color(255, 255, 255));
+        standardChapterLabel.setText("Estándar:");
+        jPanel1.add(standardChapterLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
 
-        jLabel33.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel33.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel33.setText("PlotTwist:");
-        jPanel1.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, -1, -1));
+        plotTwistChapterLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        plotTwistChapterLabel.setForeground(new java.awt.Color(255, 255, 255));
+        plotTwistChapterLabel.setText("PlotTwist:");
+        jPanel1.add(plotTwistChapterLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, -1, -1));
 
         readyStandard.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         readyStandard.setForeground(new java.awt.Color(255, 255, 255));
@@ -349,8 +349,10 @@ public class Views extends javax.swing.JFrame {
 
         projectManagerFaults.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         projectManagerFaults.setForeground(new java.awt.Color(255, 255, 255));
+        projectManagerFaults.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         projectManagerFaults.setText("0");
-        jPanel1.add(projectManagerFaults, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 400, 10, -1));
+        projectManagerFaults.setToolTipText("");
+        jPanel1.add(projectManagerFaults, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 400, 90, -1));
 
         jLabel38.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel38.setForeground(new java.awt.Color(255, 255, 255));
@@ -359,13 +361,14 @@ public class Views extends javax.swing.JFrame {
 
         projectManagerDeduction.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         projectManagerDeduction.setForeground(new java.awt.Color(255, 255, 255));
+        projectManagerDeduction.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         projectManagerDeduction.setText("0");
-        jPanel1.add(projectManagerDeduction, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 400, -1, -1));
+        jPanel1.add(projectManagerDeduction, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 400, 50, -1));
 
-        jLabel39.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel39.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel39.setText("Días restantes para la entrega:");
-        jPanel1.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, -1, -1));
+        deadlineLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        deadlineLabel.setForeground(new java.awt.Color(255, 255, 255));
+        deadlineLabel.setText("Días restantes para la entrega:");
+        jPanel1.add(deadlineLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, -1, -1));
 
         deadlineCounter.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         deadlineCounter.setForeground(new java.awt.Color(255, 255, 255));
@@ -538,8 +541,9 @@ public class Views extends javax.swing.JFrame {
 
         projectManagerDeductionStar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         projectManagerDeductionStar.setForeground(new java.awt.Color(255, 255, 255));
+        projectManagerDeductionStar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         projectManagerDeductionStar.setText("0");
-        jPanel2.add(projectManagerDeductionStar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 400, -1, -1));
+        jPanel2.add(projectManagerDeductionStar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 400, 70, -1));
 
         jLabel48.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel48.setForeground(new java.awt.Color(255, 255, 255));
@@ -621,6 +625,15 @@ public class Views extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Configuración", jPanel3);
 
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jButton1.setText("Haz click para ver la gráfica comparativa");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jTabbedPane1.addTab("Gráfica", jButton1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -662,6 +675,10 @@ public class Views extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_saveButtonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Chart chart = new Chart();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public static boolean numValidator(JTextField strNum) {
         if (strNum == null) {
@@ -714,18 +731,25 @@ public class Views extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel animationAvailability;
     private javax.swing.JLabel animationAvailabilityC;
+    private javax.swing.JLabel animationLabel;
     private javax.swing.JTextField animator;
     private javax.swing.JTextField assemblers;
+    private javax.swing.JLabel cartoonLogo;
+    private javax.swing.JLabel chaptersLabel;
     private javax.swing.JLabel costs;
     private javax.swing.JLabel costsC;
+    private javax.swing.JLabel costsLabel;
     private javax.swing.JTextField deadline;
     private javax.swing.JLabel deadlineCounter;
     private javax.swing.JLabel deadlineCounterStar;
+    private javax.swing.JLabel deadlineLabel;
     private javax.swing.JLabel directorStatus;
     private javax.swing.JLabel directorStatusStar;
+    private javax.swing.JLabel driveTitle;
     private javax.swing.JLabel dubbingAvailability;
     private javax.swing.JLabel dubbingAvailabilityC;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel dubbingLabel;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -739,25 +763,12 @@ public class Views extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
-    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
@@ -786,8 +797,11 @@ public class Views extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel netIncome;
     private javax.swing.JLabel netIncomeC;
+    private javax.swing.JLabel netIncomeLabel;
     private javax.swing.JLabel plotTwistAvailability;
     private javax.swing.JLabel plotTwistAvailabilityC;
+    private javax.swing.JLabel plotTwistChapterLabel;
+    private javax.swing.JLabel plotTwistDriveLabel;
     private javax.swing.JTextField plotTwistScriptwriters;
     private javax.swing.JLabel projectManagerDeduction;
     private javax.swing.JLabel projectManagerDeductionStar;
@@ -801,15 +815,324 @@ public class Views extends javax.swing.JFrame {
     private javax.swing.JLabel readyStandardStar;
     private javax.swing.JLabel revenue;
     private javax.swing.JLabel revenueC;
+    private javax.swing.JLabel revenueLabel;
     private javax.swing.JButton saveButton;
     private javax.swing.JTextField screenwriters;
     private javax.swing.JLabel scriptAvailability;
     private javax.swing.JLabel scriptAvailabilityC;
+    private javax.swing.JLabel scriptLabel;
     private javax.swing.JTextField simulationDuration;
     private javax.swing.JLabel stageAvailability;
     private javax.swing.JLabel stageAvailabilityC;
     private javax.swing.JTextField stageDesigner;
+    private javax.swing.JLabel stageLabel;
+    private javax.swing.JLabel standardChapterLabel;
     private javax.swing.JLabel validator;
     private javax.swing.JTextField voiceActors;
     // End of variables declaration//GEN-END:variables
+
+    public JLabel getAnimationAvailability() {
+        return animationAvailability;
+    }
+
+    public void setAnimationAvailability(JLabel animationAvailability) {
+        this.animationAvailability = animationAvailability;
+    }
+
+    public JLabel getAnimationAvailabilityC() {
+        return animationAvailabilityC;
+    }
+
+    public void setAnimationAvailabilityC(JLabel animationAvailabilityC) {
+        this.animationAvailabilityC = animationAvailabilityC;
+    }
+
+    public JTextField getAnimator() {
+        return animator;
+    }
+
+    public void setAnimator(JTextField animator) {
+        this.animator = animator;
+    }
+
+    public JTextField getAssemblers() {
+        return assemblers;
+    }
+
+    public void setAssemblers(JTextField assemblers) {
+        this.assemblers = assemblers;
+    }
+
+    public JLabel getCosts() {
+        return costs;
+    }
+
+    public void setCosts(JLabel costs) {
+        this.costs = costs;
+    }
+
+    public JLabel getCostsC() {
+        return costsC;
+    }
+
+    public void setCostsC(JLabel costsC) {
+        this.costsC = costsC;
+    }
+
+    public JTextField getDeadline() {
+        return deadline;
+    }
+
+    public void setDeadline(JTextField deadline) {
+        this.deadline = deadline;
+    }
+
+    public JLabel getDeadlineCounter() {
+        return deadlineCounter;
+    }
+
+    public void setDeadlineCounter(JLabel deadlineCounter) {
+        this.deadlineCounter = deadlineCounter;
+    }
+
+    public JLabel getDeadlineCounterStar() {
+        return deadlineCounterStar;
+    }
+
+    public void setDeadlineCounterStar(JLabel deadlineCounterStar) {
+        this.deadlineCounterStar = deadlineCounterStar;
+    }
+
+    public JLabel getDirectorStatus() {
+        return directorStatus;
+    }
+
+    public void setDirectorStatus(JLabel directorStatus) {
+        this.directorStatus = directorStatus;
+    }
+
+    public JLabel getDirectorStatusStar() {
+        return directorStatusStar;
+    }
+
+    public void setDirectorStatusStar(JLabel directorStatusStar) {
+        this.directorStatusStar = directorStatusStar;
+    }
+
+    public JLabel getDubbingAvailability() {
+        return dubbingAvailability;
+    }
+
+    public void setDubbingAvailability(JLabel dubbingAvailability) {
+        this.dubbingAvailability = dubbingAvailability;
+    }
+
+    public JLabel getDubbingAvailabilityC() {
+        return dubbingAvailabilityC;
+    }
+
+    public void setDubbingAvailabilityC(JLabel dubbingAvailabilityC) {
+        this.dubbingAvailabilityC = dubbingAvailabilityC;
+    }
+
+    public JLabel getNetIncome() {
+        return netIncome;
+    }
+
+    public void setNetIncome(JLabel netIncome) {
+        this.netIncome = netIncome;
+    }
+
+    public JLabel getNetIncomeC() {
+        return netIncomeC;
+    }
+
+    public void setNetIncomeC(JLabel netIncomeC) {
+        this.netIncomeC = netIncomeC;
+    }
+
+    public JLabel getPlotTwistAvailability() {
+        return plotTwistAvailability;
+    }
+
+    public void setPlotTwistAvailability(JLabel plotTwistAvailability) {
+        this.plotTwistAvailability = plotTwistAvailability;
+    }
+
+    public JLabel getPlotTwistAvailabilityC() {
+        return plotTwistAvailabilityC;
+    }
+
+    public void setPlotTwistAvailabilityC(JLabel plotTwistAvailabilityC) {
+        this.plotTwistAvailabilityC = plotTwistAvailabilityC;
+    }
+
+    public JTextField getPlotTwistScriptwriters() {
+        return plotTwistScriptwriters;
+    }
+
+    public void setPlotTwistScriptwriters(JTextField plotTwistScriptwriters) {
+        this.plotTwistScriptwriters = plotTwistScriptwriters;
+    }
+
+    public JLabel getProjectManagerDeduction() {
+        return projectManagerDeduction;
+    }
+
+    public void setProjectManagerDeduction(JLabel projectManagerDeduction) {
+        this.projectManagerDeduction = projectManagerDeduction;
+    }
+
+    public JLabel getProjectManagerDeductionStar() {
+        return projectManagerDeductionStar;
+    }
+
+    public void setProjectManagerDeductionStar(JLabel projectManagerDeductionStar) {
+        this.projectManagerDeductionStar = projectManagerDeductionStar;
+    }
+
+    public JLabel getProjectManagerFaults() {
+        return projectManagerFaults;
+    }
+
+    public void setProjectManagerFaults(JLabel projectManagerFaults) {
+        this.projectManagerFaults = projectManagerFaults;
+    }
+
+    public JLabel getProjectManagerFaultsStar() {
+        return projectManagerFaultsStar;
+    }
+
+    public void setProjectManagerFaultsStar(JLabel projectManagerFaultsStar) {
+        this.projectManagerFaultsStar = projectManagerFaultsStar;
+    }
+
+    public JLabel getProjectManagerStatus() {
+        return projectManagerStatus;
+    }
+
+    public void setProjectManagerStatus(JLabel projectManagerStatus) {
+        this.projectManagerStatus = projectManagerStatus;
+    }
+
+    public JLabel getProjectManagerStatusStar() {
+        return projectManagerStatusStar;
+    }
+
+    public void setProjectManagerStatusStar(JLabel projectManagerStatusStar) {
+        this.projectManagerStatusStar = projectManagerStatusStar;
+    }
+
+    public JLabel getReadyPlotTwist() {
+        return readyPlotTwist;
+    }
+
+    public void setReadyPlotTwist(JLabel readyPlotTwist) {
+        this.readyPlotTwist = readyPlotTwist;
+    }
+
+    public JLabel getReadyPlotTwistStar() {
+        return readyPlotTwistStar;
+    }
+
+    public void setReadyPlotTwistStar(JLabel readyPlotTwistStar) {
+        this.readyPlotTwistStar = readyPlotTwistStar;
+    }
+
+    public JLabel getReadyStandard() {
+        return readyStandard;
+    }
+
+    public void setReadyStandard(JLabel readyStandard) {
+        this.readyStandard = readyStandard;
+    }
+
+    public JLabel getReadyStandardStar() {
+        return readyStandardStar;
+    }
+
+    public void setReadyStandardStar(JLabel readyStandardStar) {
+        this.readyStandardStar = readyStandardStar;
+    }
+
+    public JLabel getRevenue() {
+        return revenue;
+    }
+
+    public void setRevenue(JLabel revenue) {
+        this.revenue = revenue;
+    }
+
+    public JLabel getRevenueC() {
+        return revenueC;
+    }
+
+    public void setRevenueC(JLabel revenueC) {
+        this.revenueC = revenueC;
+    }
+
+    public JTextField getScreenwriters() {
+        return screenwriters;
+    }
+
+    public void setScreenwriters(JTextField screenwriters) {
+        this.screenwriters = screenwriters;
+    }
+
+    public JLabel getScriptAvailability() {
+        return scriptAvailability;
+    }
+
+    public void setScriptAvailability(JLabel scriptAvailability) {
+        this.scriptAvailability = scriptAvailability;
+    }
+
+    public JLabel getScriptAvailabilityC() {
+        return scriptAvailabilityC;
+    }
+
+    public void setScriptAvailabilityC(JLabel scriptAvailabilityC) {
+        this.scriptAvailabilityC = scriptAvailabilityC;
+    }
+
+    public JTextField getSimulationDuration() {
+        return simulationDuration;
+    }
+
+    public void setSimulationDuration(JTextField simulationDuration) {
+        this.simulationDuration = simulationDuration;
+    }
+
+    public JLabel getStageAvailability() {
+        return stageAvailability;
+    }
+
+    public void setStageAvailability(JLabel stageAvailability) {
+        this.stageAvailability = stageAvailability;
+    }
+
+    public JLabel getStageAvailabilityC() {
+        return stageAvailabilityC;
+    }
+
+    public void setStageAvailabilityC(JLabel stageAvailabilityC) {
+        this.stageAvailabilityC = stageAvailabilityC;
+    }
+
+    public JTextField getStageDesigner() {
+        return stageDesigner;
+    }
+
+    public void setStageDesigner(JTextField stageDesigner) {
+        this.stageDesigner = stageDesigner;
+    }
+
+    public JTextField getVoiceActors() {
+        return voiceActors;
+    }
+
+    public void setVoiceActors(JTextField voiceActors) {
+        this.voiceActors = voiceActors;
+    }
+
 }
