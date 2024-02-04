@@ -213,10 +213,10 @@ public class assemblerTeam extends Thread {
 
             try {
                 operate();
-
+                sleep(this.dayDuration);
                 addDailySalary();
 
-                sleep(this.dayDuration);
+                
 
             } catch (InterruptedException ex) {
                 Logger.getLogger(assemblerTeam.class.getName()).log(Level.SEVERE, null, ex);

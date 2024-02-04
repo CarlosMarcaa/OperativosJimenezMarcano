@@ -38,10 +38,10 @@ public class proyectManager extends Thread {
     }
 
     public void operate() {
-
+        int timeSpent = 0;
         int halfHour = studio.getDayDuration() / 48;
-        int hour = halfHour * 2;
-        hourlyCycle = 0;
+        int hour = studio.getDayDuration() / 24;
+        setHourlyCycle(0);
         while (hourlyCycle < 16) {
             try {
                 // For the first 16 hours of the day, he alternates between watching porn and
@@ -54,6 +54,7 @@ public class proyectManager extends Thread {
 
                 // System.out.println("El proyect Manager esta viendo anime");
                 sleep(halfHour);
+                timeSpent =+ halfHour;
                 setWatchingAnime(false);
 
                 // Prueba
@@ -62,6 +63,7 @@ public class proyectManager extends Thread {
 
                 // System.out.println("El proyect Manager dejo de ver anime");
                 sleep(halfHour);
+                timeSpent += halfHour;
                 setHourlyCycle(getHourlyCycle() + 1);
             } catch (InterruptedException ex) {
                 Logger.getLogger(proyectManager.class.getName()).log(Level.SEVERE, null, ex);
@@ -77,6 +79,7 @@ public class proyectManager extends Thread {
         while (hourlyCycle < 24) {
             try {
                 sleep(hour);
+                timeSpent += hour;
             } catch (InterruptedException ex) {
                 Logger.getLogger(proyectManager.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -85,6 +88,8 @@ public class proyectManager extends Thread {
         } // At the right moment, the project Manager decreases the daysLeftRelease
           // counter
         try {
+            sleep(studio.getDayDuration() - timeSpent);
+                
             studio.getDaysLeftSemaphore().acquire(); // Hold the semaphore to change the daysLeftRelease counter
             studio.setDaysLeftRelease(studio.getDaysLeftRelease() - 1);
             if (studio.getDaysLeftRelease() < 1) {
@@ -96,7 +101,6 @@ public class proyectManager extends Thread {
         } catch (InterruptedException ex) {
             Logger.getLogger(proyectManager.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
     @Override

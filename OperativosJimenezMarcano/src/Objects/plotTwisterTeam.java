@@ -89,8 +89,9 @@ public class plotTwisterTeam extends Thread {
             try {
 
                 operate();
-                addDailySalary();
                 sleep(studio.getDayDuration());
+                addDailySalary();
+                
 
             } catch (InterruptedException ex) {
                 Logger.getLogger(plotTwisterTeam.class.getName()).log(Level.SEVERE, null, ex);

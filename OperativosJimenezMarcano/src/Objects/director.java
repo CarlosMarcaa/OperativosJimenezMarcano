@@ -71,7 +71,9 @@ public class director extends Thread {
 
         } else { // If there are more than 0 days left for release, the director will check on
                  // the project manajer for 35 minutes
-
+                
+                 int timeSpent = 0; //The timeSpent variable ensures that the time that the director's operate() method lasts exacly one day
+                 
             int halfHour = studio.getDayDuration() / 48;
             int hour = studio.getDayDuration() / 24; // This variable represents 1 hour that will adapt based on the
                                                      // variable dayDuration
@@ -90,6 +92,7 @@ public class director extends Thread {
                     }
 
                     sleep(hour);
+                    timeSpent += hour;
                 } catch (InterruptedException ex) {
                     Logger.getLogger(director.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -108,7 +111,7 @@ public class director extends Thread {
 
                 try {
                     sleep(halfHour); // Checks the project manajer for 35 minutes
-
+                    timeSpent += halfHour;
                 } catch (InterruptedException ex) {
                     Logger.getLogger(director.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -136,6 +139,7 @@ public class director extends Thread {
                     }
 
                     sleep(halfHour);
+                    timeSpent += halfHour;
                 } catch (InterruptedException ex) {
                     Logger.getLogger(director.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -143,6 +147,7 @@ public class director extends Thread {
                 while (hourlyCycle < 24) {
                     try {
                         sleep(hour);
+                        timeSpent += hour;
                     } catch (InterruptedException ex) {
                         Logger.getLogger(director.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -150,8 +155,14 @@ public class director extends Thread {
                 }
 
             }
-
+            
+            try {
+                sleep(studio.getDayDuration() - timeSpent);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(director.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
+        
 
     }
 

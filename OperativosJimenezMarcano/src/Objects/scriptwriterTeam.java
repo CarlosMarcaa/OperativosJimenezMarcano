@@ -90,8 +90,8 @@ public class scriptwriterTeam extends Thread {
             try {
 
                 operate();
-                addDailySalary();
                 sleep(studio.getDayDuration());
+                addDailySalary();
 
             } catch (InterruptedException ex) {
                 Logger.getLogger(scriptwriterTeam.class.getName()).log(Level.SEVERE, null, ex);

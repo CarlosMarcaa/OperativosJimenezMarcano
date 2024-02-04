@@ -89,8 +89,9 @@ public class animatorTeam extends Thread {
             try {
 
                 operate();
-                addDailySalary();
                 sleep(studio.getDayDuration());
+                addDailySalary();
+                
 
             } catch (InterruptedException ex) {
                 Logger.getLogger(animatorTeam.class.getName()).log(Level.SEVERE, null, ex);

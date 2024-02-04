@@ -90,8 +90,9 @@ public class voiceActorTeam extends Thread {
             try {
 
                 operate();
-                addDailySalary();
                 sleep(studio.getDayDuration());
+                addDailySalary();
+                
 
             } catch (InterruptedException ex) {
                 Logger.getLogger(voiceActorTeam.class.getName()).log(Level.SEVERE, null, ex);

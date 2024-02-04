@@ -87,8 +87,9 @@ public class setDesignerTeam extends Thread {
 
             try {
                 operate();
-                addDailySalary();
                 sleep(studio.getDayDuration());
+                addDailySalary();
+               
 
             } catch (InterruptedException ex) {
                 Logger.getLogger(setDesignerTeam.class.getName()).log(Level.SEVERE, null, ex);
