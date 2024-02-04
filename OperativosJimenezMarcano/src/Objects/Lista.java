@@ -11,6 +11,10 @@ package Objects;
 public class Lista {
     
     private Nodo head;
+
+    public int getLength() {
+        return length;
+    }
     private int length;
 
     public Lista() {

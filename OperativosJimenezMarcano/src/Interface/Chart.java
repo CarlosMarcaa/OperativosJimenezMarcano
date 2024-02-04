@@ -24,10 +24,14 @@ public class Chart {
 
     public Chart() {
         XYSeries cartoonNetwork = new XYSeries("Cartoon Network");
-        cartoonNetwork.add(1, 1);
-        cartoonNetwork.add(2, 2);
-        cartoonNetwork.add(3, 3);
-        cartoonNetwork.add(4, 4);
+        cartoonNetwork.add(1, -6480);
+        cartoonNetwork.add(2, -12960);
+        cartoonNetwork.add(3, -19440);
+        cartoonNetwork.add(4, -25820);
+        cartoonNetwork.add(5, -32600);   
+        cartoonNetwork.add(6, 917400);
+
+        
 
         XYSeries starChannel = new XYSeries("Star Channel");
         starChannel.add(1, 2);

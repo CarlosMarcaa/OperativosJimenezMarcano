@@ -5,8 +5,6 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import operativosjimenezmarcano.Main;
 import static operativosjimenezmarcano.Main.csvManager;
-import static operativosjimenezmarcano.Main.CartoonNetwork;
-import static operativosjimenezmarcano.Main.StarChannel;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -26,9 +24,6 @@ public class Views extends javax.swing.JFrame {
         this.setVisible(true);
 
         enterConfigData();
-
-        StarChannel();
-        CartoonNetwork();
     }
 
     // loads initial configuration data brought from a csv document
@@ -41,62 +36,6 @@ public class Views extends javax.swing.JFrame {
         voiceActors.setText((String) Main.simulationData.getVoiceActors());
         plotTwistScriptwriters.setText((String) Main.simulationData.getPlotTwistScriptwriters());
         assemblers.setText((String) Main.simulationData.getAssemblers());
-    }
-
-    // sets the dynamic values of the interface for the Star Channel
-    private void StarChannel() {
-        // Finance
-        revenue.setText(String.valueOf(StarChannel.getProfits()));
-        costs.setText(String.valueOf(StarChannel.getSalaryAccount()));
-        netIncome.setText(String.valueOf(StarChannel.getProfits() - StarChannel.getSalaryAccount()));
-        // Drive Management
-        scriptAvailability.setText(String.valueOf(StarChannel.getScriptwriterDrive().getMaxResourse()
-                - StarChannel.getScriptwriterDrive().getResourse()));
-        stageAvailability.setText(String.valueOf(
-                StarChannel.getSetDesignerDrive().getMaxResourse() - StarChannel.getSetDesignerDrive().getResourse()));
-        animationAvailability.setText(String.valueOf(
-                StarChannel.getAnimatorDrive().getMaxResourse() - StarChannel.getAnimatorDrive().getResourse()));
-        dubbingAvailability.setText(String.valueOf(
-                StarChannel.getVoiceActorDrive().getMaxResourse() - StarChannel.getVoiceActorDrive().getResourse()));
-        plotTwistAvailability.setText(String.valueOf(
-                StarChannel.getPlotTwisterDrive().getMaxResourse() - StarChannel.getPlotTwisterDrive().getResourse()));
-        // chapter control
-        readyStandardStar.setText(String.valueOf(StarChannel.getAssemblerDrive().getResourse()));
-        readyPlotTwistStar.setText(String.valueOf(StarChannel.getPlotAssemblerDrive().getResourse()));
-        deadlineCounterStar.setText(String.valueOf(StarChannel.getDeadlineRatio()));
-        // employee management
-        projectManagerStatusStar.setText(StarChannel.getProyectManager().isWatchingAnime() ? "Anime" : "Trabajando");
-        projectManagerFaultsStar.setText(String.valueOf(StarChannel.getPmFaults()));
-        projectManagerDeductionStar.setText(String.valueOf(StarChannel.getPmDiscountedAmount()));
-        directorStatusStar.setText(String.valueOf(StarChannel.getDirector().isCheckingPM()));
-    }
-
-    // sets the dynamic values of the interface for Cartoon Network
-    private void CartoonNetwork() {
-        // Finance
-        revenueC.setText(String.valueOf(CartoonNetwork.getProfits()));
-        costsC.setText(String.valueOf(CartoonNetwork.getSalaryAccount()));
-        netIncomeC.setText(String.valueOf(CartoonNetwork.getProfits() - CartoonNetwork.getSalaryAccount()));
-        // Drive Management
-        scriptAvailabilityC.setText(String.valueOf(CartoonNetwork.getScriptwriterDrive().getMaxResourse()
-                - CartoonNetwork.getScriptwriterDrive().getResourse()));
-        stageAvailabilityC.setText(String.valueOf(CartoonNetwork.getSetDesignerDrive().getMaxResourse()
-                - CartoonNetwork.getSetDesignerDrive().getResourse()));
-        animationAvailabilityC.setText(String.valueOf(
-                CartoonNetwork.getAnimatorDrive().getMaxResourse() - CartoonNetwork.getAnimatorDrive().getResourse()));
-        dubbingAvailabilityC.setText(String.valueOf(CartoonNetwork.getVoiceActorDrive().getMaxResourse()
-                - CartoonNetwork.getVoiceActorDrive().getResourse()));
-        plotTwistAvailabilityC.setText(String.valueOf(CartoonNetwork.getPlotTwisterDrive().getMaxResourse()
-                - CartoonNetwork.getPlotTwisterDrive().getResourse()));
-        // chapter control
-        readyStandard.setText(String.valueOf(CartoonNetwork.getAssemblerDrive().getResourse()));
-        readyPlotTwist.setText(String.valueOf(CartoonNetwork.getPlotAssemblerDrive().getResourse()));
-        deadlineCounter.setText(String.valueOf(CartoonNetwork.getDeadlineRatio()));
-        // employee management
-        projectManagerStatus.setText(CartoonNetwork.getProyectManager().isWatchingAnime() ? "Anime" : "Trabajando");
-        projectManagerFaults.setText(String.valueOf(CartoonNetwork.getPmFaults()));
-        projectManagerDeduction.setText(String.valueOf(CartoonNetwork.getPmDiscountedAmount()));
-        directorStatus.setText("Administrando");
     }
 
     private Integer sum() {
@@ -677,6 +616,15 @@ public class Views extends javax.swing.JFrame {
                 || numValidator(stageDesigner) == false
                 || numValidator(voiceActors) == false) {
             validator.setText("Todos los campos deben ser números enteros");
+        } else if ((numValidator(animator) == true && Integer.parseInt(animator.getText()) < 1)
+                || (numValidator(assemblers) == true && Integer.parseInt(assemblers.getText()) < 1)
+                || (numValidator(deadline) == true && Integer.parseInt(deadline.getText()) < 1)
+                || (numValidator(plotTwistScriptwriters) == true && Integer.parseInt(plotTwistScriptwriters.getText()) < 1)
+                || (numValidator(screenwriters) == true && Integer.parseInt(screenwriters.getText()) < 1)
+                || (numValidator(simulationDuration) == true && Integer.parseInt(simulationDuration.getText()) < 1)
+                || (numValidator(stageDesigner) == true && Integer.parseInt(stageDesigner.getText()) < 1)
+                || (numValidator(voiceActors) == true && Integer.parseInt(voiceActors.getText()) < 1)) {
+            validator.setText("Todos los campos deben ser números enteros mayores a 0");
         } else {
             validator.setText("");
             if (sum() <= 18) {
